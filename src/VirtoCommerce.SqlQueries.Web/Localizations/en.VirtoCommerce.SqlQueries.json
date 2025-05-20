@@ -1,0 +1,14 @@
+{
+  "SqlQueries": {
+    "blades": {
+
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Open SqlQueries menu",
+    "sql-queries:create": "Create SqlQueries related data",
+    "sql-queries:read": "View SqlQueries related data",
+    "sql-queries:update": "Update SqlQueries related data",
+    "sql-queries:delete": "Delete SqlQueries related data"
+  }
+}
