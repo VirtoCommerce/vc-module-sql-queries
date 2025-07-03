@@ -6,7 +6,7 @@
 
   <platformVersion>3.887.0</platformVersion>
   <dependencies>
-    <!--<dependency id="VirtoCommerce.Core" version="3.800.0" />-->
+    
   </dependencies>
 
   <title>VirtoCommerce SqlQueries</title>
