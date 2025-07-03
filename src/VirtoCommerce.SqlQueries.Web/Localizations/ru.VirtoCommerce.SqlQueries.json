@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "SQL-запросы",
+        "labels": {
+          "name": "Имя"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} запрос",
+        "title-add": "Новый запрос",
+        "labels": {
+          "name": "Имя",
+          "connection-string-name": "Имя строки подключения",
+          "parameters": "Параметры",
+          "parameter-name": "Имя",
+          "parameter-type": "Тип",
+          "query": "Текст запроса"
+        },
+        "messages": {
+          "saveSuccess": "SQL-запрос успешно сохранен.",
+          "deleteSuccess": "SQL-запрос успешно удален."
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} отчет",
+        "labels": {
+          "format": "Формат"
+        },
+        "placeholders": {
+          "format": "Выберите формат"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Добавить параметр",
+      "try-query": "Попробовать запрос"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Открыть меню SQL-запросов",
+    "sql-queries:create": "Создать данные, связанные с SQL-запросами",
+    "sql-queries:read": "Просмотреть данные, связанные с SQL-запросами",
+    "sql-queries:update": "Обновить данные, связанные с SQL-запросами",
+    "sql-queries:delete": "Удалить данные, связанные с SQL-запросами",
+    "sql-queries:reports": "Выполнить и получить доступ к отчетам"
+  }
+}

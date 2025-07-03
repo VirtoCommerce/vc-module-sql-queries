@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "SQLクエリ",
+        "labels": {
+          "name": "名前"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} クエリ",
+        "title-add": "新しいクエリ",
+        "labels": {
+          "name": "名前",
+          "connection-string-name": "接続文字列名",
+          "parameters": "パラメータ",
+          "parameter-name": "名前",
+          "parameter-type": "タイプ",
+          "query": "クエリテキスト"
+        },
+        "messages": {
+          "saveSuccess": "SQLクエリが正常に保存されました。",
+          "deleteSuccess": "SQLクエリが正常に削除されました。"
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} レポート",
+        "labels": {
+          "format": "フォーマット"
+        },
+        "placeholders": {
+          "format": "フォーマットを選択"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "パラメータを追加",
+      "try-query": "クエリを試す"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "SQLクエリメニューを開く",
+    "sql-queries:create": "SQLクエリ関連データを作成",
+    "sql-queries:read": "SQLクエリ関連データを表示",
+    "sql-queries:update": "SQLクエリ関連データを更新",
+    "sql-queries:delete": "SQLクエリ関連データを削除",
+    "sql-queries:reports": "レポートを実行およびアクセス"
+  }
+}

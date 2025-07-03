@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "SQL-Abfragen",
+        "labels": {
+          "name": "Name"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} Abfrage",
+        "title-add": "Neue Abfrage",
+        "labels": {
+          "name": "Name",
+          "connection-string-name": "Verbindungszeichenfolge-Name",
+          "parameters": "Parameter",
+          "parameter-name": "Name",
+          "parameter-type": "Typ",
+          "query": "Abfrage-Text"
+        },
+        "messages": {
+          "saveSuccess": "SQL-Abfrage erfolgreich gespeichert.",
+          "deleteSuccess": "SQL-Abfrage erfolgreich gelöscht."
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} Bericht",
+        "labels": {
+          "format": "Format"
+        },
+        "placeholders": {
+          "format": "Format auswählen"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Parameter hinzufügen",
+      "try-query": "Abfrage testen"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "SQL-Abfragen-Menü öffnen",
+    "sql-queries:create": "SQL-Abfrage-bezogene Daten erstellen",
+    "sql-queries:read": "SQL-Abfrage-bezogene Daten anzeigen",
+    "sql-queries:update": "SQL-Abfrage-bezogene Daten aktualisieren",
+    "sql-queries:delete": "SQL-Abfrage-bezogene Daten löschen",
+    "sql-queries:reports": "Berichte ausführen und anzeigen"
+  }
+}

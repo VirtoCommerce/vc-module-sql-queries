@@ -1,7 +1,41 @@
 {
-  "SqlQueries": {
+  "sql-queries": {
     "blades": {
-
+      "sql-query-list": {
+        "title": "Sql queries",
+        "labels": {
+          "name": "Name"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} query",
+        "title-add": "New query",
+        "labels": {
+          "name": "Name",
+          "connection-string-name": "Connection string name",
+          "parameters": "Parameters",
+          "parameter-name": "Name",
+          "parameter-type": "Type",
+          "query": "Query text"
+        },
+        "messages": {
+          "saveSuccess": "Sql query saved successfully.",
+          "deleteSuccess": "Sql query deleted successfully."
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} report",
+        "labels": {
+          "format": "Format"
+        },
+        "placeholders": {
+          "format": "Select format"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Add parameter",
+      "try-query": "Try query"
     }
   },
   "permissions": {
@@ -9,6 +43,7 @@
     "sql-queries:create": "Create SqlQueries related data",
     "sql-queries:read": "View SqlQueries related data",
     "sql-queries:update": "Update SqlQueries related data",
-    "sql-queries:delete": "Delete SqlQueries related data"
+    "sql-queries:delete": "Delete SqlQueries related data",
+    "sql-queries:reports": "Execute and access reports"
   }
 }

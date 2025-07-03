@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "Query SQL",
+        "labels": {
+          "name": "Nome"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} query",
+        "title-add": "Nuova query",
+        "labels": {
+          "name": "Nome",
+          "connection-string-name": "Nome stringa di connessione",
+          "parameters": "Parametri",
+          "parameter-name": "Nome",
+          "parameter-type": "Tipo",
+          "query": "Testo della query"
+        },
+        "messages": {
+          "saveSuccess": "Query SQL salvata con successo.",
+          "deleteSuccess": "Query SQL eliminata con successo."
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} report",
+        "labels": {
+          "format": "Formato"
+        },
+        "placeholders": {
+          "format": "Seleziona formato"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Aggiungi parametro",
+      "try-query": "Prova query"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Apri menu Query SQL",
+    "sql-queries:create": "Crea dati relativi alle Query SQL",
+    "sql-queries:read": "Visualizza dati relativi alle Query SQL",
+    "sql-queries:update": "Aggiorna dati relativi alle Query SQL",
+    "sql-queries:delete": "Elimina dati relativi alle Query SQL",
+    "sql-queries:reports": "Esegui e accedi ai report"
+  }
+}
