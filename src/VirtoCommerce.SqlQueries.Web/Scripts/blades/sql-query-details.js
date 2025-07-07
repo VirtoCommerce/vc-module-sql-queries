@@ -7,7 +7,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
             const blade = $scope.blade;
             $scope.uiGridConstants = uiGridConstants;
 
-            blade.connectionStringNames = sqlQueriesApi.getConnectionStringNames();
+            blade.connectionStringNames = [];
             blade.types = ['ShortText', 'DateTime', 'Boolean', 'Integer', 'Decimal'];
 
             //blade properties
@@ -26,6 +26,11 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                 else {
                     blade.isLoading = false;
                 }
+
+                sqlQueriesApi.getDatabaseInformation({}, function (information) {
+                    blade.connectionStringNames = information.connectionStringNames;
+                    blade.databaseProvider = information.databaseProvider;
+                });
             };
 
             blade.onClose = function (closeCallback) {
@@ -105,7 +110,6 @@ angular.module('VirtoCommerce.SqlQueriesModule')
             $scope.setGridOptions = function (gridOptions) {
                 uiGridHelper.initialize($scope, gridOptions,
                     function (gridApi) {
-                        gridApi.draggableRows.on.rowFinishDrag($scope, blade.recalculatePriority);
                     });
             };
 

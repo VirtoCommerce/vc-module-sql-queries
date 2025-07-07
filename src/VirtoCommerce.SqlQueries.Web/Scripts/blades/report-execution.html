@@ -2,6 +2,18 @@
   <div class="blade-inner">
     <div class="inner-block">
       <form class="form" name="executeReportForm">
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.report-execution.labels.name' | translate }}</label>
+          <div class="form-input">
+            <p class="form-text">{{ blade.currentEntity.name }}</p>
+          </div>
+        </div>
+        <div class="form-group" ng-if="blade.currentEntity.description">
+          <label class="form-label">{{ 'sql-queries.blades.report-execution.labels.description' | translate }}</label>
+          <div class="form-input">
+            <textarea class="form-control" ng-model="blade.currentEntity.description" disabled></textarea>
+          </div>
+        </div>
         <va-metaform registered-inputs="blade.metaFields" blade="blade" ng-init="setForm(executeReportForm)"></va-metaform>
       </form>
     </div>

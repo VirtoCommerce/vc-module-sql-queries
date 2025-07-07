@@ -33,7 +33,7 @@ angular.module(moduleName, [])
             var menuItem = {
                 path: 'browse/sql-queries',
                 icon: 'fa fa-cube',
-                title: 'SqlQueries',
+                title: 'sql-queries.title',
                 priority: 100,
                 action: function () { $state.go('workspace.SqlQueriesState'); },
                 permission: 'sql-queries:access',

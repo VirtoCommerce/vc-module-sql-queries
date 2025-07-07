@@ -1,4 +1,4 @@
-<div class="blade-content blade-content __large-wide">
+<div class="blade-content blade-content __xxlarge-wide">
   <div class="blade-inner">
     <div class="inner-block">
       <form class="form" name="sqlQueryForm">
@@ -17,6 +17,18 @@
                 <span ng-bind-html="x | highlight: $select.search"></span>
               </ui-select-choices>
             </ui-select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.description' | translate }}</label>
+          <div class="form-input">
+            <textarea class="form-control" ng-model="blade.currentEntity.description" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.description' | translate }}"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.database-provider' | translate }}</label>
+          <div class="form-input">
+            <p class="form-text">{{ blade.databaseProvider }}</p>
           </div>
         </div>
         <div class="form-group">
