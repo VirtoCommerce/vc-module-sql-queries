@@ -63,7 +63,7 @@ public class XlsxSqlQueryReportGenerator() : ISqlQueryReportGenerator
         {
             cell.SetCellValue((string)dataValue);
         }
-        else if (dataValue is double || dataValue is float || dataValue is decimal || dataValue is int)
+        else if (IsNumber(dataValue))
         {
             cell.SetCellValue(Convert.ToDouble(dataValue));
         }
@@ -93,5 +93,16 @@ public class XlsxSqlQueryReportGenerator() : ISqlQueryReportGenerator
         var dateFormat = cell.Sheet.Workbook.CreateDataFormat();
         dateStyle.DataFormat = dateFormat.GetFormat(format);
         cell.CellStyle = dateStyle;
+    }
+
+    protected bool IsNumber(object value)
+    {
+        return value is double
+            || value is decimal
+            || value is int
+            || value is short
+            || value is long
+            || value is float
+            || value is byte;
     }
 }
