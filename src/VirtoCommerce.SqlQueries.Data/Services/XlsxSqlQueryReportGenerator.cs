@@ -21,7 +21,7 @@ public class XlsxSqlQueryReportGenerator() : ISqlQueryReportGenerator
     {
         var workbook = new XSSFWorkbook();
 
-        var sheet = workbook.CreateSheet("Sheet1");
+        var sheet = workbook.CreateSheet();
 
         var headerRow = sheet.CreateRow(0);
         for (int colIndex = 0; colIndex < table.Columns.Count; colIndex++)
