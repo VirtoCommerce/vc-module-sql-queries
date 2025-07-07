@@ -12,7 +12,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                         update: { url: 'api/sql-queries/', method: 'PUT' },
                         delete: { url: 'api/sql-queries/', method: 'DELETE' },
                         getFormats: { url: 'api/sql-queries/formats', method: 'GET', isArray: true },
-                        getConnectionStringNames: { url: 'api/sql-queries/connection-string-names', method: 'GET', isArray: true },
+                        getDatabaseInformation: { url: 'api/sql-queries/database-information', method: 'GET' },
                         executeReport: {
                             url: 'api/sql-queries/execute/:id/:format',
                             method: 'POST',

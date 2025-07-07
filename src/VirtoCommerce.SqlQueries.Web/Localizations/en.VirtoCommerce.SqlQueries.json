@@ -1,22 +1,33 @@
 {
   "sql-queries": {
+    "title": "SQL Queries",
     "blades": {
       "sql-query-list": {
-        "title": "Sql queries",
+        "title": "SQL queries",
         "labels": {
           "name": "Name"
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} query",
+        "title": "Query details",
         "title-add": "New query",
         "labels": {
           "name": "Name",
           "connection-string-name": "Connection string name",
+          "database-provider": "Database provider",
+          "description": "Description",
           "parameters": "Parameters",
           "parameter-name": "Name",
           "parameter-type": "Type",
           "query": "Query text"
+        },
+        "placeholders": {
+          "name": "Enter query name",
+          "connection-string-name": "Select connection string name",
+          "description": "Enter query description",
+          "parameter-name": "Enter parameter name",
+          "parameter-type": "Select parameter type",
+          "query": "Enter query text"
         },
         "messages": {
           "saveSuccess": "Sql query saved successfully.",
@@ -24,9 +35,11 @@
         }
       },
       "report-execution": {
-        "title": "{{ name }} report",
+        "title": "Report execution",
         "labels": {
-          "format": "Format"
+          "format": "Format",
+          "name": "Name",
+          "description": "Description"
         },
         "placeholders": {
           "format": "Select format"

@@ -10,5 +10,5 @@ public interface ISqlQueryService : ICrudService<SqlQuery>
 
     IList<string> GetFormats();
 
-    IList<string> GetAvailableConnectionStrings();
+    DatabaseInformation GetDatabaseInformation();
 }

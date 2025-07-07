@@ -30,6 +30,7 @@ public class SqlQueryEntity : AuditableEntity, IDataEntity<SqlQueryEntity, SqlQu
         model.ModifiedDate = ModifiedDate;
 
         model.Name = Name;
+        model.Description = Description;
         model.Query = Query;
         model.ConnectionStringName = ConnectionStringName;
 
@@ -49,6 +50,7 @@ public class SqlQueryEntity : AuditableEntity, IDataEntity<SqlQueryEntity, SqlQu
         ModifiedDate = model.ModifiedDate;
 
         Name = model.Name;
+        Description = model.Description;
         Query = model.Query;
         ConnectionStringName = model.ConnectionStringName;
 
@@ -63,6 +65,7 @@ public class SqlQueryEntity : AuditableEntity, IDataEntity<SqlQueryEntity, SqlQu
     public void Patch(SqlQueryEntity target)
     {
         target.Name = Name;
+        target.Description = Description;
         target.Query = Query;
         target.ConnectionStringName = ConnectionStringName;
 

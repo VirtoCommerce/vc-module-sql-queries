@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -46,10 +47,7 @@ public class SqlQueryService(
         {
             foreach (var parameter in query.Parameters)
             {
-                var dbParameter = command.CreateParameter();
-                dbParameter.ParameterName = parameter.Name;
-                dbParameter.Value = parameter.Value ?? DBNull.Value;
-                command.Parameters.Add(dbParameter);
+                AddDatabaseParameter(parameter, command);
             }
         }
 
@@ -70,14 +68,19 @@ public class SqlQueryService(
         return generators.Select(x => x.Format).ToList();
     }
 
-    public virtual IList<string> GetAvailableConnectionStrings()
+    public virtual DatabaseInformation GetDatabaseInformation()
     {
+        var result = AbstractTypeFactory<DatabaseInformation>.TryCreateInstance();
+
+        result.DatabaseProvider = configuration.GetValue("DatabaseProvider", "SqlServer");
         var connectionStrings = configuration.GetSection("ConnectionStrings").Get<Dictionary<string, string>>();
 
-        return connectionStrings
+        result.ConnectionStringNames = connectionStrings
             .Where(x => x.Key.StartsWith(SqlQueryConnectionStringPrefix, StringComparison.OrdinalIgnoreCase))
             .Select(x => x.Key)
             .ToList();
+
+        return result;
     }
 
     protected virtual DbContext GetDbContext(string connectionStringName)
@@ -101,5 +104,37 @@ public class SqlQueryService(
         }
 
         return new DbContext(optionsBuilder.Options);
+    }
+
+    protected virtual void AddDatabaseParameter(SqlQueryParameter parameter, DbCommand dbCommand)
+    {
+        var dbParameter = dbCommand.CreateParameter();
+        dbParameter.ParameterName = parameter.Name;
+        dbParameter.Value = GetParameterValue(parameter) ?? DBNull.Value;
+        dbCommand.Parameters.Add(dbParameter);
+    }
+
+    protected virtual object GetParameterValue(SqlQueryParameter parameter)
+    {
+        object result = parameter.Value;
+
+        if (parameter.Type == "Integer")
+        {
+            result = Convert.ToInt32(parameter.Value);
+        }
+        else if (parameter.Type == "Decimal")
+        {
+            result = Convert.ToDecimal(parameter.Value);
+        }
+        else if (parameter.Type == "DateTime")
+        {
+            result = Convert.ToDateTime(parameter.Value);
+        }
+        else if (parameter.Type == "Boolean")
+        {
+            result = Convert.ToBoolean(parameter.Value);
+        }
+
+        return result;
     }
 }

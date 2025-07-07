@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -102,7 +103,7 @@ public class SqlQueriesController : Controller
     public async Task<ActionResult<SqlQuerySearchResult>> ExecuteReport([FromRoute] string format, [FromRoute] string id, [FromBody] IList<SqlQueryParameter> sqlQueryParameters)
     {
         var query = await _sqlQueryService.GetByIdAsync(id);
-        query.Parameters = sqlQueryParameters;
+        FillParameters(query, sqlQueryParameters);
         var report = await _sqlQueryService.GenerateReport(query, format);
         var fileName = $"{query.Name}.{format}";
         return File(report.Content, report.ContentType, fileName);
@@ -117,11 +118,32 @@ public class SqlQueriesController : Controller
     }
 
     [HttpGet]
-    [Route("connection-string-names")]
+    [Route("database-information")]
     [Authorize(Permissions.Read)]
-    public ActionResult<IList<string>> GetConnectionStrings()
+    public ActionResult<DatabaseInformation> GetDatabaseInformation()
     {
-        var formats = _sqlQueryService.GetAvailableConnectionStrings();
+        var formats = _sqlQueryService.GetDatabaseInformation();
         return Ok(formats);
+    }
+
+    private static void FillParameters(SqlQuery query, IList<SqlQueryParameter> parameters)
+    {
+        if (query == null)
+        {
+            throw new ArgumentNullException(nameof(query));
+        }
+        if (parameters == null)
+        {
+            throw new ArgumentNullException(nameof(parameters));
+        }
+
+        foreach (var parameter in parameters)
+        {
+            var existingParameter = query.Parameters.FirstOrDefault(p => p.Name.Equals(parameter.Name, StringComparison.OrdinalIgnoreCase));
+            if (existingParameter != null)
+            {
+                existingParameter.Value = parameter.Value;
+            }
+        }
     }
 }
