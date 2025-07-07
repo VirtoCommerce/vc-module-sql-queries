@@ -57,6 +57,7 @@ public class Module : IModule, IHasConfiguration
         serviceCollection.AddTransient<ISqlQueryReportGenerator, CsvSqlQueryReportGenerator>();
         serviceCollection.AddTransient<IHtmlSqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
         serviceCollection.AddTransient<ISqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
+        serviceCollection.AddTransient<ISqlQueryReportGenerator, XlsxSqlQueryReportGenerator>();
 
         serviceCollection.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
     }
