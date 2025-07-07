@@ -7,9 +7,7 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
-    <PackageReference Include="itext7" Version="9.2.0" />
-    <PackageReference Include="itext7.bouncy-castle-adapter" Version="9.2.0" />
+    <PackageReference Include="DinkToPdfCopy" Version="1.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.876.0" />
     <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.876.0" />

@@ -1,4 +1,6 @@
 using System;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -53,7 +55,10 @@ public class Module : IModule, IHasConfiguration
 
         serviceCollection.AddTransient<ISqlQueryReportGenerator, PdfSqlQueryReportGenerator>();
         serviceCollection.AddTransient<ISqlQueryReportGenerator, CsvSqlQueryReportGenerator>();
+        serviceCollection.AddTransient<IHtmlSqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
         serviceCollection.AddTransient<ISqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
+
+        serviceCollection.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
     }
 
     public void PostInitialize(IApplicationBuilder appBuilder)
