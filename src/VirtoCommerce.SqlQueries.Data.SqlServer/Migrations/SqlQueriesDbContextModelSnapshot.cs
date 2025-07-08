@@ -30,7 +30,9 @@ namespace VirtoCommerce.SqlQueries.Data.SqlServer.Migrations
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ConnectionStringName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("CreatedBy")
                         .HasMaxLength(64)
@@ -70,14 +72,19 @@ namespace VirtoCommerce.SqlQueries.Data.SqlServer.Migrations
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("SqlQueryId")
                         .IsRequired()
+                        .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.HasKey("Id");
 

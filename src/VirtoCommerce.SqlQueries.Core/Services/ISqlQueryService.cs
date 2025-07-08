@@ -4,9 +4,10 @@ using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.SqlQueries.Core.Models;
 
 namespace VirtoCommerce.SqlQueries.Core.Services;
+
 public interface ISqlQueryService : ICrudService<SqlQuery>
 {
-    Task<SqlQueryReport> GenerateReport(SqlQuery query, string format);
+    Task<SqlQueryReport> GenerateReport(string format, SqlQuery query, IList<SqlQueryParameter> parameters);
 
     IList<string> GetFormats();
 

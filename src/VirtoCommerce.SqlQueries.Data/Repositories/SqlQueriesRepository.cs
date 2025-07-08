@@ -7,6 +7,7 @@ using VirtoCommerce.Platform.Data.Infrastructure;
 using VirtoCommerce.SqlQueries.Data.Models;
 
 namespace VirtoCommerce.SqlQueries.Data.Repositories;
+
 public class SqlQueriesRepository : DbContextRepositoryBase<SqlQueriesDbContext>, ISqlQueriesRepository
 {
     public SqlQueriesRepository(SqlQueriesDbContext dbContext)
@@ -27,7 +28,6 @@ public class SqlQueriesRepository : DbContextRepositoryBase<SqlQueriesDbContext>
         if (sqlQueries.Count != 0)
         {
             var sqlQueryIds = sqlQueries.Select(x => x.Id).ToList();
-            // Ensure that the parameters are loaded for each query
             await SqlQueryParameters.Where(x => ids.Contains(x.SqlQueryId)).LoadAsync();
         }
 

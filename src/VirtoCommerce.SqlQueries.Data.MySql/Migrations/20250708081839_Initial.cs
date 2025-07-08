@@ -26,7 +26,7 @@ namespace VirtoCommerce.SqlQueries.Data.MySql.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Query = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    ConnectionStringName = table.Column<string>(type: "longtext", nullable: true)
+                    ConnectionStringName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
@@ -47,11 +47,11 @@ namespace VirtoCommerce.SqlQueries.Data.MySql.Migrations
                 {
                     Id = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
+                    Name = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Type = table.Column<string>(type: "longtext", nullable: true)
+                    Type = table.Column<string>(type: "varchar(64)", maxLength: 64, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    SqlQueryId = table.Column<string>(type: "varchar(128)", nullable: false)
+                    SqlQueryId = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>

@@ -4,6 +4,7 @@ using System.Linq;
 using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.SqlQueries.Core.Models;
+
 public class SqlQuery : AuditableEntity, ICloneable
 {
     public string Name { get; set; }

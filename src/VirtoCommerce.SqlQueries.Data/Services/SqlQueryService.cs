@@ -17,12 +17,14 @@ using VirtoCommerce.SqlQueries.Data.Models;
 using VirtoCommerce.SqlQueries.Data.Repositories;
 
 namespace VirtoCommerce.SqlQueries.Data.Services;
+
 public class SqlQueryService(
     Func<ISqlQueriesRepository> repositoryFactory,
     IPlatformMemoryCache platformMemoryCache,
     IEventPublisher eventPublisher,
     IEnumerable<ISqlQueryReportGenerator> generators,
-    IConfiguration configuration) : CrudService<SqlQuery, SqlQueryEntity, SqlQueryChangingEvent, SqlQueryChangedEvent>(repositoryFactory, platformMemoryCache, eventPublisher), ISqlQueryService
+    IConfiguration configuration)
+    : CrudService<SqlQuery, SqlQueryEntity, SqlQueryChangingEvent, SqlQueryChangedEvent>(repositoryFactory, platformMemoryCache, eventPublisher), ISqlQueryService
 {
     private const string SqlQueryConnectionStringPrefix = "SqlQueries.";
 
@@ -31,8 +33,15 @@ public class SqlQueryService(
         return ((ISqlQueriesRepository)repository).GetSqlQueriesByIdsAsync(ids);
     }
 
-    public virtual async Task<SqlQueryReport> GenerateReport(SqlQuery query, string format)
+    public virtual async Task<SqlQueryReport> GenerateReport(string format, SqlQuery query, IList<SqlQueryParameter> parameters)
     {
+        ArgumentNullException.ThrowIfNull(query);
+
+        if (!query.Parameters.IsNullOrEmpty())
+        {
+            FillParameters(query, parameters);
+        }
+
         var dataTable = new DataTable();
 
         using var dbContext = GetDbContext(query.ConnectionStringName);
@@ -43,7 +52,7 @@ public class SqlQueryService(
         using var command = connection.CreateCommand();
         command.CommandText = query.Query;
 
-        if (query.Parameters != null && query.Parameters.Any())
+        if (!query.Parameters.IsNullOrEmpty())
         {
             foreach (var parameter in query.Parameters)
             {
@@ -55,12 +64,10 @@ public class SqlQueryService(
         dataTable.Load(reader);
 
         var generator = generators.FirstOrDefault(x => x.Format.Equals(format, StringComparison.OrdinalIgnoreCase));
-        if (generator == null)
-        {
-            throw new NotSupportedException($"Report format '{format}' is not supported.");
-        }
 
-        return generator.GenerateReport(dataTable);
+        return generator == null
+            ? throw new NotSupportedException($"Report format '{format}' is not supported.")
+            : generator.GenerateReport(dataTable);
     }
 
     public virtual IList<string> GetFormats()
@@ -72,7 +79,7 @@ public class SqlQueryService(
     {
         var result = AbstractTypeFactory<DatabaseInformation>.TryCreateInstance();
 
-        result.DatabaseProvider = configuration.GetValue("DatabaseProvider", "SqlServer");
+        result.DatabaseProvider = GetDatabaseProvider();
         var connectionStrings = configuration.GetSection("ConnectionStrings").Get<Dictionary<string, string>>();
 
         result.ConnectionStringNames = connectionStrings
@@ -87,7 +94,7 @@ public class SqlQueryService(
     {
         var optionsBuilder = new DbContextOptionsBuilder<DbContext>();
 
-        var databaseProvider = configuration.GetValue("DatabaseProvider", "SqlServer");
+        var databaseProvider = GetDatabaseProvider();
         var connectionString = configuration.GetConnectionString(connectionStringName);
 
         switch (databaseProvider)
@@ -116,7 +123,7 @@ public class SqlQueryService(
 
     protected virtual object GetParameterValue(SqlQueryParameter parameter)
     {
-        object result = parameter.Value;
+        var result = parameter.Value;
 
         if (parameter.Type == "Integer")
         {
@@ -136,5 +143,22 @@ public class SqlQueryService(
         }
 
         return result;
+    }
+
+    private static void FillParameters(SqlQuery query, IList<SqlQueryParameter> parameters)
+    {
+        foreach (var parameter in parameters)
+        {
+            var existingParameter = query.Parameters.FirstOrDefault(p => p.Name.Equals(parameter.Name, StringComparison.OrdinalIgnoreCase));
+            if (existingParameter != null)
+            {
+                existingParameter.Value = parameter.Value;
+            }
+        }
+    }
+
+    private string GetDatabaseProvider()
+    {
+        return configuration.GetValue("DatabaseProvider", "SqlServer");
     }
 }

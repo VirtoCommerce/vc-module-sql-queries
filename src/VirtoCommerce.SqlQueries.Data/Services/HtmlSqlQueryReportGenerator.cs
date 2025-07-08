@@ -6,6 +6,7 @@ using VirtoCommerce.SqlQueries.Core.Models;
 using VirtoCommerce.SqlQueries.Core.Services;
 
 namespace VirtoCommerce.SqlQueries.Data.Services;
+
 public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
 {
     public string Format => "html";

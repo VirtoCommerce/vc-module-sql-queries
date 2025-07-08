@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace VirtoCommerce.SqlQueries.Data.SqlServer.Migrations
+namespace VirtoCommerce.SqlQueries.Data.PostgreSql.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -15,15 +15,15 @@ namespace VirtoCommerce.SqlQueries.Data.SqlServer.Migrations
                 name: "SqlQuery",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Query = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ConnectionStringName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: true)
+                    Id = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Query = table.Column<string>(type: "text", nullable: false),
+                    ConnectionStringName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedBy = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: true),
+                    ModifiedBy = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,10 +34,10 @@ namespace VirtoCommerce.SqlQueries.Data.SqlServer.Migrations
                 name: "SqlQueryParameter",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SqlQueryId = table.Column<string>(type: "nvarchar(128)", nullable: false)
+                    Id = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    Type = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    SqlQueryId = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false)
                 },
                 constraints: table =>
                 {

@@ -4,21 +4,18 @@ angular.module('VirtoCommerce.SqlQueriesModule')
         function ($scope, metaFormsService, sqlQueriesApi) {
             const blade = $scope.blade;
 
-            blade.formats = sqlQueriesApi.getFormats();
-
             //blade properties
+            blade.formats = sqlQueriesApi.getFormats();
             blade.title = 'sql-queries.blades.report-execution.title';
             blade.titleValues = { name: blade.currentEntity.name };
             blade.metaFields = metaFormsService.getMetaFields('reportExecution');
             blade.parameters = angular.copy(blade.currentEntity.parameters || []);
-
             blade.datepickers = {};
 
             //blade functions
             blade.refresh = function () {
                 blade.isLoading = false;
             };
-
 
             blade.open = function ($event, which) {
                 $event.preventDefault();
@@ -70,6 +67,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                 });
             };
 
+            //local functions
             function initializeToolbar() {
                 blade.toolbarCommands = [
                     {
@@ -80,8 +78,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                         },
                         canExecuteMethod: function () {
                             return formScope && formScope.$valid;
-                        },
-                        //permission: getSavePermission()
+                        }
                     }
                 ];
             }

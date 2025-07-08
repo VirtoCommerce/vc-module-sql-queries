@@ -12,6 +12,7 @@ using VirtoCommerce.SqlQueries.Data.Models;
 using VirtoCommerce.SqlQueries.Data.Repositories;
 
 namespace VirtoCommerce.SqlQueries.Data.Services;
+
 public class SqlQuerySearchService : SearchService<SqlQuerySearchCriteria, SqlQuerySearchResult, SqlQuery, SqlQueryEntity>, ISqlQuerySearchService
 {
     public SqlQuerySearchService(
@@ -36,13 +37,13 @@ public class SqlQuerySearchService : SearchService<SqlQuerySearchCriteria, SqlQu
 
         if (sortInfos.IsNullOrEmpty())
         {
-            sortInfos = new[]
-            {
-                    new SortInfo
-                    {
-                        SortColumn = nameof(SqlQuery.Name)
-                    }
-                };
+            sortInfos =
+            [
+                new SortInfo
+                {
+                    SortColumn = nameof(SqlQuery.Name)
+                }
+            ];
         }
 
         return sortInfos;

@@ -1,13 +1,22 @@
+using System.ComponentModel.DataAnnotations;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Domain;
 using VirtoCommerce.SqlQueries.Core.Models;
 
 namespace VirtoCommerce.SqlQueries.Data.Models;
+
 public class SqlQueryParameterEntity : Entity, IDataEntity<SqlQueryParameterEntity, SqlQueryParameter>
 {
+    [Required]
+    [StringLength(128)]
     public string Name { get; set; }
+
+    [Required]
+    [StringLength(64)]
     public string Type { get; set; }
 
+    [Required]
+    [StringLength(128)]
     public string SqlQueryId { get; set; }
     public virtual SqlQueryEntity SqlQuery { get; set; }
 

@@ -30,7 +30,9 @@ namespace VirtoCommerce.SqlQueries.Data.PostgreSql.Migrations
                         .HasColumnType("character varying(128)");
 
                     b.Property<string>("ConnectionStringName")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<string>("CreatedBy")
                         .HasMaxLength(64)
@@ -70,14 +72,19 @@ namespace VirtoCommerce.SqlQueries.Data.PostgreSql.Migrations
                         .HasColumnType("character varying(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
 
                     b.Property<string>("SqlQueryId")
                         .IsRequired()
+                        .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
                     b.Property<string>("Type")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
 
                     b.HasKey("Id");
 

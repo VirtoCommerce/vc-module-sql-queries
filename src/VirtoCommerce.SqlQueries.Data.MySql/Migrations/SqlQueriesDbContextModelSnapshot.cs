@@ -30,7 +30,9 @@ namespace VirtoCommerce.SqlQueries.Data.MySql.Migrations
                         .HasColumnType("varchar(128)");
 
                     b.Property<string>("ConnectionStringName")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("CreatedBy")
                         .HasMaxLength(64)
@@ -70,14 +72,19 @@ namespace VirtoCommerce.SqlQueries.Data.MySql.Migrations
                         .HasColumnType("varchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
 
                     b.Property<string>("SqlQueryId")
                         .IsRequired()
+                        .HasMaxLength(128)
                         .HasColumnType("varchar(128)");
 
                     b.Property<string>("Type")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.HasKey("Id");
 

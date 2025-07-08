@@ -6,6 +6,7 @@ using VirtoCommerce.Platform.Core.Domain;
 using VirtoCommerce.SqlQueries.Core.Models;
 
 namespace VirtoCommerce.SqlQueries.Data.Models;
+
 public class SqlQueryEntity : AuditableEntity, IDataEntity<SqlQueryEntity, SqlQuery>
 {
     [Required]
@@ -16,10 +17,11 @@ public class SqlQueryEntity : AuditableEntity, IDataEntity<SqlQueryEntity, SqlQu
     [Required]
     public string Query { get; set; }
 
+    [Required]
+    [StringLength(256)]
     public string ConnectionStringName { get; set; }
 
-    public ObservableCollection<SqlQueryParameterEntity> Parameters { get; set; } =
-            new NullCollection<SqlQueryParameterEntity>();
+    public ObservableCollection<SqlQueryParameterEntity> Parameters { get; set; } = new NullCollection<SqlQueryParameterEntity>();
 
     public SqlQuery ToModel(SqlQuery model)
     {

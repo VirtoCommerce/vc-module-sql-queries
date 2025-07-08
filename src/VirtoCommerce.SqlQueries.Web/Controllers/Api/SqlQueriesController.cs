@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,23 +12,14 @@ namespace VirtoCommerce.SqlQueries.Web.Controllers.Api;
 
 [Authorize]
 [Route("api/sql-queries")]
-public class SqlQueriesController : Controller
+public class SqlQueriesController(ISqlQueryService sqlQueryService, ISqlQuerySearchService sqlQuerySearchService) : Controller
 {
-    private readonly ISqlQueryService _sqlQueryService;
-    private readonly ISqlQuerySearchService _sqlQuerySearchService;
-
-    public SqlQueriesController(ISqlQueryService sqlQueryService, ISqlQuerySearchService sqlQuerySearchService)
-    {
-        _sqlQueryService = sqlQueryService;
-        _sqlQuerySearchService = sqlQuerySearchService;
-    }
-
     [HttpGet]
     [Route("{id}")]
     [Authorize(Permissions.Read)]
     public async Task<ActionResult<SqlQuery>> GetById([FromRoute] string id)
     {
-        var result = await _sqlQueryService.GetByIdAsync(id);
+        var result = await sqlQueryService.GetByIdAsync(id);
         return Ok(result);
     }
 
@@ -38,7 +28,7 @@ public class SqlQueriesController : Controller
     [Authorize(Permissions.Read)]
     public async Task<ActionResult<SqlQuerySearchResult>> Search([FromBody] SqlQuerySearchCriteria criteria)
     {
-        var result = await _sqlQuerySearchService.SearchAsync(criteria);
+        var result = await sqlQuerySearchService.SearchAsync(criteria);
         return Ok(result);
     }
 
@@ -47,12 +37,9 @@ public class SqlQueriesController : Controller
     [Authorize(Permissions.Create)]
     public async Task<ActionResult> Create([FromBody] SqlQuery query)
     {
-        if (query == null)
-        {
-            throw new ArgumentNullException(nameof(query));
-        }
+        ArgumentNullException.ThrowIfNull(query);
 
-        await _sqlQueryService.SaveChangesAsync([query]);
+        await sqlQueryService.SaveChangesAsync([query]);
         return NoContent();
     }
 
@@ -61,12 +48,9 @@ public class SqlQueriesController : Controller
     [Authorize(Permissions.Update)]
     public async Task<ActionResult<SqlQuery>> Update([FromBody] SqlQuery query)
     {
-        if (query == null)
-        {
-            throw new ArgumentNullException(nameof(query));
-        }
+        ArgumentNullException.ThrowIfNull(query);
 
-        await _sqlQueryService.SaveChangesAsync([query]);
+        await sqlQueryService.SaveChangesAsync([query]);
         return Ok(query);
     }
 
@@ -75,12 +59,9 @@ public class SqlQueriesController : Controller
     [Authorize(Permissions.Update)]
     public async Task<ActionResult> Delete([FromQuery] string[] queryIds)
     {
-        if (queryIds == null)
-        {
-            throw new ArgumentNullException(nameof(queryIds));
-        }
+        ArgumentNullException.ThrowIfNull(queryIds);
 
-        await _sqlQueryService.DeleteAsync(queryIds);
+        await sqlQueryService.DeleteAsync(queryIds);
         return NoContent();
     }
 
@@ -89,11 +70,15 @@ public class SqlQueriesController : Controller
     [Authorize(Permissions.Reports)]
     public async Task<ActionResult<SqlQuerySearchResult>> OnlyReports([FromBody] SqlQuerySearchCriteria criteria)
     {
-        var result = await _sqlQuerySearchService.SearchAsync(criteria);
+        ArgumentNullException.ThrowIfNull(criteria);
+
+        var result = await sqlQuerySearchService.SearchAsync(criteria);
+
         foreach (var item in result.Results)
         {
             item.Query = null;
         }
+
         return Ok(result);
     }
 
@@ -102,9 +87,8 @@ public class SqlQueriesController : Controller
     [Authorize(Permissions.Reports)]
     public async Task<ActionResult<SqlQuerySearchResult>> ExecuteReport([FromRoute] string format, [FromRoute] string id, [FromBody] IList<SqlQueryParameter> sqlQueryParameters)
     {
-        var query = await _sqlQueryService.GetByIdAsync(id);
-        FillParameters(query, sqlQueryParameters);
-        var report = await _sqlQueryService.GenerateReport(query, format);
+        var query = await sqlQueryService.GetByIdAsync(id);
+        var report = await sqlQueryService.GenerateReport(format, query, sqlQueryParameters);
         var fileName = $"{query.Name}.{format}";
         return File(report.Content, report.ContentType, fileName);
     }
@@ -113,7 +97,7 @@ public class SqlQueriesController : Controller
     [Route("formats")]
     public ActionResult<IList<string>> GetReportFormats()
     {
-        var formats = _sqlQueryService.GetFormats();
+        var formats = sqlQueryService.GetFormats();
         return Ok(formats);
     }
 
@@ -122,28 +106,7 @@ public class SqlQueriesController : Controller
     [Authorize(Permissions.Read)]
     public ActionResult<DatabaseInformation> GetDatabaseInformation()
     {
-        var formats = _sqlQueryService.GetDatabaseInformation();
+        var formats = sqlQueryService.GetDatabaseInformation();
         return Ok(formats);
-    }
-
-    private static void FillParameters(SqlQuery query, IList<SqlQueryParameter> parameters)
-    {
-        if (query == null)
-        {
-            throw new ArgumentNullException(nameof(query));
-        }
-        if (parameters == null)
-        {
-            throw new ArgumentNullException(nameof(parameters));
-        }
-
-        foreach (var parameter in parameters)
-        {
-            var existingParameter = query.Parameters.FirstOrDefault(p => p.Name.Equals(parameter.Name, StringComparison.OrdinalIgnoreCase));
-            if (existingParameter != null)
-            {
-                existingParameter.Value = parameter.Value;
-            }
-        }
     }
 }
