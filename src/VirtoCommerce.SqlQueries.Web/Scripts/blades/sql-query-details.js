@@ -17,7 +17,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                 blade.types = ['ShortText', 'DateTime', 'Boolean', 'Integer', 'Decimal'];
                 blade.title = blade.isNew ? 'sql-queries.blades.sql-query-details.title-add' : 'sql-queries.blades.sql-query-details.title';
                 blade.titleValues = { name: blade.currentEntity.name ?? "" };
-            
+
                 //blade functions
                 blade.refresh = function () {
                     if (!blade.isNew) {

@@ -28,7 +28,7 @@ public class SqlQueriesRepository : DbContextRepositoryBase<SqlQueriesDbContext>
         if (sqlQueries.Count != 0)
         {
             var sqlQueryIds = sqlQueries.Select(x => x.Id).ToList();
-            await SqlQueryParameters.Where(x => ids.Contains(x.SqlQueryId)).LoadAsync();
+            await SqlQueryParameters.Where(x => sqlQueryIds.Contains(x.SqlQueryId)).LoadAsync();
         }
 
         return sqlQueries;
