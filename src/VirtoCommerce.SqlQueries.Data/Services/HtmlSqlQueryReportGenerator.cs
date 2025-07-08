@@ -12,7 +12,7 @@ public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
     public string Format => "html";
     public string ContentType => "text/html";
 
-    public SqlQueryReport GenerateReport(DataTable table)
+    public virtual SqlQueryReport GenerateReport(DataTable table)
     {
         var stringBuilder = new StringBuilder();
         stringBuilder.AppendLine("<html><body>");

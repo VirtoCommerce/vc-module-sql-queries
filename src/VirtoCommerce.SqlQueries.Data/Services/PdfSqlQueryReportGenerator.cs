@@ -13,7 +13,7 @@ public class PdfSqlQueryReportGenerator(IHtmlSqlQueryReportGenerator htmlGenerat
     public string Format => "pdf";
     public string ContentType => "application/pdf";
 
-    public SqlQueryReport GenerateReport(DataTable table)
+    public virtual SqlQueryReport GenerateReport(DataTable table)
     {
         var htmlEncoding = Encoding.UTF8;
 
