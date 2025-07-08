@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -64,8 +63,6 @@ public class SqlQueriesController(ISqlQueryService sqlQueryService, ISqlQuerySea
     [Authorize(Permissions.Reports)]
     public async Task<ActionResult<SqlQuerySearchResult>> OnlyReports([FromBody] SqlQuerySearchCriteria criteria)
     {
-        ArgumentNullException.ThrowIfNull(criteria);
-
         var result = await sqlQuerySearchService.SearchAsync(criteria);
 
         foreach (var item in result.Results)
