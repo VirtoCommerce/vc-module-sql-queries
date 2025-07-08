@@ -7,7 +7,7 @@ namespace VirtoCommerce.SqlQueries.Core.Services;
 
 public interface ISqlQueryService : ICrudService<SqlQuery>
 {
-    Task<SqlQueryReport> GenerateReport(string format, SqlQuery query, IList<SqlQueryParameter> parameters);
+    Task<SqlQueryReport> GenerateReport(SqlQuery query, IList<SqlQueryParameter> parameters, string format);
 
     IList<string> GetFormats();
 

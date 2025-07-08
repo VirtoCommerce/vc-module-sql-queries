@@ -33,7 +33,7 @@ public class SqlQueryService(
         return ((ISqlQueriesRepository)repository).GetSqlQueriesByIdsAsync(ids);
     }
 
-    public virtual async Task<SqlQueryReport> GenerateReport(string format, SqlQuery query, IList<SqlQueryParameter> parameters)
+    public virtual async Task<SqlQueryReport> GenerateReport(SqlQuery query, IList<SqlQueryParameter> parameters, string format)
     {
         ArgumentNullException.ThrowIfNull(query);
 

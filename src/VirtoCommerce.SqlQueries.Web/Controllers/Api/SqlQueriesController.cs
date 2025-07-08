@@ -37,8 +37,6 @@ public class SqlQueriesController(ISqlQueryService sqlQueryService, ISqlQuerySea
     [Authorize(Permissions.Create)]
     public async Task<ActionResult> Create([FromBody] SqlQuery query)
     {
-        ArgumentNullException.ThrowIfNull(query);
-
         await sqlQueryService.SaveChangesAsync([query]);
         return NoContent();
     }
@@ -48,8 +46,6 @@ public class SqlQueriesController(ISqlQueryService sqlQueryService, ISqlQuerySea
     [Authorize(Permissions.Update)]
     public async Task<ActionResult<SqlQuery>> Update([FromBody] SqlQuery query)
     {
-        ArgumentNullException.ThrowIfNull(query);
-
         await sqlQueryService.SaveChangesAsync([query]);
         return Ok(query);
     }
@@ -59,8 +55,6 @@ public class SqlQueriesController(ISqlQueryService sqlQueryService, ISqlQuerySea
     [Authorize(Permissions.Update)]
     public async Task<ActionResult> Delete([FromQuery] string[] queryIds)
     {
-        ArgumentNullException.ThrowIfNull(queryIds);
-
         await sqlQueryService.DeleteAsync(queryIds);
         return NoContent();
     }
@@ -85,10 +79,10 @@ public class SqlQueriesController(ISqlQueryService sqlQueryService, ISqlQuerySea
     [HttpPost]
     [Route("execute/{id}/{format}")]
     [Authorize(Permissions.Reports)]
-    public async Task<ActionResult<SqlQuerySearchResult>> ExecuteReport([FromRoute] string format, [FromRoute] string id, [FromBody] IList<SqlQueryParameter> sqlQueryParameters)
+    public async Task<ActionResult<SqlQuerySearchResult>> ExecuteReport([FromRoute] string id, [FromRoute] string format, [FromBody] IList<SqlQueryParameter> sqlQueryParameters)
     {
         var query = await sqlQueryService.GetByIdAsync(id);
-        var report = await sqlQueryService.GenerateReport(format, query, sqlQueryParameters);
+        var report = await sqlQueryService.GenerateReport(query, sqlQueryParameters, format);
         var fileName = $"{query.Name}.{format}";
         return File(report.Content, report.ContentType, fileName);
     }

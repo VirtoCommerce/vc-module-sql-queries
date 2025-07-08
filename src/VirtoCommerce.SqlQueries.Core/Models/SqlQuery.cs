@@ -12,7 +12,7 @@ public class SqlQuery : AuditableEntity, ICloneable
     public string Query { get; set; }
     public string ConnectionStringName { get; set; }
 
-    public ICollection<SqlQueryParameter> Parameters { get; set; } = new List<SqlQueryParameter>();
+    public ICollection<SqlQueryParameter> Parameters { get; set; } = [];
 
     public object Clone()
     {
