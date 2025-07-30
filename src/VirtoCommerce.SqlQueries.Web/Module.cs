@@ -1,3 +1,6 @@
+using System;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,9 +12,11 @@ using VirtoCommerce.Platform.Data.MySql.Extensions;
 using VirtoCommerce.Platform.Data.PostgreSql.Extensions;
 using VirtoCommerce.Platform.Data.SqlServer.Extensions;
 using VirtoCommerce.SqlQueries.Core;
+using VirtoCommerce.SqlQueries.Core.Services;
 using VirtoCommerce.SqlQueries.Data.MySql;
 using VirtoCommerce.SqlQueries.Data.PostgreSql;
 using VirtoCommerce.SqlQueries.Data.Repositories;
+using VirtoCommerce.SqlQueries.Data.Services;
 using VirtoCommerce.SqlQueries.Data.SqlServer;
 
 namespace VirtoCommerce.SqlQueries.Web;
@@ -41,6 +46,20 @@ public class Module : IModule, IHasConfiguration
                     break;
             }
         });
+
+        serviceCollection.AddTransient<ISqlQueriesRepository, SqlQueriesRepository>();
+        serviceCollection.AddTransient<Func<ISqlQueriesRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<ISqlQueriesRepository>());
+
+        serviceCollection.AddTransient<ISqlQueryService, SqlQueryService>();
+        serviceCollection.AddTransient<ISqlQuerySearchService, SqlQuerySearchService>();
+
+        serviceCollection.AddTransient<ISqlQueryReportGenerator, PdfSqlQueryReportGenerator>();
+        serviceCollection.AddTransient<ISqlQueryReportGenerator, CsvSqlQueryReportGenerator>();
+        serviceCollection.AddTransient<IHtmlSqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
+        serviceCollection.AddTransient<ISqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
+        serviceCollection.AddTransient<ISqlQueryReportGenerator, XlsxSqlQueryReportGenerator>();
+
+        serviceCollection.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
     }
 
     public void PostInitialize(IApplicationBuilder appBuilder)

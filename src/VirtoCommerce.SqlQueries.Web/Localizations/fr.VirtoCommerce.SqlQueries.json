@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "Requêtes SQL",
+        "labels": {
+          "name": "Nom"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} requête",
+        "title-add": "Nouvelle requête",
+        "labels": {
+          "name": "Nom",
+          "connection-string-name": "Nom de la chaîne de connexion",
+          "parameters": "Paramètres",
+          "parameter-name": "Nom",
+          "parameter-type": "Type",
+          "query": "Texte de la requête"
+        },
+        "messages": {
+          "saveSuccess": "Requête SQL enregistrée avec succès.",
+          "deleteSuccess": "Requête SQL supprimée avec succès."
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} rapport",
+        "labels": {
+          "format": "Format"
+        },
+        "placeholders": {
+          "format": "Sélectionner le format"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Ajouter un paramètre",
+      "try-query": "Essayer la requête"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Ouvrir le menu des requêtes SQL",
+    "sql-queries:create": "Créer des données liées aux requêtes SQL",
+    "sql-queries:read": "Voir les données liées aux requêtes SQL",
+    "sql-queries:update": "Mettre à jour les données liées aux requêtes SQL",
+    "sql-queries:delete": "Supprimer les données liées aux requêtes SQL",
+    "sql-queries:reports": "Exécuter et accéder aux rapports"
+  }
+}

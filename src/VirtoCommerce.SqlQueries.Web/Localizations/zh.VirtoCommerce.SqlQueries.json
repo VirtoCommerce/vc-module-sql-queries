@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "SQL 查询",
+        "labels": {
+          "name": "名称"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} 查询",
+        "title-add": "新建查询",
+        "labels": {
+          "name": "名称",
+          "connection-string-name": "连接字符串名称",
+          "parameters": "参数",
+          "parameter-name": "名称",
+          "parameter-type": "类型",
+          "query": "查询文本"
+        },
+        "messages": {
+          "saveSuccess": "SQL 查询保存成功。",
+          "deleteSuccess": "SQL 查询删除成功。"
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} 报告",
+        "labels": {
+          "format": "格式"
+        },
+        "placeholders": {
+          "format": "选择格式"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "添加参数",
+      "try-query": "尝试查询"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "打开 SQL 查询菜单",
+    "sql-queries:create": "创建 SQL 查询相关数据",
+    "sql-queries:read": "查看 SQL 查询相关数据",
+    "sql-queries:update": "更新 SQL 查询相关数据",
+    "sql-queries:delete": "删除 SQL 查询相关数据",
+    "sql-queries:reports": "执行并访问报告"
+  }
+}

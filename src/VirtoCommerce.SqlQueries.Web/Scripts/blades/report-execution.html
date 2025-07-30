@@ -1,0 +1,56 @@
+<div class="blade-content blade-content __small-wide">
+  <div class="blade-inner">
+    <div class="inner-block">
+      <form class="form" name="executeReportForm">
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.report-execution.labels.name' | translate }}</label>
+          <div class="form-input">
+            <p class="form-text">{{ blade.currentEntity.name }}</p>
+          </div>
+        </div>
+        <div class="form-group" ng-if="blade.currentEntity.description">
+          <label class="form-label">{{ 'sql-queries.blades.report-execution.labels.description' | translate }}</label>
+          <div class="form-input">
+            <textarea class="form-control" ng-model="blade.currentEntity.description" disabled></textarea>
+          </div>
+        </div>
+        <va-metaform registered-inputs="blade.metaFields" blade="blade" ng-init="setForm(executeReportForm)"></va-metaform>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="formatSelector.html">
+  <div class="form-group">
+    <label class="form-label">{{ 'sql-queries.blades.report-execution.labels.format' | translate }}</label>
+    <div class="form-input">
+      <ui-select ng-model="blade.format" required>
+        <ui-select-match placeholder="{{ 'sql-queries.blades.report-execution.placeholders.format' | translate }}">{{$select.selected}}</ui-select-match>
+        <ui-select-choices repeat="x in blade.formats | filter: $select.search">
+          <span ng-bind-html="x | highlight: $select.search"></span>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="queryParameters.html">
+  <div class="form-group" ng-repeat="parameter in blade.parameters">
+    <label class="form-label">{{ parameter.name }}</label>
+    <div class="form-input" ng-class="{ '__number' : parameter.type === 'Integer' || parameter.type === 'Decimal', '__calendar' : parameter.type === 'DateTime' }">
+      <input class="form-control" ng-model="parameter.value" name="{{ parameter.name }}" required ng-if="parameter.type === 'ShortText'" />
+      <input smart-float num-type="integer" class="form-control" ng-model="parameter.value" name="{{ parameter.name }}" required ng-if="parameter.type === 'Integer'" />
+      <input smart-float fraction="4" num-type="float" class="form-control" ng-model="parameter.value" name="{{ parameter.name }}" required ng-if="parameter.type === 'Decimal'" />
+
+      <input datepicker-popup is-open="blade.datepickers[parameter.name]" class="form-control" ng-model="parameter.value" name="{{ parameter.name }}" required ng-if="parameter.type === 'DateTime'" />
+      <button ng-click="blade.open($event, parameter.name)" type="button" class="btn" ng-if="parameter.type === 'DateTime'">
+        <i class="btn-ico fa fa-calendar"></i>
+      </button>
+
+      <label class="form-label __switch" ng-if="parameter.type === 'Boolean'">
+        <input type="checkbox" ng-model="parameter.value" name="{{ parameter.name }}" required>
+        <span class="switch"></span>
+      </label>
+    </div>
+  </div>
+</script>
