@@ -6,11 +6,10 @@
 
   <platformVersion>3.887.0</platformVersion>
   <dependencies>
-    <!--<dependency id="VirtoCommerce.Core" version="3.800.0" />-->
   </dependencies>
 
-  <title>VirtoCommerce SqlQueries</title>
-  <description>VirtoCommerce SqlQueries</description>
+  <title>Sql Queries</title>
+  <description>Adds SQL query/report capabilities to the VirtoCommerce platform, enabling advanced data access directly through SQL.</description>
 
   <authors>
     <author>VirtoCommerce</author>
