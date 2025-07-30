@@ -1,0 +1,126 @@
+<div class="blade-content blade-content __xxlarge-wide">
+  <div class="blade-inner">
+    <div class="inner-block">
+      <form class="form" name="sqlQueryForm">
+        <div class="form-group" ng-init="setForm(sqlQueryForm)">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.name' | translate }}</label>
+          <div class="form-input">
+            <input class="form-control" ng-model="blade.currentEntity.name" name="name" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.name' | translate }}" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.connection-string-name' | translate }}</label>
+          <div class="form-input">
+            <ui-select ng-model="blade.currentEntity.connectionStringName" required>
+              <ui-select-match placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.connection-string-name' | translate }}">{{ $select.selected }}</ui-select-match>
+              <ui-select-choices repeat="x in blade.connectionStringNames | filter: $select.search">
+                <span ng-bind-html="x | highlight: $select.search"></span>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.description' | translate }}</label>
+          <div class="form-input">
+            <textarea class="form-control" ng-model="blade.currentEntity.description" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.description' | translate }}"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.database-provider' | translate }}</label>
+          <div class="form-input">
+            <p class="form-text">{{ blade.databaseProvider }}</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.query' | translate }}</label>
+          <div class="form-input">
+            <textarea class="form-control" ng-model="blade.currentEntity.query" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.query' | translate }}" required></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" ng-if="blade.currentEntity.parameters.length">{{ 'sql-queries.blades.sql-query-details.labels.parameters' | translate }}</label>
+
+          <div class="table-wrapper" ng-if="blade.currentEntity.parameters.length" ng-init="setGridOptions({
+            data: 'blade.currentEntity.parameters',
+            rowTemplate: 'list.row.html',
+            rowHeight: 55,
+            enableSorting: false,
+            virtualizationThreshold: 1000,
+            columnDefs: [
+                { name: 'actions', displayName: '', enableColumnResizing: false, enableSorting: false, width: 30, cellTemplate: 'parameter-list-actions.html', pinnedLeft:true },
+                { name: 'name', displayName: 'sql-queries.blades.sql-query-details.labels.parameter-name', cellTemplate: 'parameter-name.html' },
+                { name: 'type', displayName: 'sql-queries.blades.sql-query-details.labels.parameter-type', cellTemplate: 'parameter-type.html' }
+            ]})">
+            <div ui-grid="gridOptions" ui-grid-auto-resize ui-grid-save-state ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning ui-grid-height></div>
+            <ul class="menu __context" role="menu" id="mll_menu">
+              <li class="menu-item" ng-click='deleteRows([contextMenuEntity])'>
+                <i class="menu-ico fa fa-trash-o"></i> {{'platform.commands.delete' | translate}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="list.row.html">
+  <div grid="grid" draggable="false">
+    <div ng-click='grid.appScope.selectedNode = row.entity' ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'" class="ui-grid-cell" ng-class="{'ui-grid-row-header-cell': col.isRowHeader, '__hovered': grid.appScope.contextMenuEntity === row.entity, '__selected': row.entity===grid.appScope.selectedNode}" role="{{col.isRowHeader ? 'rowheader' : 'gridcell' }}" ui-grid-cell style="{{'cursor: ' + (col.name==='actions' ? 'pointer' : 'move')}}" context-menu="grid.appScope.contextMenuEntity = row.entity" data-target="mll_menu"></div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="parameter-list-actions.html">
+  <div class="ui-grid-actions" left-click-menu="grid.appScope.contextMenuEntity = row.entity" data-target="mll_menu">
+    <i class="fa fa-ellipsis-v"></i>
+  </div>
+</script>
+
+<script type="text/ng-template" id="parameter-name.html">
+  <div class="ui-grid-editable">
+    <div class="ui-grid-cell-contents">
+      <div class="form-input">
+        <input ng-model="row.entity.name" required>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="parameter-type.html">
+  <div class="ui-grid-editable">
+    <div class="ui-grid-cell-contents">
+      <div class="form-input">
+        <ui-select ng-model="row.entity.type" required style="width:122px">
+          <ui-select-match placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.parameter-type' | translate }}">{{ $select.selected }}</ui-select-match>
+          <ui-select-choices repeat="x in grid.appScope.blade.types | filter: $select.search">
+            <span ng-bind-html="x | highlight: $select.search"></span>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+    </div>
+  </div>
+</script>
+
+<style>
+  .ui-grid-editable .ui-grid-cell-contents {
+    overflow: visible;
+    padding: 10px 0 0 10px;
+  }
+
+  .ui-grid-cell .ui-grid-editable input {
+    padding: 6px 10px;
+    box-sizing: border-box;
+  }
+
+  .ui-grid-cell .ui-grid-editable .btn {
+    width: 80px;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .ui-grid-cell .ui-grid-editable input.ng-valid {
+    border: 1px solid #dee9f0;
+  }
+</style>

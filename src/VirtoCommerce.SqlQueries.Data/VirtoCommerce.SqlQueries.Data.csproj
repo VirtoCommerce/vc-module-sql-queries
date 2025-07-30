@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
@@ -7,8 +7,13 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="DinkToPdfCopy" Version="1.0.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.876.0" />
+    <PackageReference Include="NPOI" Version="2.7.4" />
+    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.890.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.890.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.890.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.890.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.SqlQueries.Core\VirtoCommerce.SqlQueries.Core.csproj" />

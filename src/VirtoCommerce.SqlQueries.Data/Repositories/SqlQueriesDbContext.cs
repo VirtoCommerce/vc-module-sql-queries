@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using VirtoCommerce.Platform.Data.Infrastructure;
+using VirtoCommerce.SqlQueries.Data.Models;
 
 namespace VirtoCommerce.SqlQueries.Data.Repositories;
 
@@ -20,8 +21,13 @@ public class SqlQueriesDbContext : DbContextBase
     {
         base.OnModelCreating(modelBuilder);
 
-        //modelBuilder.Entity<SqlQueriesEntity>().ToTable("SqlQueries").HasKey(x => x.Id);
-        //modelBuilder.Entity<SqlQueriesEntity>().Property(x => x.Id).HasMaxLength(IdLength).ValueGeneratedOnAdd();
+        modelBuilder.Entity<SqlQueryEntity>().ToTable("SqlQuery").HasKey(x => x.Id);
+        modelBuilder.Entity<SqlQueryEntity>().Property(x => x.Id).HasMaxLength(IdLength).ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<SqlQueryParameterEntity>().ToTable("SqlQueryParameter").HasKey(x => x.Id);
+        modelBuilder.Entity<SqlQueryParameterEntity>().Property(x => x.Id).HasMaxLength(IdLength).ValueGeneratedOnAdd();
+        modelBuilder.Entity<SqlQueryParameterEntity>().HasOne(x => x.SqlQuery).WithMany(x => x.Parameters)
+                    .HasForeignKey(x => x.SqlQueryId).IsRequired().OnDelete(DeleteBehavior.Cascade);
 
         switch (Database.ProviderName)
         {

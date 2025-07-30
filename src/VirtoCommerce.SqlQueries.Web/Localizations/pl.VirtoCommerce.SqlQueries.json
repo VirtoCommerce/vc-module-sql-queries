@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "Zapytania SQL",
+        "labels": {
+          "name": "Nazwa"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} zapytanie",
+        "title-add": "Nowe zapytanie",
+        "labels": {
+          "name": "Nazwa",
+          "connection-string-name": "Nazwa łańcucha połączenia",
+          "parameters": "Parametry",
+          "parameter-name": "Nazwa",
+          "parameter-type": "Typ",
+          "query": "Tekst zapytania"
+        },
+        "messages": {
+          "saveSuccess": "Zapytanie SQL zostało pomyślnie zapisane.",
+          "deleteSuccess": "Zapytanie SQL zostało pomyślnie usunięte."
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} raport",
+        "labels": {
+          "format": "Format"
+        },
+        "placeholders": {
+          "format": "Wybierz format"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Dodaj parametr",
+      "try-query": "Wypróbuj zapytanie"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Otwórz menu zapytań SQL",
+    "sql-queries:create": "Utwórz dane związane z zapytaniami SQL",
+    "sql-queries:read": "Wyświetl dane związane z zapytaniami SQL",
+    "sql-queries:update": "Aktualizuj dane związane z zapytaniami SQL",
+    "sql-queries:delete": "Usuń dane związane z zapytaniami SQL",
+    "sql-queries:reports": "Wykonuj i uzyskuj dostęp do raportów"
+  }
+}

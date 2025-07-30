@@ -1,0 +1,49 @@
+{
+  "sql-queries": {
+    "blades": {
+      "sql-query-list": {
+        "title": "Consultas SQL",
+        "labels": {
+          "name": "Nombre"
+        }
+      },
+      "sql-query-details": {
+        "title": "{{ name }} consulta",
+        "title-add": "Nueva consulta",
+        "labels": {
+          "name": "Nombre",
+          "connection-string-name": "Nombre de la cadena de conexión",
+          "parameters": "Parámetros",
+          "parameter-name": "Nombre",
+          "parameter-type": "Tipo",
+          "query": "Texto de la consulta"
+        },
+        "messages": {
+          "saveSuccess": "Consulta SQL guardada exitosamente.",
+          "deleteSuccess": "Consulta SQL eliminada exitosamente."
+        }
+      },
+      "report-execution": {
+        "title": "{{ name }} informe",
+        "labels": {
+          "format": "Formato"
+        },
+        "placeholders": {
+          "format": "Seleccionar formato"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Agregar parámetro",
+      "try-query": "Probar consulta"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Abrir menú de consultas SQL",
+    "sql-queries:create": "Crear datos relacionados con consultas SQL",
+    "sql-queries:read": "Ver datos relacionados con consultas SQL",
+    "sql-queries:update": "Actualizar datos relacionados con consultas SQL",
+    "sql-queries:delete": "Eliminar datos relacionados con consultas SQL",
+    "sql-queries:reports": "Ejecutar y acceder a informes"
+  }
+}
