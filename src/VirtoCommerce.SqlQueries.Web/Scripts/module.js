@@ -32,7 +32,7 @@ angular.module(moduleName, [])
             //Register module in main menu
             var menuItem = {
                 path: 'browse/sql-queries',
-                icon: 'fa fa-cube',
+                icon: 'fa fa-list',
                 title: 'sql-queries.title',
                 priority: 100,
                 action: function () { $state.go('workspace.SqlQueriesState'); },
