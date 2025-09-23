@@ -55,6 +55,24 @@ ORDER BY
 
 ```
 
+### To get summary per coupon (who used what, how many times)
+```sql
+SELECT 
+    od.CouponCode,
+    co.CustomerId,
+    co.CustomerName,
+    u.UserName AS CustomerUserName,
+    COUNT(DISTINCT co.Id) AS OrdersWithCoupon,
+    SUM(od.DiscountAmount) AS TotalDiscountAmount
+FROM CustomerOrder co
+INNER JOIN OrderDiscount od ON co.Id = od.CustomerOrderId
+LEFT JOIN AspNetUsers u ON co.CustomerId = u.Id
+WHERE od.CouponCode IS NOT NULL
+GROUP BY od.CouponCode, co.CustomerId, co.CustomerName, u.UserName
+ORDER BY od.CouponCode;
+
+```
+
 ### Admin Report: Return Tables (Record Count + Size in MB)
 
 Varables:
@@ -78,7 +96,6 @@ WHERE
 
 ORDER BY 
     SizeMB DESC;
-
 ```
 
 ## Permissions
