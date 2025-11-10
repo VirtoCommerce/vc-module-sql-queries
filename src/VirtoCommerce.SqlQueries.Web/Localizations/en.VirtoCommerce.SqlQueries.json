@@ -30,8 +30,8 @@
           "query": "Enter query text"
         },
         "messages": {
-          "saveSuccess": "Sql query saved successfully.",
-          "deleteSuccess": "Sql query deleted successfully."
+          "saveSuccess": "SQL query saved successfully",
+          "deleteSuccess": "SQL query deleted successfully"
         }
       },
       "report-execution": {
@@ -52,11 +52,11 @@
     }
   },
   "permissions": {
-    "sql-queries:access": "Open SqlQueries menu",
-    "sql-queries:create": "Create SqlQueries related data",
-    "sql-queries:read": "View SqlQueries related data",
-    "sql-queries:update": "Update SqlQueries related data",
-    "sql-queries:delete": "Delete SqlQueries related data",
+    "sql-queries:access": "Open SQL Queries menu",
+    "sql-queries:create": "Create SQL Queries related data",
+    "sql-queries:read": "View SQL Queries related data",
+    "sql-queries:update": "Update SQL Queries related data",
+    "sql-queries:delete": "Delete SQL Queries related data",
     "sql-queries:reports": "Execute and access reports"
   }
 }
