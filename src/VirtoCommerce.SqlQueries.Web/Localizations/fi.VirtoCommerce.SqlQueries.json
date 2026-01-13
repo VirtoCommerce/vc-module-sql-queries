@@ -1,0 +1,62 @@
+{
+  "sql-queries": {
+    "title": "SQL-kyselyt",
+    "blades": {
+      "sql-query-list": {
+        "title": "SQL-kyselyt",
+        "labels": {
+          "name": "Nimi"
+        }
+      },
+      "sql-query-details": {
+        "title": "Kyselyn tiedot",
+        "title-add": "Uusi kysely",
+        "labels": {
+          "name": "Nimi",
+          "connection-string-name": "Yhteysmerkkijonon nimi",
+          "database-provider": "Tietokantapalvelin",
+          "description": "Kuvaus",
+          "parameters": "Parametrit",
+          "parameter-name": "Nimi",
+          "parameter-type": "Tyyppi",
+          "query": "Kyselyteksti"
+        },
+        "placeholders": {
+          "name": "Anna kyselyn nimi",
+          "connection-string-name": "Valitse yhteysmerkkijonon nimi",
+          "description": "Anna kyselyn kuvaus",
+          "parameter-name": "Anna parametrin nimi",
+          "parameter-type": "Valitse parametrin tyyppi",
+          "query": "Anna kyselyteksti"
+        },
+        "messages": {
+          "saveSuccess": "SQL-kysely tallennettu onnistuneesti",
+          "deleteSuccess": "SQL-kysely poistettu onnistuneesti"
+        }
+      },
+      "report-execution": {
+        "title": "Raportin suoritus",
+        "labels": {
+          "format": "Muoto",
+          "name": "Nimi",
+          "description": "Kuvaus"
+        },
+        "placeholders": {
+          "format": "Valitse muoto"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Lisää parametri",
+      "try-query": "Kokeile kyselyä"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Avaa SQL-kyselyt-valikko",
+    "sql-queries:create": "Luo SQL-kyselyihin liittyviä tietoja",
+    "sql-queries:read": "Näytä SQL-kyselyihin liittyviä tietoja",
+    "sql-queries:update": "Päivitä SQL-kyselyihin liittyviä tietoja",
+    "sql-queries:delete": "Poista SQL-kyselyihin liittyviä tietoja",
+    "sql-queries:reports": "Suorita ja käytä raportteja"
+  }
+}

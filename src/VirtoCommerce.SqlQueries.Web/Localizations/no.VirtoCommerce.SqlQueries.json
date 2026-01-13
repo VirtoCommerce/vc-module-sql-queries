@@ -1,0 +1,62 @@
+{
+  "sql-queries": {
+    "title": "SQL-spørringer",
+    "blades": {
+      "sql-query-list": {
+        "title": "SQL-spørringer",
+        "labels": {
+          "name": "Navn"
+        }
+      },
+      "sql-query-details": {
+        "title": "Spørringsdetaljer",
+        "title-add": "Ny spørring",
+        "labels": {
+          "name": "Navn",
+          "connection-string-name": "Tilkoblingsstrengnavn",
+          "database-provider": "Databaseleverandør",
+          "description": "Beskrivelse",
+          "parameters": "Parametere",
+          "parameter-name": "Navn",
+          "parameter-type": "Type",
+          "query": "Spørringstekst"
+        },
+        "placeholders": {
+          "name": "Skriv inn spørringsnavn",
+          "connection-string-name": "Velg tilkoblingsstrengnavn",
+          "description": "Skriv inn spørringsbeskrivelse",
+          "parameter-name": "Skriv inn parameternavn",
+          "parameter-type": "Velg parametertype",
+          "query": "Skriv inn spørringstekst"
+        },
+        "messages": {
+          "saveSuccess": "SQL-spørring lagret",
+          "deleteSuccess": "SQL-spørring slettet"
+        }
+      },
+      "report-execution": {
+        "title": "Rapportkjøring",
+        "labels": {
+          "format": "Format",
+          "name": "Navn",
+          "description": "Beskrivelse"
+        },
+        "placeholders": {
+          "format": "Velg format"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Legg til parameter",
+      "try-query": "Prøv spørring"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Åpne SQL-spørringer-menyen",
+    "sql-queries:create": "Opprette SQL-spørringer-relaterte data",
+    "sql-queries:read": "Vise SQL-spørringer-relaterte data",
+    "sql-queries:update": "Oppdatere SQL-spørringer-relaterte data",
+    "sql-queries:delete": "Slette SQL-spørringer-relaterte data",
+    "sql-queries:reports": "Kjøre og få tilgang til rapporter"
+  }
+}
