@@ -1,0 +1,62 @@
+{
+  "sql-queries": {
+    "title": "SQL-frågor",
+    "blades": {
+      "sql-query-list": {
+        "title": "SQL-frågor",
+        "labels": {
+          "name": "Namn"
+        }
+      },
+      "sql-query-details": {
+        "title": "Frågedetaljer",
+        "title-add": "Ny fråga",
+        "labels": {
+          "name": "Namn",
+          "connection-string-name": "Anslutningssträngsnamn",
+          "database-provider": "Databasleverantör",
+          "description": "Beskrivning",
+          "parameters": "Parametrar",
+          "parameter-name": "Namn",
+          "parameter-type": "Typ",
+          "query": "Frågetext"
+        },
+        "placeholders": {
+          "name": "Ange frågenamn",
+          "connection-string-name": "Välj anslutningssträngsnamn",
+          "description": "Ange frågebeskrivning",
+          "parameter-name": "Ange parameternamn",
+          "parameter-type": "Välj parametertyp",
+          "query": "Ange frågetext"
+        },
+        "messages": {
+          "saveSuccess": "SQL-fråga sparad",
+          "deleteSuccess": "SQL-fråga borttagen"
+        }
+      },
+      "report-execution": {
+        "title": "Rapportkörning",
+        "labels": {
+          "format": "Format",
+          "name": "Namn",
+          "description": "Beskrivning"
+        },
+        "placeholders": {
+          "format": "Välj format"
+        }
+      }
+    },
+    "commands": {
+      "add-parameter": "Lägg till parameter",
+      "try-query": "Prova fråga"
+    }
+  },
+  "permissions": {
+    "sql-queries:access": "Öppna SQL-frågor-menyn",
+    "sql-queries:create": "Skapa SQL-frågerelaterad data",
+    "sql-queries:read": "Visa SQL-frågerelaterad data",
+    "sql-queries:update": "Uppdatera SQL-frågerelaterad data",
+    "sql-queries:delete": "Ta bort SQL-frågerelaterad data",
+    "sql-queries:reports": "Kör och få tillgång till rapporter"
+  }
+}
