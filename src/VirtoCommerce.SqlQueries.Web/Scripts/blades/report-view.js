@@ -140,7 +140,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                             canExecuteMethod: function () {
                                 return !blade.isLoading;
                             },
-                            permission: 'sql-queries:reports'
+                            permission: 'sql-queries:read'
                         }
                     ];
                 }

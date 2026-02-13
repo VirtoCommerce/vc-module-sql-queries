@@ -79,7 +79,7 @@ public class SqlQueriesController(
 
     [HttpPost]
     [Route("reports")]
-    [Authorize(Permissions.Reports)]
+    [Authorize(Permissions.Read)]
     public async Task<ActionResult<SqlQuerySearchResult>> OnlyReports([FromBody] SqlQuerySearchCriteria criteria)
     {
         var result = await sqlQuerySearchService.SearchAsync(criteria);
@@ -94,7 +94,7 @@ public class SqlQueriesController(
 
     [HttpPost]
     [Route("execute/{id}/{format}")]
-    [Authorize(Permissions.Reports)]
+    [Authorize(Permissions.Read)]
     public async Task<ActionResult<SqlQuerySearchResult>> ExecuteReport([FromRoute] string id, [FromRoute] string format, [FromBody] IList<SqlQueryParameter> sqlQueryParameters)
     {
         var query = await sqlQueryService.GetByIdAsync(id);
@@ -111,7 +111,8 @@ public class SqlQueriesController(
 
     [HttpPost]
     [Route("execute-preview")]
-    [Authorize]
+    [Authorize(Permissions.Create)]
+    [Authorize(Permissions.Update)]
     public async Task<ActionResult<SqlQueryExecuteResult>> ExecuteQuery([FromBody] SqlQueryExecuteRequest request)
     {
         if (!await HasEditPermission())
@@ -125,7 +126,7 @@ public class SqlQueriesController(
 
     [HttpPost]
     [Route("execute-query/{id}")]
-    [Authorize(Permissions.Reports)]
+    [Authorize(Permissions.Read)]
     public async Task<ActionResult<SqlQueryExecuteResult>> ExecuteQueryById([FromRoute] string id, [FromBody] SqlQueryExecuteByIdRequest request)
     {
         var query = await sqlQueryService.GetByIdAsync(id);
