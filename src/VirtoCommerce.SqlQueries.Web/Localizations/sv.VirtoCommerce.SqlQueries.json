@@ -85,6 +85,12 @@
       "export-report": "Exportera rapport",
       "view-report": "Visa rapport",
       "edit-report": "Redigera rapport"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Bekräfta borttagning",
+        "message": "Är du säker på att du vill ta bort de valda frågorna?"
+      }
     }
   },
   "permissions": {

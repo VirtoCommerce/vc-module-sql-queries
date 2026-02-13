@@ -72,6 +72,12 @@
       "export-report": "Bericht exportieren",
       "view-report": "Bericht anzeigen",
       "edit-report": "Bericht bearbeiten"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Löschbestätigung",
+        "message": "Sind Sie sicher, dass Sie die ausgewählten Abfragen löschen möchten?"
+      }
     }
   },
   "permissions": {

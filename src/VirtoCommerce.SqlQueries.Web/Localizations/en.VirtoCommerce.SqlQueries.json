@@ -85,6 +85,12 @@
       "export-report": "Export report",
       "view-report": "View report",
       "edit-report": "Edit report"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Delete confirmation",
+        "message": "Are you sure you want to delete the selected queries?"
+      }
     }
   },
   "permissions": {

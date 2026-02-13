@@ -72,6 +72,12 @@
       "export-report": "导出报告",
       "view-report": "查看报告",
       "edit-report": "编辑报告"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "确认删除",
+        "message": "您确定要删除所选查询吗？"
+      }
     }
   },
   "permissions": {

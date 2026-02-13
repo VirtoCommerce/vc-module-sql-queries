@@ -71,9 +71,9 @@ public class SqlQueriesController(
     [HttpDelete]
     [Route("")]
     [Authorize(Permissions.Update)]
-    public async Task<ActionResult> Delete([FromQuery] string[] queryIds)
+    public async Task<ActionResult> Delete([FromQuery] string[] ids)
     {
-        await sqlQueryService.DeleteAsync(queryIds);
+        await sqlQueryService.DeleteAsync(ids);
         return NoContent();
     }
 

@@ -72,6 +72,12 @@
       "export-report": "Exportar informe",
       "view-report": "Ver informe",
       "edit-report": "Editar informe"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Confirmar eliminación",
+        "message": "¿Está seguro de que desea eliminar las consultas seleccionadas?"
+      }
     }
   },
   "permissions": {

@@ -72,6 +72,12 @@
       "export-report": "レポートをエクスポート",
       "view-report": "レポートを表示",
       "edit-report": "レポートを編集"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "削除の確認",
+        "message": "選択したクエリを削除してもよろしいですか？"
+      }
     }
   },
   "permissions": {

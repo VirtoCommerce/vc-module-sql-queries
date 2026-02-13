@@ -85,6 +85,12 @@
       "export-report": "Vie raportti",
       "view-report": "Näytä raportti",
       "edit-report": "Muokkaa raporttia"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Vahvista poistaminen",
+        "message": "Haluatko varmasti poistaa valitut kyselyt?"
+      }
     }
   },
   "permissions": {

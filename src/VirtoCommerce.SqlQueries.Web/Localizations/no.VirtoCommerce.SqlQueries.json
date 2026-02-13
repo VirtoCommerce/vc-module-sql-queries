@@ -85,6 +85,12 @@
       "export-report": "Eksporter rapport",
       "view-report": "Vis rapport",
       "edit-report": "Rediger rapport"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Bekreft sletting",
+        "message": "Er du sikker på at du vil slette de valgte spørringene?"
+      }
     }
   },
   "permissions": {
