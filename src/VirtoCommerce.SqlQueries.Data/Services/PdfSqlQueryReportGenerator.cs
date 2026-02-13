@@ -13,22 +13,31 @@ public class PdfSqlQueryReportGenerator(IHtmlSqlQueryReportGenerator htmlGenerat
     public string Format => "pdf";
     public string ContentType => "application/pdf";
 
-    public virtual SqlQueryReport GenerateReport(DataTable table)
+    public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {
         var htmlEncoding = Encoding.UTF8;
 
-        var htmlGenerationResult = htmlGenerator.GenerateReport(table);
+        var htmlGenerationResult = htmlGenerator.GenerateReport(table, context);
         var html = htmlEncoding.GetString(htmlGenerationResult.Content);
 
         var doc = new HtmlToPdfDocument();
         doc.GlobalSettings.PaperSize = PaperKind.A4;
-        doc.Objects.Add(new ObjectSettings()
+        doc.GlobalSettings.Orientation = Orientation.Landscape;
+        doc.GlobalSettings.Margins = new MarginSettings
+        {
+            Top = 10,
+            Bottom = 10,
+            Left = 10,
+            Right = 10,
+        };
+
+        doc.Objects.Add(new ObjectSettings
         {
             HtmlContent = html,
             WebSettings =
             {
-                DefaultEncoding = htmlEncoding.WebName
-            }
+                DefaultEncoding = htmlEncoding.WebName,
+            },
         });
 
         var pdfBytes = converter.Convert(doc);

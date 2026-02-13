@@ -12,7 +12,7 @@ public class CsvSqlQueryReportGenerator : ISqlQueryReportGenerator
     public string Format => "csv";
     public string ContentType => "text/csv";
 
-    public virtual SqlQueryReport GenerateReport(DataTable table)
+    public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {
         var stringBuilder = new StringBuilder();
 

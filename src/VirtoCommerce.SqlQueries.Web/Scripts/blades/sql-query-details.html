@@ -2,12 +2,6 @@
   <div class="blade-inner">
     <div class="inner-block">
       <form class="form" name="sqlQueryForm">
-        <div class="form-group" ng-init="setForm(sqlQueryForm)">
-          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.name' | translate }}</label>
-          <div class="form-input">
-            <input class="form-control" ng-model="blade.currentEntity.name" name="name" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.name' | translate }}" required />
-          </div>
-        </div>
         <div class="form-group">
           <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.connection-string-name' | translate }}</label>
           <div class="form-input">
@@ -19,6 +13,14 @@
             </ui-select>
           </div>
         </div>
+
+        <div class="form-group" ng-init="setForm(sqlQueryForm)">
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.name' | translate }}</label>
+          <div class="form-input">
+            <input class="form-control" ng-model="blade.currentEntity.name" name="name" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.name' | translate }}" required />
+          </div>
+        </div>
+
         <div class="form-group">
           <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.description' | translate }}</label>
           <div class="form-input">
@@ -26,101 +28,113 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.database-provider' | translate }}</label>
-          <div class="form-input">
-            <p class="form-text">{{ blade.databaseProvider }}</p>
+          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.query' | translate }} (<i>{{ blade.databaseProvider }}</i>)</label>
+          <div class="form-input sql-editor-wrapper">
+            <ui-codemirror ng-model="blade.currentEntity.query" ui-codemirror-opts="blade.editorOptions"></ui-codemirror>
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.query' | translate }}</label>
-          <div class="form-input">
-            <textarea class="form-control" ng-model="blade.currentEntity.query" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.query' | translate }}" required></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" ng-if="blade.currentEntity.parameters.length">{{ 'sql-queries.blades.sql-query-details.labels.parameters' | translate }}</label>
-
-          <div class="table-wrapper" ng-if="blade.currentEntity.parameters.length" ng-init="setGridOptions({
-            data: 'blade.currentEntity.parameters',
-            rowTemplate: 'list.row.html',
-            rowHeight: 55,
-            enableSorting: false,
-            virtualizationThreshold: 1000,
-            columnDefs: [
-                { name: 'actions', displayName: '', enableColumnResizing: false, enableSorting: false, width: 30, cellTemplate: 'parameter-list-actions.html', pinnedLeft:true },
-                { name: 'name', displayName: 'sql-queries.blades.sql-query-details.labels.parameter-name', cellTemplate: 'parameter-name.html' },
-                { name: 'type', displayName: 'sql-queries.blades.sql-query-details.labels.parameter-type', cellTemplate: 'parameter-type.html' }
-            ]})">
-            <div ui-grid="gridOptions" ui-grid-auto-resize ui-grid-save-state ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning ui-grid-height></div>
-            <ul class="menu __context" role="menu" id="mll_menu">
-              <li class="menu-item" ng-click='deleteRows([contextMenuEntity])'>
-                <i class="menu-ico fa fa-trash-o"></i> {{'platform.commands.delete' | translate}}
-              </li>
-            </ul>
+          <div class="test-parameters">
+            <div class="test-parameters-header" ng-click="blade.paramsCollapsed = !blade.paramsCollapsed">
+              <i class="fa" ng-class="blade.paramsCollapsed ? 'fa-chevron-right' : 'fa-chevron-down'"></i>
+              <span>{{ 'sql-queries.blades.sql-query-details.labels.parameters' | translate }} ({{ blade.currentEntity.parameters.length }})</span>
+              <button class="btn btn-link param-header-add" type="button" ng-click="addParameter(); blade.paramsCollapsed = false; $event.stopPropagation();">
+                <i class="fa fa-plus" style="color: white"></i>
+              </button>
+            </div>
+            <div class="test-parameters-grid" ng-show="!blade.paramsCollapsed && blade.currentEntity.parameters.length">
+              <div class="test-param-item" ng-repeat="param in blade.currentEntity.parameters track by $index">
+                <!-- Header -->
+                <div class="param-card-header">
+                  <label class="test-param-label">{{ param.name }} <span class="test-param-type">{{ param.type }}</span></label>
+                  <span class="param-card-actions">
+                    <i class="fa fa-pencil param-action-icon" ng-click="startEditParam($index)"></i>
+                    <i class="fa fa-trash-o param-action-icon param-action-delete" ng-click="removeParameter($index)"></i>
+                  </span>
+                </div>
+                <!-- Edit popup -->
+                <div class="param-edit-popup" ng-if="blade.editingParams[$index]">
+                  <button class="param-edit-close" type="button" ng-click="closeEditParam()">
+                    <i class="fa fa-times"></i>
+                  </button>
+                  <div class="param-edit-field">
+                    <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.parameter-name' | translate }}</label>
+                    <div class="form-input">
+                      <input class="form-control" ng-model="param.name" placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.parameter-name' | translate }}" />
+                    </div>
+                  </div>
+                  <div class="param-edit-field">
+                    <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.parameter-type' | translate }}</label>
+                    <ui-select ng-model="param.type">
+                      <ui-select-match>{{ $select.selected }}</ui-select-match>
+                      <ui-select-choices repeat="x in blade.types | filter: $select.search">
+                        <span ng-bind-html="x | highlight: $select.search"></span>
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
+                  <div class="param-edit-actions">
+                    <button class="btn btn-primary btn-sm" type="button" ng-click="finishEditParam($index)">OK</button>
+                  </div>
+                </div>
+                <!-- Value input -->
+                <div class="form-input" ng-class="{ '__number': param.type === 'Integer' || param.type === 'Decimal', '__calendar': param.type === 'DateTime' }">
+                  <input class="form-control" ng-model="blade.testParamValues[param.name]" ng-if="param.type === 'ShortText'" placeholder="{{ param.name }}" />
+                  <input smart-float num-type="integer" class="form-control" ng-model="blade.testParamValues[param.name]" ng-if="param.type === 'Integer'" placeholder="0" />
+                  <input smart-float fraction="4" num-type="float" class="form-control" ng-model="blade.testParamValues[param.name]" ng-if="param.type === 'Decimal'" placeholder="0.0" />
+                  <input datepicker-popup is-open="blade.testDatepickers[param.name]" class="form-control" ng-model="blade.testParamValues[param.name]" ng-if="param.type === 'DateTime'" />
+                  <button ng-click="blade.openTestDatepicker($event, param.name)" type="button" class="btn" ng-if="param.type === 'DateTime'">
+                    <i class="btn-ico fa fa-calendar"></i>
+                  </button>
+                  <label class="form-label __switch" ng-if="param.type === 'Boolean'">
+                    <input type="checkbox" ng-model="blade.testParamValues[param.name]">
+                    <span class="switch"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </form>
+
+      <!-- Test Results Panel -->
+      <div class="test-results-panel">
+        <!-- Max Rows + Run Button + Metadata -->
+        <div class="test-controls">
+          <div class="form-group test-max-rows">
+            <label class="form-label">{{ 'sql-queries.blades.sql-query-details.labels.max-rows' | translate }}</label>
+            <div class="form-input __number">
+              <input smart-float num-type="integer" class="form-control" ng-model="blade.testMaxRows" style="width: 80px;" />
+            </div>
+          </div>
+          <button class="btn btn-primary" ng-click="runTestQuery()" ng-disabled="blade.testLoading || !blade.currentEntity.query || !blade.currentEntity.connectionStringName">
+            <i class="fa" ng-class="blade.testLoading ? 'fa-spinner fa-spin' : 'fa-play'"></i>  &nbsp;
+            {{ (blade.testLoading ? 'sql-queries.blades.sql-query-details.labels.executing' : 'sql-queries.blades.sql-query-details.labels.run') | translate }}
+          </button>
+          <span class="test-metadata" ng-if="blade.testResults && !blade.testLoading">
+            {{ 'sql-queries.blades.sql-query-details.labels.rows-returned' | translate }}: {{ blade.testResults.rows.length }}
+            <span ng-if="blade.testResults.isTruncated"> ({{ 'sql-queries.blades.sql-query-details.labels.truncated' | translate }})</span>
+            <span class="test-metadata-separator">|</span>
+            {{ 'sql-queries.blades.sql-query-details.labels.execution-time' | translate }}: {{ blade.testResults.executionTimeMs }} ms
+          </span>
+        </div>
+
+        <!-- Error -->
+        <div class="test-error" ng-if="blade.testError">
+          <i class="fa fa-exclamation-triangle"></i>
+          <span>{{ blade.testError }}</span>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="test-results-grid" ng-if="blade.testResults && blade.testResults.rows.length && !blade.testLoading">
+          <div ui-grid="blade.testGridOptions" ui-grid-auto-resize ui-grid-resize-columns></div>
+        </div>
+
+        <!-- No Results -->
+        <div class="test-no-results" ng-if="blade.testResults && !blade.testResults.rows.length && !blade.testLoading && !blade.testError">
+          <p>{{ 'sql-queries.blades.sql-query-details.labels.no-results' | translate }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<script type="text/ng-template" id="list.row.html">
-  <div grid="grid" draggable="false">
-    <div ng-click='grid.appScope.selectedNode = row.entity' ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'" class="ui-grid-cell" ng-class="{'ui-grid-row-header-cell': col.isRowHeader, '__hovered': grid.appScope.contextMenuEntity === row.entity, '__selected': row.entity===grid.appScope.selectedNode}" role="{{col.isRowHeader ? 'rowheader' : 'gridcell' }}" ui-grid-cell style="{{'cursor: ' + (col.name==='actions' ? 'pointer' : 'move')}}" context-menu="grid.appScope.contextMenuEntity = row.entity" data-target="mll_menu"></div>
-  </div>
-</script>
-
-<script type="text/ng-template" id="parameter-list-actions.html">
-  <div class="ui-grid-actions" left-click-menu="grid.appScope.contextMenuEntity = row.entity" data-target="mll_menu">
-    <i class="fa fa-ellipsis-v"></i>
-  </div>
-</script>
-
-<script type="text/ng-template" id="parameter-name.html">
-  <div class="ui-grid-editable">
-    <div class="ui-grid-cell-contents">
-      <div class="form-input">
-        <input ng-model="row.entity.name" required>
-      </div>
-    </div>
-  </div>
-</script>
-
-<script type="text/ng-template" id="parameter-type.html">
-  <div class="ui-grid-editable">
-    <div class="ui-grid-cell-contents">
-      <div class="form-input">
-        <ui-select ng-model="row.entity.type" required style="width:122px">
-          <ui-select-match placeholder="{{ 'sql-queries.blades.sql-query-details.placeholders.parameter-type' | translate }}">{{ $select.selected }}</ui-select-match>
-          <ui-select-choices repeat="x in grid.appScope.blade.types | filter: $select.search">
-            <span ng-bind-html="x | highlight: $select.search"></span>
-          </ui-select-choices>
-        </ui-select>
-      </div>
-    </div>
-  </div>
-</script>
-
-<style>
-  .ui-grid-editable .ui-grid-cell-contents {
-    overflow: visible;
-    padding: 10px 0 0 10px;
-  }
-
-  .ui-grid-cell .ui-grid-editable input {
-    padding: 6px 10px;
-    box-sizing: border-box;
-  }
-
-  .ui-grid-cell .ui-grid-editable .btn {
-    width: 80px;
-    margin: 10px 0 0 10px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  .ui-grid-cell .ui-grid-editable input.ng-valid {
-    border: 1px solid #dee9f0;
-  }
-</style>

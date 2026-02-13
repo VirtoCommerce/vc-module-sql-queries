@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "Consultas SQL",
         "labels": {
-          "name": "Nombre"
+          "name": "Nombre",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "Parámetros",
           "parameter-name": "Nombre",
           "parameter-type": "Tipo",
-          "query": "Texto de la consulta"
+          "parameter-value": "Test Value",
+          "query": "Texto de la consulta",
+          "test-results": "Resultados de prueba",
+          "test-parameters": "Valores de parámetros",
+          "max-rows": "Máx. filas",
+          "run": "Ejecutar",
+          "executing": "Ejecutando consulta...",
+          "rows-returned": "Filas devueltas",
+          "truncated": "resultado truncado",
+          "execution-time": "Tiempo de ejecución",
+          "no-results": "La consulta no devolvió resultados."
         },
         "messages": {
           "saveSuccess": "Consulta SQL guardada exitosamente.",
@@ -31,11 +43,35 @@
         "placeholders": {
           "format": "Seleccionar formato"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Informe",
+        "labels": {
+          "name": "Nombre",
+          "description": "Descripción",
+          "format": "Formato de exportación",
+          "test-results": "Resultados de prueba",
+          "test-parameters": "Valores de parámetros",
+          "max-rows": "Máx. filas",
+          "run": "Ejecutar",
+          "executing": "Ejecutando consulta...",
+          "rows-returned": "Filas devueltas",
+          "truncated": "resultado truncado",
+          "execution-time": "Tiempo de ejecución",
+          "no-results": "La consulta no devolvió resultados."
+        },
+        "placeholders": {
+          "format": "Seleccionar formato"
+        }
       }
     },
     "commands": {
       "add-parameter": "Agregar parámetro",
-      "try-query": "Probar consulta"
+      "try-query": "Probar consulta",
+      "run-test": "Ejecutar prueba",
+      "export-report": "Exportar informe",
+      "view-report": "Ver informe",
+      "edit-report": "Editar informe"
     }
   },
   "permissions": {

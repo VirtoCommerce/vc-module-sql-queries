@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "SQL-Abfragen",
         "labels": {
-          "name": "Name"
+          "name": "Name",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "Parameter",
           "parameter-name": "Name",
           "parameter-type": "Typ",
-          "query": "Abfrage-Text"
+          "parameter-value": "Test Value",
+          "query": "Abfrage-Text",
+          "test-results": "Testergebnisse",
+          "test-parameters": "Parameterwerte",
+          "max-rows": "Max. Zeilen",
+          "run": "Ausführen",
+          "executing": "Abfrage wird ausgeführt...",
+          "rows-returned": "Zurückgegebene Zeilen",
+          "truncated": "Ergebnis abgeschnitten",
+          "execution-time": "Ausführungszeit",
+          "no-results": "Abfrage hat keine Ergebnisse zurückgegeben."
         },
         "messages": {
           "saveSuccess": "SQL-Abfrage erfolgreich gespeichert.",
@@ -31,11 +43,35 @@
         "placeholders": {
           "format": "Format auswählen"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Bericht",
+        "labels": {
+          "name": "Name",
+          "description": "Beschreibung",
+          "format": "Exportformat",
+          "test-results": "Testergebnisse",
+          "test-parameters": "Parameterwerte",
+          "max-rows": "Max. Zeilen",
+          "run": "Ausführen",
+          "executing": "Abfrage wird ausgeführt...",
+          "rows-returned": "Zurückgegebene Zeilen",
+          "truncated": "Ergebnis abgeschnitten",
+          "execution-time": "Ausführungszeit",
+          "no-results": "Abfrage hat keine Ergebnisse zurückgegeben."
+        },
+        "placeholders": {
+          "format": "Format auswählen"
+        }
       }
     },
     "commands": {
       "add-parameter": "Parameter hinzufügen",
-      "try-query": "Abfrage testen"
+      "try-query": "Abfrage testen",
+      "run-test": "Test ausführen",
+      "export-report": "Bericht exportieren",
+      "view-report": "Bericht anzeigen",
+      "edit-report": "Bericht bearbeiten"
     }
   },
   "permissions": {

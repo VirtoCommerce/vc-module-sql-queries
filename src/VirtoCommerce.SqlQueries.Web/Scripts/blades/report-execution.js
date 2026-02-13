@@ -71,7 +71,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
             function initializeToolbar() {
                 blade.toolbarCommands = [
                     {
-                        name: 'Execute',
+                        name: 'platform.commands.save',
                         icon: 'fas fa-save',
                         executeMethod: function () {
                             $scope.executeReport();

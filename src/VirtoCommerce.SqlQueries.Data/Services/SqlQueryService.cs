@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +34,7 @@ public class SqlQueryService(
         return ((ISqlQueriesRepository)repository).GetSqlQueriesByIdsAsync(ids);
     }
 
-    public virtual async Task<SqlQueryReport> GenerateReport(SqlQuery query, IList<SqlQueryParameter> parameters, string format)
+    public virtual async Task<SqlQueryReport> GenerateReport(SqlQuery query, IList<SqlQueryParameter> parameters, string format, SqlQueryReportContext context)
     {
         ArgumentNullException.ThrowIfNull(query);
 
@@ -67,7 +68,102 @@ public class SqlQueryService(
 
         return generator == null
             ? throw new NotSupportedException($"Report format '{format}' is not supported.")
-            : generator.GenerateReport(dataTable);
+            : generator.GenerateReport(dataTable, context);
+    }
+
+    public virtual async Task<SqlQueryExecuteResult> ExecuteQuery(SqlQueryExecuteRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentException.ThrowIfNullOrWhiteSpace(request.Query);
+        ArgumentException.ThrowIfNullOrWhiteSpace(request.ConnectionStringName);
+
+        var dbInfo = GetDatabaseInformation();
+        if (!dbInfo.ConnectionStringNames.Contains(request.ConnectionStringName, StringComparer.OrdinalIgnoreCase))
+        {
+            throw new ArgumentException($"Connection string '{request.ConnectionStringName}' is not available.");
+        }
+
+        const int maxRowCeiling = 1000;
+        var maxRows = Math.Clamp(request.MaxRows, 1, maxRowCeiling);
+
+        var result = new SqlQueryExecuteResult();
+        var stopwatch = Stopwatch.StartNew();
+
+        using var dbContext = GetDbContext(request.ConnectionStringName);
+        using var connection = dbContext.Database.GetDbConnection();
+        await connection.OpenAsync();
+
+        using var transaction = await connection.BeginTransactionAsync(IsolationLevel.ReadCommitted);
+
+        try
+        {
+            using var command = connection.CreateCommand();
+            command.CommandText = request.Query;
+            command.CommandTimeout = 30;
+            command.Transaction = transaction as DbTransaction;
+
+            if (!request.Parameters.IsNullOrEmpty())
+            {
+                foreach (var parameter in request.Parameters)
+                {
+                    AddDatabaseParameter(parameter, command);
+                }
+            }
+
+            using var reader = await command.ExecuteReaderAsync();
+
+            var fieldCount = reader.FieldCount;
+            for (var i = 0; i < fieldCount; i++)
+            {
+                result.Columns.Add(new SqlQueryExecuteColumn
+                {
+                    Name = reader.GetName(i),
+                    Type = reader.GetFieldType(i)?.Name ?? "String",
+                });
+            }
+
+            var rows = new List<object[]>();
+            var rowCount = 0;
+
+            while (await reader.ReadAsync())
+            {
+                rowCount++;
+
+                if (rowCount <= maxRows)
+                {
+                    var values = new object[fieldCount];
+                    reader.GetValues(values);
+
+                    for (var i = 0; i < values.Length; i++)
+                    {
+                        if (values[i] is DBNull)
+                        {
+                            values[i] = null;
+                        }
+                    }
+
+                    rows.Add(values);
+                }
+
+                if (rowCount > maxRows)
+                {
+                    break;
+                }
+            }
+
+            result.Rows = rows;
+            result.TotalRowCount = rowCount;
+            result.IsTruncated = rowCount > maxRows;
+        }
+        finally
+        {
+            await transaction.RollbackAsync();
+        }
+
+        stopwatch.Stop();
+        result.ExecutionTimeMs = stopwatch.ElapsedMilliseconds;
+
+        return result;
     }
 
     public virtual IList<string> GetFormats()

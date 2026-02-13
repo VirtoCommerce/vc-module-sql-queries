@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "SQL 查询",
         "labels": {
-          "name": "名称"
+          "name": "名称",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "参数",
           "parameter-name": "名称",
           "parameter-type": "类型",
-          "query": "查询文本"
+          "parameter-value": "Test Value",
+          "query": "查询文本",
+          "test-results": "测试结果",
+          "test-parameters": "参数值",
+          "max-rows": "最大行数",
+          "run": "运行",
+          "executing": "正在执行查询...",
+          "rows-returned": "返回行数",
+          "truncated": "结果已截断",
+          "execution-time": "执行时间",
+          "no-results": "查询未返回任何结果。"
         },
         "messages": {
           "saveSuccess": "SQL 查询保存成功。",
@@ -31,11 +43,35 @@
         "placeholders": {
           "format": "选择格式"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} 报告",
+        "labels": {
+          "name": "名称",
+          "description": "描述",
+          "format": "导出格式",
+          "test-results": "测试结果",
+          "test-parameters": "参数值",
+          "max-rows": "最大行数",
+          "run": "运行",
+          "executing": "正在执行查询...",
+          "rows-returned": "返回行数",
+          "truncated": "结果已截断",
+          "execution-time": "执行时间",
+          "no-results": "查询未返回任何结果。"
+        },
+        "placeholders": {
+          "format": "选择格式"
+        }
       }
     },
     "commands": {
       "add-parameter": "添加参数",
-      "try-query": "尝试查询"
+      "try-query": "尝试查询",
+      "run-test": "运行测试",
+      "export-report": "导出报告",
+      "view-report": "查看报告",
+      "edit-report": "编辑报告"
     }
   },
   "permissions": {

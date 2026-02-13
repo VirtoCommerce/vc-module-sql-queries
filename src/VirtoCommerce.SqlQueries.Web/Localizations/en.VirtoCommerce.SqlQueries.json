@@ -5,7 +5,9 @@
       "sql-query-list": {
         "title": "SQL queries",
         "labels": {
-          "name": "Name"
+          "name": "Name",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -19,7 +21,17 @@
           "parameters": "Parameters",
           "parameter-name": "Name",
           "parameter-type": "Type",
-          "query": "Query text"
+          "parameter-value": "Test Value",
+          "query": "Query text",
+          "test-results": "Test Results",
+          "test-parameters": "Parameter Values",
+          "max-rows": "Max rows",
+          "run": "Run",
+          "executing": "Executing query...",
+          "rows-returned": "Rows returned",
+          "truncated": "result truncated",
+          "execution-time": "Execution time",
+          "no-results": "Query returned no results."
         },
         "placeholders": {
           "name": "Enter query name",
@@ -44,11 +56,35 @@
         "placeholders": {
           "format": "Select format"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Report",
+        "labels": {
+          "name": "Name",
+          "description": "Description",
+          "format": "Export format",
+          "test-results": "Test Results",
+          "test-parameters": "Parameter Values",
+          "max-rows": "Max rows",
+          "run": "Run",
+          "executing": "Executing query...",
+          "rows-returned": "Rows returned",
+          "truncated": "result truncated",
+          "execution-time": "Execution time",
+          "no-results": "Query returned no results."
+        },
+        "placeholders": {
+          "format": "Select format"
+        }
       }
     },
     "commands": {
       "add-parameter": "Add parameter",
-      "try-query": "Try query"
+      "try-query": "Try query",
+      "run-test": "Run test",
+      "export-report": "Export report",
+      "view-report": "View report",
+      "edit-report": "Edit report"
     }
   },
   "permissions": {

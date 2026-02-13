@@ -5,7 +5,9 @@
       "sql-query-list": {
         "title": "SQL-frågor",
         "labels": {
-          "name": "Namn"
+          "name": "Namn",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -19,7 +21,17 @@
           "parameters": "Parametrar",
           "parameter-name": "Namn",
           "parameter-type": "Typ",
-          "query": "Frågetext"
+          "parameter-value": "Test Value",
+          "query": "Frågetext",
+          "test-results": "Testresultat",
+          "test-parameters": "Parametervärden",
+          "max-rows": "Max rader",
+          "run": "Kör",
+          "executing": "Kör fråga...",
+          "rows-returned": "Returnerade rader",
+          "truncated": "resultat avkortat",
+          "execution-time": "Exekveringstid",
+          "no-results": "Frågan returnerade inga resultat."
         },
         "placeholders": {
           "name": "Ange frågenamn",
@@ -44,11 +56,35 @@
         "placeholders": {
           "format": "Välj format"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Rapport",
+        "labels": {
+          "name": "Namn",
+          "description": "Beskrivning",
+          "format": "Exportformat",
+          "test-results": "Testresultat",
+          "test-parameters": "Parametervärden",
+          "max-rows": "Max rader",
+          "run": "Kör",
+          "executing": "Kör fråga...",
+          "rows-returned": "Returnerade rader",
+          "truncated": "resultat avkortat",
+          "execution-time": "Exekveringstid",
+          "no-results": "Frågan returnerade inga resultat."
+        },
+        "placeholders": {
+          "format": "Välj format"
+        }
       }
     },
     "commands": {
       "add-parameter": "Lägg till parameter",
-      "try-query": "Prova fråga"
+      "try-query": "Prova fråga",
+      "run-test": "Kör test",
+      "export-report": "Exportera rapport",
+      "view-report": "Visa rapport",
+      "edit-report": "Redigera rapport"
     }
   },
   "permissions": {

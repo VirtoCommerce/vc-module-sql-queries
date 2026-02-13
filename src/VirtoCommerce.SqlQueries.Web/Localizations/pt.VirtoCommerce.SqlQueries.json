@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "Consultas SQL",
         "labels": {
-          "name": "Nome"
+          "name": "Nome",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "Parâmetros",
           "parameter-name": "Nome",
           "parameter-type": "Tipo",
-          "query": "Texto da consulta"
+          "parameter-value": "Test Value",
+          "query": "Texto da consulta",
+          "test-results": "Resultados do teste",
+          "test-parameters": "Valores dos parâmetros",
+          "max-rows": "Máx. linhas",
+          "run": "Executar",
+          "executing": "Executando consulta...",
+          "rows-returned": "Linhas retornadas",
+          "truncated": "resultado truncado",
+          "execution-time": "Tempo de execução",
+          "no-results": "A consulta não retornou resultados."
         },
         "messages": {
           "saveSuccess": "Consulta SQL salva com sucesso.",
@@ -31,11 +43,35 @@
         "placeholders": {
           "format": "Selecione o formato"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Relatório",
+        "labels": {
+          "name": "Nome",
+          "description": "Descrição",
+          "format": "Formato de exportação",
+          "test-results": "Resultados do teste",
+          "test-parameters": "Valores dos parâmetros",
+          "max-rows": "Máx. linhas",
+          "run": "Executar",
+          "executing": "Executando consulta...",
+          "rows-returned": "Linhas retornadas",
+          "truncated": "resultado truncado",
+          "execution-time": "Tempo de execução",
+          "no-results": "A consulta não retornou resultados."
+        },
+        "placeholders": {
+          "format": "Selecione o formato"
+        }
       }
     },
     "commands": {
       "add-parameter": "Adicionar parâmetro",
-      "try-query": "Testar consulta"
+      "try-query": "Testar consulta",
+      "run-test": "Executar teste",
+      "export-report": "Exportar relatório",
+      "view-report": "Ver relatório",
+      "edit-report": "Editar relatório"
     }
   },
   "permissions": {

@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "SQLクエリ",
         "labels": {
-          "name": "名前"
+          "name": "名前",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "パラメータ",
           "parameter-name": "名前",
           "parameter-type": "タイプ",
-          "query": "クエリテキスト"
+          "parameter-value": "Test Value",
+          "query": "クエリテキスト",
+          "test-results": "テスト結果",
+          "test-parameters": "パラメータ値",
+          "max-rows": "最大行数",
+          "run": "実行",
+          "executing": "クエリを実行中...",
+          "rows-returned": "返された行数",
+          "truncated": "結果が切り捨てられました",
+          "execution-time": "実行時間",
+          "no-results": "クエリは結果を返しませんでした。"
         },
         "messages": {
           "saveSuccess": "SQLクエリが正常に保存されました。",
@@ -31,11 +43,35 @@
         "placeholders": {
           "format": "フォーマットを選択"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} レポート",
+        "labels": {
+          "name": "名前",
+          "description": "説明",
+          "format": "エクスポートフォーマット",
+          "test-results": "テスト結果",
+          "test-parameters": "パラメータ値",
+          "max-rows": "最大行数",
+          "run": "実行",
+          "executing": "クエリを実行中...",
+          "rows-returned": "返された行数",
+          "truncated": "結果が切り捨てられました",
+          "execution-time": "実行時間",
+          "no-results": "クエリは結果を返しませんでした。"
+        },
+        "placeholders": {
+          "format": "フォーマットを選択"
+        }
       }
     },
     "commands": {
       "add-parameter": "パラメータを追加",
-      "try-query": "クエリを試す"
+      "try-query": "クエリを試す",
+      "run-test": "テスト実行",
+      "export-report": "レポートをエクスポート",
+      "view-report": "レポートを表示",
+      "edit-report": "レポートを編集"
     }
   },
   "permissions": {

@@ -1,0 +1,315 @@
+/* parameter card editor */
+.param-header-add {
+    color: #1890ff;
+    padding: 0 4px;
+    font-size: 14px;
+    margin-left: auto;
+    line-height: 1;
+}
+
+.param-header-add i {
+    color: #fff;
+}
+
+.param-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.param-card-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.param-action-icon {
+    color: #8094ae;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px;
+}
+
+.param-action-icon:hover {
+    color: #374767;
+}
+
+.param-action-delete:hover {
+    color: #cf1322;
+}
+
+.param-edit-popup {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  z-index: 10;
+  background: #fff;
+  border: 1px solid #dee9f0;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+}
+
+.param-edit-close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: none;
+    border: none;
+    color: #8094ae;
+    font-size: 14px;
+    padding: 2px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.param-edit-close:hover,
+.param-edit-close:focus {
+    color: #cf1322;
+    background: none;
+    outline: none;
+}
+
+.param-edit-field {
+  margin-bottom: 8px;
+}
+
+  .param-edit-field .form-label {
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+
+  .param-edit-field .form-control {
+    font-size: 14px;
+    height: 30px;
+    padding: 4px 8px;
+  }
+
+  .param-edit-field .ui-select-container {
+    font-size: 14px;
+  }
+
+.param-edit-actions {
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* SQL CodeMirror editor */
+.sql-editor-wrapper .CodeMirror {
+    height: 200px;
+    border: 1px solid #dee9f0;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: Consolas, Monaco, 'Courier New', monospace;
+}
+
+.sql-editor-wrapper .CodeMirror-focused {
+    border-color: #1890ff;
+}
+
+/* flex layout: make inner-block stretch so test grid fills remaining blade height */
+.blade-content .inner-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.blade-content .inner-block > form {
+    flex-shrink: 0;
+}
+
+/* report description note block */
+.report-description {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #e6f7ff;
+    border: 1px solid #91d5ff;
+    border-radius: 4px;
+    color: #374767;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.report-description i {
+    color: #1890ff;
+    font-size: 14px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* test results panel */
+.test-results-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-top: 15px;
+}
+
+.test-results-header {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #374767;
+}
+
+.test-parameters {
+    flex-shrink: 0;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1px solid #e8eef3;
+    border-radius: 4px;
+}
+
+.test-parameters-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374767;
+    user-select: none;
+    padding: 2px 0;
+}
+
+.test-parameters-header i {
+    font-size: 10px;
+    width: 12px;
+    color: #8094ae;
+}
+
+.test-parameters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 12px;
+    margin-top: 8px;
+}
+
+.test-param-item {
+    position: relative;
+    min-width: 0;
+}
+
+.test-param-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 3px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.test-param-type {
+    color: #8094ae;
+    font-weight: normal;
+}
+
+.test-controls {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.test-max-rows {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+.test-max-rows .form-label {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.test-error {
+    padding: 10px 15px;
+    background: #fff2f0;
+    border: 1px solid #ffccc7;
+    border-radius: 4px;
+    color: #cf1322;
+    margin: 10px 0;
+    word-break: break-word;
+}
+
+.test-error i {
+    margin-right: 8px;
+    color: #ff4d4f;
+}
+
+.test-metadata {
+    font-size: 12px;
+    color: #8094ae;
+    white-space: nowrap;
+}
+
+.test-metadata-separator {
+    margin: 0 6px;
+}
+
+.test-results-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    margin-top: 5px;
+    border: 1px solid #dee9f0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.test-results-grid > div {
+    flex: 1;
+}
+
+.test-no-results {
+    padding: 20px;
+    text-align: center;
+    color: #8094ae;
+    font-style: italic;
+}
+
+/* empty list state */
+.sql-queries-no-data {
+    padding: 40px 20px;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sql-queries-no-data-inner {
+    max-width: 480px;
+}
+
+.sql-queries-no-data-icon {
+    font-size: 48px;
+    color: #8094ae;
+    margin-bottom: 12px;
+}
+
+.sql-queries-no-data-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #374767;
+}
+
+.sql-queries-no-data-text {
+    font-size: 13px;
+    color: #666666;
+}

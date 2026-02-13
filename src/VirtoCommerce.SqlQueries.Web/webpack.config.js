@@ -33,6 +33,16 @@ module.exports = (env, argv) => {
                 }
             ]
         },
+        externals: [
+            // CodeMirror core is provided globally by the platform vendor bundle.
+            // Prevent bundling a second copy when importing SQL mode and hint addons.
+            function ({ request }, callback) {
+                if (request && /[/\\]lib[/\\]codemirror(\.js)?$/.test(request)) {
+                    return callback(null, 'CodeMirror');
+                }
+                callback();
+            }
+        ],
         plugins: [
             new CleanWebpackPlugin(),
             isProduction ?

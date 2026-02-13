@@ -5,7 +5,9 @@
       "sql-query-list": {
         "title": "SQL-kyselyt",
         "labels": {
-          "name": "Nimi"
+          "name": "Nimi",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -19,7 +21,17 @@
           "parameters": "Parametrit",
           "parameter-name": "Nimi",
           "parameter-type": "Tyyppi",
-          "query": "Kyselyteksti"
+          "parameter-value": "Test Value",
+          "query": "Kyselyteksti",
+          "test-results": "Testitulokset",
+          "test-parameters": "Parametriarvot",
+          "max-rows": "Enintään rivejä",
+          "run": "Suorita",
+          "executing": "Suoritetaan kyselyä...",
+          "rows-returned": "Palautetut rivit",
+          "truncated": "tulos katkaistu",
+          "execution-time": "Suoritusaika",
+          "no-results": "Kysely ei palauttanut tuloksia."
         },
         "placeholders": {
           "name": "Anna kyselyn nimi",
@@ -44,11 +56,35 @@
         "placeholders": {
           "format": "Valitse muoto"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Raportti",
+        "labels": {
+          "name": "Nimi",
+          "description": "Kuvaus",
+          "format": "Vientimuoto",
+          "test-results": "Testitulokset",
+          "test-parameters": "Parametriarvot",
+          "max-rows": "Enintään rivejä",
+          "run": "Suorita",
+          "executing": "Suoritetaan kyselyä...",
+          "rows-returned": "Palautetut rivit",
+          "truncated": "tulos katkaistu",
+          "execution-time": "Suoritusaika",
+          "no-results": "Kysely ei palauttanut tuloksia."
+        },
+        "placeholders": {
+          "format": "Valitse muoto"
+        }
       }
     },
     "commands": {
       "add-parameter": "Lisää parametri",
-      "try-query": "Kokeile kyselyä"
+      "try-query": "Kokeile kyselyä",
+      "run-test": "Suorita testi",
+      "export-report": "Vie raportti",
+      "view-report": "Näytä raportti",
+      "edit-report": "Muokkaa raporttia"
     }
   },
   "permissions": {

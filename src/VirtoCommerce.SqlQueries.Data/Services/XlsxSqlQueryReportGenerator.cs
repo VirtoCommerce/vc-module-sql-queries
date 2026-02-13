@@ -17,7 +17,7 @@ public class XlsxSqlQueryReportGenerator() : ISqlQueryReportGenerator
     public string Format => "xlsx";
     public string ContentType => "application/vnd.ms-excel";
 
-    public virtual SqlQueryReport GenerateReport(DataTable table)
+    public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {
         var workbook = new XSSFWorkbook();
 
