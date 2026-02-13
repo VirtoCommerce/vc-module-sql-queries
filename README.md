@@ -10,17 +10,24 @@ This module is designed to empower administrators and developers by providing a 
 * Supports multiple connection strings. 
 
 ## Screenshots
-### List of reports
-<img width="1060" height="652" alt="image" src="https://github.com/user-attachments/assets/181d8018-8951-40ad-a22a-a21d044ef0a4" />
+### No SQL queries yet
+<img width="691" height="427" alt="image" src="https://github.com/user-attachments/assets/50dd2661-7068-423a-982e-1adacebeb894" />
 
-### Create a new query 
-<img width="952" height="1037" alt="image" src="https://github.com/user-attachments/assets/7d4dd749-c974-45dc-98ad-183597b78cda" />
+### List of reports
+<img width="692" height="417" alt="image" src="https://github.com/user-attachments/assets/14487ead-29eb-4795-ba81-b3a51ce7fbe9" />
+
+### Create a new query with live preview
+<img width="792" height="882" alt="image" src="https://github.com/user-attachments/assets/ad2e1632-fda0-4791-bee1-01edb6d6491b" />
+
+### Edit query parameters
+<img width="821" height="370" alt="image" src="https://github.com/user-attachments/assets/8b8b5975-9bd6-4829-8c55-03b9bf6dcfe0" />
 
 ### Run report
-<img width="1372" height="987" alt="image" src="https://github.com/user-attachments/assets/a25ba8b1-66fa-4010-a5b5-18486962ce9f" />
+<img width="806" height="875" alt="image" src="https://github.com/user-attachments/assets/9a7c0b7e-635d-44f4-80cc-bd12e62a90ea" />
 
-### Review result file
-<img width="1363" height="276" alt="image" src="https://github.com/user-attachments/assets/c5d82a29-1093-46b2-a8fe-3962a9df837b" />
+### Export to file
+<img width="627" height="681" alt="image" src="https://github.com/user-attachments/assets/7d3c0d9a-b843-4c3a-aacb-772204a541f4" />
+
 
 
 ## Configuration
