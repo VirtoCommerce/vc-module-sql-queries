@@ -100,7 +100,7 @@ public class SqlQueryService(
             using var command = connection.CreateCommand();
             command.CommandText = request.Query;
             command.CommandTimeout = 30;
-            command.Transaction = transaction as DbTransaction;
+            command.Transaction = transaction;
 
             if (!request.Parameters.IsNullOrEmpty())
             {

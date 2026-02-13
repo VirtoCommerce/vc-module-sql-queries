@@ -191,7 +191,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                         return {
                             name: param.name,
                             type: param.type,
-                            value: blade.testParamValues[param.name] || null
+                            value: blade.testParamValues[param.name]
                         };
                     });
 
