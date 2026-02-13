@@ -77,6 +77,10 @@
       "sql-queries-delete": {
         "title": "Confirmar eliminación",
         "message": "¿Está seguro de que desea eliminar las consultas seleccionadas?"
+      },
+      "sql-query-save": {
+        "title": "Guardar cambios",
+        "message": "La consulta ha sido modificada. ¿Desea guardar los cambios?"
       }
     }
   },

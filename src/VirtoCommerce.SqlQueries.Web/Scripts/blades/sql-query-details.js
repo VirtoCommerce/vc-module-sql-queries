@@ -70,8 +70,8 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                         blade,
                         $scope.saveChanges,
                         closeCallback,
-                        'sql-queries.dialogs.news-article-save.title',
-                        'sql-queries.dialogs.news-article-save.message'
+                        'sql-queries.dialogs.sql-query-save.title',
+                        'sql-queries.dialogs.sql-query-save.message'
                     );
                 };
 

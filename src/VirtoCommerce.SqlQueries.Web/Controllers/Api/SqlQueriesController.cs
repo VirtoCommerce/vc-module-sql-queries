@@ -70,7 +70,7 @@ public class SqlQueriesController(
 
     [HttpDelete]
     [Route("")]
-    [Authorize(Permissions.Update)]
+    [Authorize(Permissions.Delete)]
     public async Task<ActionResult> Delete([FromQuery] string[] ids)
     {
         await sqlQueryService.DeleteAsync(ids);
@@ -113,13 +113,8 @@ public class SqlQueriesController(
     [Route("execute-preview")]
     [Authorize(Permissions.Create)]
     [Authorize(Permissions.Update)]
-    public async Task<ActionResult<SqlQueryExecuteResult>> ExecuteQuery([FromBody] SqlQueryExecuteRequest request)
+    public async Task<ActionResult<SqlQueryExecuteResult>> ExecuteQuery([FromBody] SqlQueryPreviewRequest request)
     {
-        if (!await HasEditPermission())
-        {
-            return Forbid();
-        }
-
         var result = await sqlQueryService.ExecuteQuery(request);
         return Ok(result);
     }
@@ -127,7 +122,7 @@ public class SqlQueriesController(
     [HttpPost]
     [Route("execute-query/{id}")]
     [Authorize(Permissions.Read)]
-    public async Task<ActionResult<SqlQueryExecuteResult>> ExecuteQueryById([FromRoute] string id, [FromBody] SqlQueryExecuteByIdRequest request)
+    public async Task<ActionResult<SqlQueryExecuteResult>> ExecuteQueryById([FromRoute] string id, [FromBody] SqlQueryExecuteRequest request)
     {
         var query = await sqlQueryService.GetByIdAsync(id);
 
@@ -136,7 +131,7 @@ public class SqlQueriesController(
             return NotFound();
         }
 
-        var executeRequest = new SqlQueryExecuteRequest
+        var executeRequest = new SqlQueryPreviewRequest
         {
             Query = query.Query,
             ConnectionStringName = query.ConnectionStringName,

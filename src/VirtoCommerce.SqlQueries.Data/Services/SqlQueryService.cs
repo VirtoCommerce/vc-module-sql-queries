@@ -71,7 +71,7 @@ public class SqlQueryService(
             : generator.GenerateReport(dataTable, context);
     }
 
-    public virtual async Task<SqlQueryExecuteResult> ExecuteQuery(SqlQueryExecuteRequest request)
+    public virtual async Task<SqlQueryExecuteResult> ExecuteQuery(SqlQueryPreviewRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentException.ThrowIfNullOrWhiteSpace(request.Query);

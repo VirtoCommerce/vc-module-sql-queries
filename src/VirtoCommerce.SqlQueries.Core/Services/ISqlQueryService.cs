@@ -9,7 +9,7 @@ public interface ISqlQueryService : ICrudService<SqlQuery>
 {
     Task<SqlQueryReport> GenerateReport(SqlQuery query, IList<SqlQueryParameter> parameters, string format, SqlQueryReportContext context);
 
-    Task<SqlQueryExecuteResult> ExecuteQuery(SqlQueryExecuteRequest request);
+    Task<SqlQueryExecuteResult> ExecuteQuery(SqlQueryPreviewRequest request);
 
     IList<string> GetFormats();
 

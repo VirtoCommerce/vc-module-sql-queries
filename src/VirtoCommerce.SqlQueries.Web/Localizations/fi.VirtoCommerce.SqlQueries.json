@@ -90,6 +90,10 @@
       "sql-queries-delete": {
         "title": "Vahvista poistaminen",
         "message": "Haluatko varmasti poistaa valitut kyselyt?"
+      },
+      "sql-query-save": {
+        "title": "Tallenna muutokset",
+        "message": "Kyselyä on muokattu. Haluatko tallentaa muutokset?"
       }
     }
   },

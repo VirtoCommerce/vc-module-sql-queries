@@ -77,6 +77,10 @@
       "sql-queries-delete": {
         "title": "Conferma eliminazione",
         "message": "Sei sicuro di voler eliminare le query selezionate?"
+      },
+      "sql-query-save": {
+        "title": "Salva modifiche",
+        "message": "La query è stata modificata. Vuoi salvare le modifiche?"
       }
     }
   },

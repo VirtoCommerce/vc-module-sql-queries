@@ -77,6 +77,10 @@
       "sql-queries-delete": {
         "title": "削除の確認",
         "message": "選択したクエリを削除してもよろしいですか？"
+      },
+      "sql-query-save": {
+        "title": "変更を保存",
+        "message": "クエリが変更されました。変更を保存しますか？"
       }
     }
   },

@@ -77,6 +77,10 @@
       "sql-queries-delete": {
         "title": "确认删除",
         "message": "您确定要删除所选查询吗？"
+      },
+      "sql-query-save": {
+        "title": "保存更改",
+        "message": "查询已被修改。是否要保存更改？"
       }
     }
   },

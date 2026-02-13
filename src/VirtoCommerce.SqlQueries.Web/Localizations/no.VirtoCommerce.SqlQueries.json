@@ -90,6 +90,10 @@
       "sql-queries-delete": {
         "title": "Bekreft sletting",
         "message": "Er du sikker på at du vil slette de valgte spørringene?"
+      },
+      "sql-query-save": {
+        "title": "Lagre endringer",
+        "message": "Spørringen har blitt endret. Vil du lagre endringene?"
       }
     }
   },

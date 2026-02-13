@@ -77,6 +77,10 @@
       "sql-queries-delete": {
         "title": "Löschbestätigung",
         "message": "Sind Sie sicher, dass Sie die ausgewählten Abfragen löschen möchten?"
+      },
+      "sql-query-save": {
+        "title": "Änderungen speichern",
+        "message": "Die Abfrage wurde geändert. Möchten Sie die Änderungen speichern?"
       }
     }
   },

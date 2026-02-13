@@ -90,6 +90,10 @@
       "sql-queries-delete": {
         "title": "Bekräfta borttagning",
         "message": "Är du säker på att du vill ta bort de valda frågorna?"
+      },
+      "sql-query-save": {
+        "title": "Spara ändringar",
+        "message": "Frågan har ändrats. Vill du spara ändringarna?"
       }
     }
   },
