@@ -71,7 +71,8 @@
           "rows-returned": "Rows returned",
           "truncated": "result truncated",
           "execution-time": "Execution time",
-          "no-results": "Query returned no results."
+          "no-results": "Query returned no results.",
+          "export": "Export"
         },
         "placeholders": {
           "format": "Select format"

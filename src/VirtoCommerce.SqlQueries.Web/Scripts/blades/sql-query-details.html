@@ -107,7 +107,7 @@
             </div>
           </div>
           <button class="btn btn-primary" ng-click="runTestQuery()" ng-disabled="blade.testLoading || !blade.currentEntity.query || !blade.currentEntity.connectionStringName">
-            <i class="fa" ng-class="blade.testLoading ? 'fa-spinner fa-spin' : 'fa-play'"></i>  &nbsp;
+            <i class="fa" ng-class="blade.testLoading ? 'fa-spinner fa-spin' : 'fa-play'"></i>&nbsp;
             {{ (blade.testLoading ? 'sql-queries.blades.sql-query-details.labels.executing' : 'sql-queries.blades.sql-query-details.labels.run') | translate }}
           </button>
           <span class="test-metadata" ng-if="blade.testResults && !blade.testLoading">

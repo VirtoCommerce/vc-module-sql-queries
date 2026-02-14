@@ -46,7 +46,7 @@
             </div>
           </div>
           <button class="btn btn-primary" ng-click="runTestQuery()" ng-disabled="blade.testLoading">
-            <i class="fa" ng-class="blade.testLoading ? 'fa-spinner fa-spin' : 'fa-play'"></i> &nbsp;
+            <i class="fa" ng-class="blade.testLoading ? 'fa-spinner fa-spin' : 'fa-play'"></i>&nbsp;
             {{ (blade.testLoading ? 'sql-queries.blades.report-view.labels.executing' : 'sql-queries.blades.report-view.labels.run') | translate }}
           </button>
           <span class="test-metadata" ng-if="blade.testResults && !blade.testLoading">
@@ -54,6 +54,13 @@
             <span ng-if="blade.testResults.isTruncated"> ({{ 'sql-queries.blades.report-view.labels.truncated' | translate }})</span>
             <span class="test-metadata-separator">|</span>
             {{ 'sql-queries.blades.report-view.labels.execution-time' | translate }}: {{ blade.testResults.executionTimeMs }} ms
+          </span>
+          <span class="export-inline" ng-if="blade.exportFormats.length">
+            <select class="form-control export-format-select" ng-model="blade.exportFormat" ng-options="f for f in blade.exportFormats"></select>
+            <button class="btn btn-primary" ng-click="exportReport()" ng-disabled="blade.exportLoading || !blade.exportFormat">
+              <i class="fa" ng-class="blade.exportLoading ? 'fa-spinner fa-spin' : 'fa-download'"></i>&nbsp;
+              {{ 'sql-queries.blades.report-view.labels.export' | translate }}
+            </button>
           </span>
         </div>
 

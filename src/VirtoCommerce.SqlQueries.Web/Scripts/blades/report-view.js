@@ -2,11 +2,9 @@ angular.module('VirtoCommerce.SqlQueriesModule')
     .controller('VirtoCommerce.SqlQueriesModule.reportViewController',
         [
             '$scope',
-            'platformWebApp.bladeNavigationService',
             'VirtoCommerce.SqlQueriesModule.sqlQueriesApi',
             function (
                 $scope,
-                bladeNavigationService,
                 sqlQueriesApi)
             {
                 const blade = $scope.blade;
@@ -31,6 +29,11 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                     data: [],
                     columnDefs: []
                 };
+
+                // export state
+                blade.exportFormats = [];
+                blade.exportFormat = null;
+                blade.exportLoading = false;
 
                 // blade functions
                 blade.refresh = function () {
@@ -93,14 +96,47 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                     });
                 };
 
-                $scope.openExportBlade = function () {
-                    const newBlade = {
-                        id: 'reportExecutionBlade',
-                        controller: 'VirtoCommerce.SqlQueriesModule.reportExecutionController',
-                        template: 'Modules/$(VirtoCommerce.SqlQueries)/Scripts/blades/report-execution.html',
-                        currentEntity: blade.currentEntity
-                    };
-                    bladeNavigationService.showBlade(newBlade, blade);
+                $scope.exportReport = function () {
+                    if (!blade.exportFormat) {
+                        return;
+                    }
+
+                    blade.exportLoading = true;
+
+                    sqlQueriesApi.executeReport(
+                        { id: blade.currentEntity.id, format: blade.exportFormat },
+                        blade.testParameters,
+                        function (response) {
+                            var contentType = response.headers['content-type'];
+                            var blob = new Blob([response.data], { type: contentType });
+
+                            var fileName = 'report.' + blade.exportFormat;
+                            var contentDisposition = response.headers['content-disposition'];
+
+                            if (contentDisposition && contentDisposition.indexOf('attachment') !== -1) {
+                                var fileNameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                                var matches = fileNameRegex.exec(contentDisposition);
+                                if (matches != null && matches[1]) {
+                                    fileName = matches[1].replace(/['"]/g, '');
+                                }
+                            }
+
+                            var downloadUrl = URL.createObjectURL(blob);
+                            var link = document.createElement('a');
+                            link.href = downloadUrl;
+                            link.download = fileName;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            URL.revokeObjectURL(downloadUrl);
+
+                            blade.exportLoading = false;
+                        },
+                        function (error) {
+                            blade.exportLoading = false;
+                            console.error('File download failed:', error);
+                        }
+                    );
                 };
 
                 // local functions
@@ -129,25 +165,19 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                     });
                 }
 
-                function initializeToolbar() {
-                    blade.toolbarCommands = [
-                        {
-                            name: 'sql-queries.commands.export-report',
-                            icon: 'fa fa-download',
-                            executeMethod: function () {
-                                $scope.openExportBlade();
-                            },
-                            canExecuteMethod: function () {
-                                return !blade.isLoading;
-                            },
-                            permission: 'sql-queries:read'
+                function loadExportFormats() {
+                    sqlQueriesApi.getFormats(function (formats) {
+                        blade.exportFormats = formats;
+                        if (formats && formats.length) {
+                            blade.exportFormat = formats[0];
                         }
-                    ];
+                    });
                 }
 
                 // init
                 syncTestParameters();
-                initializeToolbar();
+                blade.toolbarCommands = [];
+                loadExportFormats();
                 blade.refresh();
             }
         ]

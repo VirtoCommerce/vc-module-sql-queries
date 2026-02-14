@@ -259,6 +259,24 @@
     margin: 0 6px;
 }
 
+/* inline export controls */
+.export-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+.export-format-select {
+    width: 80px;
+    height: 33px;
+    font-size: 13px;
+    border: 1px solid #eaedf3;
+    color: rgb(76, 76, 76);
+    text-transform: uppercase;
+}
+
 .test-results-grid {
     flex: 1;
     display: flex;
