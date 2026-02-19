@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "SQL-запросы",
         "labels": {
-          "name": "Имя"
+          "name": "Имя",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "Параметры",
           "parameter-name": "Имя",
           "parameter-type": "Тип",
-          "query": "Текст запроса"
+          "parameter-value": "Test Value",
+          "query": "Текст запроса",
+          "test-results": "Результаты теста",
+          "test-parameters": "Значения параметров",
+          "max-rows": "Макс. строк",
+          "run": "Выполнить",
+          "executing": "Выполнение запроса...",
+          "rows-returned": "Возвращено строк",
+          "truncated": "результат усечён",
+          "execution-time": "Время выполнения",
+          "no-results": "Запрос не вернул результатов."
         },
         "messages": {
           "saveSuccess": "SQL-запрос успешно сохранен.",
@@ -31,11 +43,45 @@
         "placeholders": {
           "format": "Выберите формат"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Отчёт",
+        "labels": {
+          "name": "Имя",
+          "description": "Описание",
+          "format": "Формат экспорта",
+          "test-results": "Результаты теста",
+          "test-parameters": "Значения параметров",
+          "max-rows": "Макс. строк",
+          "run": "Выполнить",
+          "executing": "Выполнение запроса...",
+          "rows-returned": "Возвращено строк",
+          "truncated": "результат усечён",
+          "execution-time": "Время выполнения",
+          "no-results": "Запрос не вернул результатов."
+        },
+        "placeholders": {
+          "format": "Выберите формат"
+        }
       }
     },
     "commands": {
       "add-parameter": "Добавить параметр",
-      "try-query": "Попробовать запрос"
+      "try-query": "Попробовать запрос",
+      "run-test": "Запустить тест",
+      "export-report": "Экспортировать отчёт",
+      "view-report": "Просмотр отчёта",
+      "edit-report": "Редактировать отчёт"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Подтверждение удаления",
+        "message": "Вы уверены, что хотите удалить выбранные запросы?"
+      },
+      "sql-query-save": {
+        "title": "Сохранить изменения",
+        "message": "Запрос был изменён. Вы хотите сохранить изменения?"
+      }
     }
   },
   "permissions": {

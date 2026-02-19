@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "Zapytania SQL",
         "labels": {
-          "name": "Nazwa"
+          "name": "Nazwa",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "Parametry",
           "parameter-name": "Nazwa",
           "parameter-type": "Typ",
-          "query": "Tekst zapytania"
+          "parameter-value": "Test Value",
+          "query": "Tekst zapytania",
+          "test-results": "Wyniki testu",
+          "test-parameters": "Wartości parametrów",
+          "max-rows": "Maks. wierszy",
+          "run": "Uruchom",
+          "executing": "Wykonywanie zapytania...",
+          "rows-returned": "Zwrócone wiersze",
+          "truncated": "wynik obcięty",
+          "execution-time": "Czas wykonania",
+          "no-results": "Zapytanie nie zwróciło wyników."
         },
         "messages": {
           "saveSuccess": "Zapytanie SQL zostało pomyślnie zapisane.",
@@ -31,11 +43,45 @@
         "placeholders": {
           "format": "Wybierz format"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Raport",
+        "labels": {
+          "name": "Nazwa",
+          "description": "Opis",
+          "format": "Format eksportu",
+          "test-results": "Wyniki testu",
+          "test-parameters": "Wartości parametrów",
+          "max-rows": "Maks. wierszy",
+          "run": "Uruchom",
+          "executing": "Wykonywanie zapytania...",
+          "rows-returned": "Zwrócone wiersze",
+          "truncated": "wynik obcięty",
+          "execution-time": "Czas wykonania",
+          "no-results": "Zapytanie nie zwróciło wyników."
+        },
+        "placeholders": {
+          "format": "Wybierz format"
+        }
       }
     },
     "commands": {
       "add-parameter": "Dodaj parametr",
-      "try-query": "Wypróbuj zapytanie"
+      "try-query": "Wypróbuj zapytanie",
+      "run-test": "Uruchom test",
+      "export-report": "Eksportuj raport",
+      "view-report": "Wyświetl raport",
+      "edit-report": "Edytuj raport"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Potwierdzenie usunięcia",
+        "message": "Czy na pewno chcesz usunąć wybrane zapytania?"
+      },
+      "sql-query-save": {
+        "title": "Zapisz zmiany",
+        "message": "Zapytanie zostało zmodyfikowane. Czy chcesz zapisać zmiany?"
+      }
     }
   },
   "permissions": {

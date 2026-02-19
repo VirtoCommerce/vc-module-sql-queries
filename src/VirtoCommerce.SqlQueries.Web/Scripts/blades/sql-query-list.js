@@ -2,11 +2,11 @@ angular.module('VirtoCommerce.SqlQueriesModule')
     .controller('VirtoCommerce.SqlQueriesModule.sqlQueryListController',
         [
             '$scope',
-            'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'uiGridConstants', 'platformWebApp.uiGridHelper', 'platformWebApp.authService',
+            'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'uiGridConstants', 'platformWebApp.uiGridHelper',
             'VirtoCommerce.SqlQueriesModule.sqlQueriesApi',
             function (
                 $scope,
-                bladeNavigationService, dialogService, uiGridConstants, uiGridHelper, authService,
+                bladeNavigationService, dialogService, uiGridConstants, uiGridHelper,
                 sqlQueriesApi)
             {
                 $scope.uiGridConstants = uiGridConstants;
@@ -16,47 +16,67 @@ angular.module('VirtoCommerce.SqlQueriesModule')
 
                 blade.refresh = function () {
                     blade.isLoading = true;
-                    if (authService.checkPermission('sql-queries:read')) {
-                        sqlQueriesApi.search({}, function (data) {
-                            blade.currentEntities = data.results;
-                            blade.isLoading = false;
-                        });
-                    } else if (authService.checkPermission('sql-queries:reports')) {
-                        sqlQueriesApi.reports({}, function (data) {
-                            blade.currentEntities = data.results;
-                            blade.isLoading = false;
-                        });
-                    }
+                    sqlQueriesApi.search({}, function (data) {
+                        blade.currentEntities = data.results;
+                        blade.isLoading = false;
+                    }, function (error) {
+                        if (error.status === 403) {
+                            // Fall back to reports endpoint for users without read permission
+                            sqlQueriesApi.reports({}, function (data) {
+                                blade.currentEntities = data.results;
+                                blade.isLoading = false;
+                            }, function (error2) {
+                                bladeNavigationService.setError('Error ' + error2.status, blade);
+                            });
+                        } else {
+                            bladeNavigationService.setError('Error ' + error.status, blade);
+                        }
+                    });
                 };
 
                 blade.selectNode = function (sqlQuery, isNew) {
                     $scope.selectedNodeId = sqlQuery.id;
 
-                    if (authService.checkPermission('sql-queries:read')) {
+                    if (isNew) {
                         const newBlade = {
                             id: 'sqlQueryDetailsBlade',
                             parentRefresh: blade.refresh,
                             controller: 'VirtoCommerce.SqlQueriesModule.sqlQueryDetailsController',
                             template: 'Modules/$(VirtoCommerce.SqlQueries)/Scripts/blades/sql-query-details.html',
-                            currentEntity: sqlQuery
-                        };
-
-                        if (isNew) {
-                            angular.extend(newBlade, {
-                                isNew: true,
-                            });
-                        }
-                        bladeNavigationService.showBlade(newBlade, blade);
-                    } else if (authService.checkPermission('sql-queries:reports')) {
-                        const newBlade = {
-                            id: 'reportExecutionBlade',
-                            controller: 'VirtoCommerce.SqlQueriesModule.reportExecutionController',
-                            template: 'Modules/$(VirtoCommerce.SqlQueries)/Scripts/blades/report-execution.html',
                             currentEntity: sqlQuery,
+                            isNew: true
                         };
                         bladeNavigationService.showBlade(newBlade, blade);
+                        return;
                     }
-                }
+
+                    blade.openReportView(sqlQuery);
+                };
+
+                blade.openReportView = function (sqlQuery) {
+                    $scope.selectedNodeId = sqlQuery.id;
+
+                    const newBlade = {
+                        id: 'reportViewBlade',
+                        controller: 'VirtoCommerce.SqlQueriesModule.reportViewController',
+                        template: 'Modules/$(VirtoCommerce.SqlQueries)/Scripts/blades/report-view.html',
+                        currentEntity: sqlQuery
+                    };
+                    bladeNavigationService.showBlade(newBlade, blade);
+                };
+
+                blade.editSqlQuery = function (sqlQuery) {
+                    $scope.selectedNodeId = sqlQuery.id;
+
+                    const newBlade = {
+                        id: 'sqlQueryDetailsBlade',
+                        parentRefresh: blade.refresh,
+                        controller: 'VirtoCommerce.SqlQueriesModule.sqlQueryDetailsController',
+                        template: 'Modules/$(VirtoCommerce.SqlQueries)/Scripts/blades/sql-query-details.html',
+                        currentEntity: sqlQuery
+                    };
+                    bladeNavigationService.showBlade(newBlade, blade);
+                };
 
                 blade.deleteSqlQuery = function (selection) {
                     bladeNavigationService.closeChildrenBlades(blade, function () {
@@ -69,7 +89,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                                     blade.isLoading = true;
 
                                     const ids = _.pluck(selection, 'id');
-                                    sqlQueries.delete({ ids: ids }, function () {
+                                    sqlQueriesApi.delete({ ids: ids }, function () {
                                         blade.refresh();
                                     },
                                         function (error) { bladeNavigationService.setError('Error ' + error.status, blade); });

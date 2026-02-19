@@ -8,5 +8,5 @@ public interface ISqlQueryReportGenerator
     string Format { get; }
     string ContentType { get; }
 
-    SqlQueryReport GenerateReport(DataTable table);
+    SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context);
 }

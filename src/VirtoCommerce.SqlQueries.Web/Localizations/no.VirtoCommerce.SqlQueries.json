@@ -5,7 +5,9 @@
       "sql-query-list": {
         "title": "SQL-spørringer",
         "labels": {
-          "name": "Navn"
+          "name": "Navn",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -19,7 +21,17 @@
           "parameters": "Parametere",
           "parameter-name": "Navn",
           "parameter-type": "Type",
-          "query": "Spørringstekst"
+          "parameter-value": "Test Value",
+          "query": "Spørringstekst",
+          "test-results": "Testresultater",
+          "test-parameters": "Parameterverdier",
+          "max-rows": "Maks rader",
+          "run": "Kjør",
+          "executing": "Kjører spørring...",
+          "rows-returned": "Returnerte rader",
+          "truncated": "resultat avkortet",
+          "execution-time": "Kjøretid",
+          "no-results": "Spørringen returnerte ingen resultater."
         },
         "placeholders": {
           "name": "Skriv inn spørringsnavn",
@@ -44,11 +56,45 @@
         "placeholders": {
           "format": "Velg format"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Rapport",
+        "labels": {
+          "name": "Navn",
+          "description": "Beskrivelse",
+          "format": "Eksportformat",
+          "test-results": "Testresultater",
+          "test-parameters": "Parameterverdier",
+          "max-rows": "Maks rader",
+          "run": "Kjør",
+          "executing": "Kjører spørring...",
+          "rows-returned": "Returnerte rader",
+          "truncated": "resultat avkortet",
+          "execution-time": "Kjøretid",
+          "no-results": "Spørringen returnerte ingen resultater."
+        },
+        "placeholders": {
+          "format": "Velg format"
+        }
       }
     },
     "commands": {
       "add-parameter": "Legg til parameter",
-      "try-query": "Prøv spørring"
+      "try-query": "Prøv spørring",
+      "run-test": "Kjør test",
+      "export-report": "Eksporter rapport",
+      "view-report": "Vis rapport",
+      "edit-report": "Rediger rapport"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Bekreft sletting",
+        "message": "Er du sikker på at du vil slette de valgte spørringene?"
+      },
+      "sql-query-save": {
+        "title": "Lagre endringer",
+        "message": "Spørringen har blitt endret. Vil du lagre endringene?"
+      }
     }
   },
   "permissions": {

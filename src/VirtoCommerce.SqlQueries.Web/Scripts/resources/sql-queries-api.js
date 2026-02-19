@@ -20,6 +20,14 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                             transformResponse: function (data, headers) {
                                 return { data: data, headers: headers() };
                             }
+                        },
+                        executeQuery: {
+                            url: 'api/sql-queries/execute-preview',
+                            method: 'POST'
+                        },
+                        executeQueryById: {
+                            url: 'api/sql-queries/execute-query/:id',
+                            method: 'POST'
                         }
                     }
                 );

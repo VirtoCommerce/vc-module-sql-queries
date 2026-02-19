@@ -7,6 +7,9 @@
     "webpack:watch": "webpack --watch --mode=development",
     "webpack:build": "webpack --mode=production"
   },
+  "dependencies": {
+    "codemirror": "~5.65.15"
+  },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",

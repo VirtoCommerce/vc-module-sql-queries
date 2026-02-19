@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "Requêtes SQL",
         "labels": {
-          "name": "Nom"
+          "name": "Nom",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "Paramètres",
           "parameter-name": "Nom",
           "parameter-type": "Type",
-          "query": "Texte de la requête"
+          "parameter-value": "Test Value",
+          "query": "Texte de la requête",
+          "test-results": "Résultats du test",
+          "test-parameters": "Valeurs des paramètres",
+          "max-rows": "Lignes max",
+          "run": "Exécuter",
+          "executing": "Exécution de la requête...",
+          "rows-returned": "Lignes retournées",
+          "truncated": "résultat tronqué",
+          "execution-time": "Temps d'exécution",
+          "no-results": "La requête n'a retourné aucun résultat."
         },
         "messages": {
           "saveSuccess": "Requête SQL enregistrée avec succès.",
@@ -31,11 +43,45 @@
         "placeholders": {
           "format": "Sélectionner le format"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Rapport",
+        "labels": {
+          "name": "Nom",
+          "description": "Description",
+          "format": "Format d'exportation",
+          "test-results": "Résultats du test",
+          "test-parameters": "Valeurs des paramètres",
+          "max-rows": "Lignes max",
+          "run": "Exécuter",
+          "executing": "Exécution de la requête...",
+          "rows-returned": "Lignes retournées",
+          "truncated": "résultat tronqué",
+          "execution-time": "Temps d'exécution",
+          "no-results": "La requête n'a retourné aucun résultat."
+        },
+        "placeholders": {
+          "format": "Sélectionner le format"
+        }
       }
     },
     "commands": {
       "add-parameter": "Ajouter un paramètre",
-      "try-query": "Essayer la requête"
+      "try-query": "Essayer la requête",
+      "run-test": "Exécuter le test",
+      "export-report": "Exporter le rapport",
+      "view-report": "Voir le rapport",
+      "edit-report": "Modifier le rapport"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Confirmation de suppression",
+        "message": "Êtes-vous sûr de vouloir supprimer les requêtes sélectionnées ?"
+      },
+      "sql-query-save": {
+        "title": "Enregistrer les modifications",
+        "message": "La requête a été modifiée. Voulez-vous enregistrer les modifications ?"
+      }
     }
   },
   "permissions": {

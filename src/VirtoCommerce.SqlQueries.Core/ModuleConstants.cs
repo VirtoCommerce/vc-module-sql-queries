@@ -11,7 +11,6 @@ public static class ModuleConstants
             public const string Read = "sql-queries:read";
             public const string Update = "sql-queries:update";
             public const string Delete = "sql-queries:delete";
-            public const string Reports = "sql-queries:reports";
 
             public static string[] AllPermissions { get; } =
             [
@@ -20,7 +19,6 @@ public static class ModuleConstants
                 Read,
                 Update,
                 Delete,
-                Reports,
             ];
         }
     }

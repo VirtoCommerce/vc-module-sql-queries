@@ -4,7 +4,9 @@
       "sql-query-list": {
         "title": "Query SQL",
         "labels": {
-          "name": "Nome"
+          "name": "Nome",
+          "no-data-title": "No SQL queries yet",
+          "no-data-text": "Create your first query using the Add button in the toolbar above."
         }
       },
       "sql-query-details": {
@@ -16,7 +18,17 @@
           "parameters": "Parametri",
           "parameter-name": "Nome",
           "parameter-type": "Tipo",
-          "query": "Testo della query"
+          "parameter-value": "Test Value",
+          "query": "Testo della query",
+          "test-results": "Risultati del test",
+          "test-parameters": "Valori dei parametri",
+          "max-rows": "Righe max",
+          "run": "Esegui",
+          "executing": "Esecuzione query...",
+          "rows-returned": "Righe restituite",
+          "truncated": "risultato troncato",
+          "execution-time": "Tempo di esecuzione",
+          "no-results": "La query non ha restituito risultati."
         },
         "messages": {
           "saveSuccess": "Query SQL salvata con successo.",
@@ -31,11 +43,45 @@
         "placeholders": {
           "format": "Seleziona formato"
         }
+      },
+      "report-view": {
+        "title": "{{ name }} Report",
+        "labels": {
+          "name": "Nome",
+          "description": "Descrizione",
+          "format": "Formato di esportazione",
+          "test-results": "Risultati del test",
+          "test-parameters": "Valori dei parametri",
+          "max-rows": "Righe max",
+          "run": "Esegui",
+          "executing": "Esecuzione query...",
+          "rows-returned": "Righe restituite",
+          "truncated": "risultato troncato",
+          "execution-time": "Tempo di esecuzione",
+          "no-results": "La query non ha restituito risultati."
+        },
+        "placeholders": {
+          "format": "Seleziona formato"
+        }
       }
     },
     "commands": {
       "add-parameter": "Aggiungi parametro",
-      "try-query": "Prova query"
+      "try-query": "Prova query",
+      "run-test": "Esegui test",
+      "export-report": "Esporta report",
+      "view-report": "Visualizza report",
+      "edit-report": "Modifica report"
+    },
+    "dialogs": {
+      "sql-queries-delete": {
+        "title": "Conferma eliminazione",
+        "message": "Sei sicuro di voler eliminare le query selezionate?"
+      },
+      "sql-query-save": {
+        "title": "Salva modifiche",
+        "message": "La query è stata modificata. Vuoi salvare le modifiche?"
+      }
     }
   },
   "permissions": {
