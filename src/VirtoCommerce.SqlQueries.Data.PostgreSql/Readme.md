@@ -1,22 +1,19 @@
-## Package manager
-```
-Add-Migration Initial -Context VirtoCommerce.SqlQueries.Data.Repositories.SqlQueriesDbContext -Project VirtoCommerce.SqlQueries.Data.PostgreSql -StartupProject VirtoCommerce.SqlQueries.Data.PostgreSql -OutputDir Migrations -Verbose -Debug
+# Generate Migrations
+
+## Install CLI tools for Entity Framework Core
+```cmd
+dotnet tool install --global dotnet-ef --version 10.0.7
 ```
 
-### Entity Framework Core Commands
-```
-dotnet tool install --global dotnet-ef --version 8.*
+or update
+
+```cmd
+dotnet tool update --global dotnet-ef --version 10.0.7
 ```
 
-**Generate Migrations**
-```
-dotnet ef migrations add Initial -- "{connection string}"
-dotnet ef migrations add Update1 -- "{connection string}"
-dotnet ef migrations add Update2 -- "{connection string}"
-```
-etc..
+## Add Migration
+Select Data.<Provider> folder and run following command for each provider:
 
-**Apply Migrations**
-```
-dotnet ef database update -- "{connection string}"
+```cmd
+dotnet ef migrations add <migration-name>
 ```

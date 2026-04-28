@@ -8,17 +8,21 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="DinkToPdfCopy" Version="1.0.0" />
-    
-    <PackageReference Include="NPOI" Version="2.7.5" />
-    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1002.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.1002.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.1002.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.1002.0" />
+
+    <!-- Paid version after 2.8-->
+    <PackageReference Include="NPOI" Version="[2.7.5,2.8.0)" />
+    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1023.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.1023.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.1023.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.1023.0" />
+
+    <!-- Added to resolve severity vulnerability in System.Security.Cryptography.Xml 8.0.2 for NPOI -->
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.7" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.SqlQueries.Core\VirtoCommerce.SqlQueries.Core.csproj" />
