@@ -2,11 +2,11 @@ angular.module('VirtoCommerce.SqlQueriesModule')
     .controller('VirtoCommerce.SqlQueriesModule.sqlQueryListController',
         [
             '$scope',
-            'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'uiGridConstants', 'platformWebApp.uiGridHelper',
+            'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'uiGridConstants', 'platformWebApp.uiGridHelper', 'platformWebApp.bladeUtils',
             'VirtoCommerce.SqlQueriesModule.sqlQueriesApi',
             function (
                 $scope,
-                bladeNavigationService, dialogService, uiGridConstants, uiGridHelper,
+                bladeNavigationService, dialogService, uiGridConstants, uiGridHelper, bladeUtils,
                 sqlQueriesApi)
             {
                 $scope.uiGridConstants = uiGridConstants;
@@ -16,14 +16,20 @@ angular.module('VirtoCommerce.SqlQueriesModule')
 
                 blade.refresh = function () {
                     blade.isLoading = true;
-                    sqlQueriesApi.search({}, function (data) {
+                    const searchCriteria = {
+                        skip: ($scope.pageSettings.currentPage - 1) * $scope.pageSettings.itemsPerPageCount,
+                        take: $scope.pageSettings.itemsPerPageCount
+                    };
+                    sqlQueriesApi.search(searchCriteria, function (data) {
                         blade.currentEntities = data.results;
+                        $scope.pageSettings.totalItems = data.totalCount;
                         blade.isLoading = false;
                     }, function (error) {
                         if (error.status === 403) {
                             // Fall back to reports endpoint for users without read permission
-                            sqlQueriesApi.reports({}, function (data) {
+                            sqlQueriesApi.reports(searchCriteria, function (data) {
                                 blade.currentEntities = data.results;
+                                $scope.pageSettings.totalItems = data.totalCount;
                                 blade.isLoading = false;
                             }, function (error2) {
                                 bladeNavigationService.setError('Error ' + error2.status, blade);
@@ -123,7 +129,9 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                     uiGridHelper.initialize($scope, gridOptions);
                 };
 
-                blade.refresh();
+                // Initializes $scope.pageSettings and a $watch on currentPage that calls blade.refresh().
+                // The watcher fires on first digest, so an explicit blade.refresh() is not needed here.
+                bladeUtils.initializePagination($scope);
             }
         ]
     );
