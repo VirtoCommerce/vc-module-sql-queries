@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "SQLクエリのエクスポート/インポート"
+    }
+  },
   "sql-queries": {
     "blades": {
       "sql-query-list": {

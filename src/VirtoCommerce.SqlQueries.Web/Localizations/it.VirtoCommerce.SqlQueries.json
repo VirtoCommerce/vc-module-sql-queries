@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "Esportazione/Importazione di query SQL"
+    }
+  },
   "sql-queries": {
     "blades": {
       "sql-query-list": {

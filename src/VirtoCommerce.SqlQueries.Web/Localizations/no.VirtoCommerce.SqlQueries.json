@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "Eksport/import av SQL-spørringer"
+    }
+  },
   "sql-queries": {
     "title": "SQL-spørringer",
     "blades": {

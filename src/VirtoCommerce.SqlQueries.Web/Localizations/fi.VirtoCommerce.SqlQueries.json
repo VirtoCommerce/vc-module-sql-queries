@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "SQL-kyselyiden vienti/tuonti"
+    }
+  },
   "sql-queries": {
     "title": "SQL-kyselyt",
     "blades": {

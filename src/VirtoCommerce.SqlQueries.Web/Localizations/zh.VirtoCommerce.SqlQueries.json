@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "SQL 查询的导出/导入"
+    }
+  },
   "sql-queries": {
     "blades": {
       "sql-query-list": {
