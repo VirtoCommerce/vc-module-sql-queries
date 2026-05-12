@@ -1,7 +1,7 @@
 {
   "module": {
     "VirtoCommerce.SqlQueries": {
-      "description": "Exportation/Importation de requêtes SQL"
+      "description": "Sauvegarde/Restauration de requêtes SQL"
     }
   },
   "sql-queries": {

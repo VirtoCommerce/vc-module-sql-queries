@@ -1,7 +1,7 @@
 {
   "module": {
     "VirtoCommerce.SqlQueries": {
-      "description": "SQL 查询的导出/导入"
+      "description": "SQL 查询的备份/恢复"
     }
   },
   "sql-queries": {

@@ -91,17 +91,13 @@ public class Module : IModule, IExportSupport, IImportSupport, IHasConfiguration
         // Nothing to do here
     }
 
-    public Task ExportAsync(Stream outStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback,
-        ICancellationToken cancellationToken)
+    public Task ExportAsync(Stream outStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback, ICancellationToken cancellationToken)
     {
-        return _appBuilder.ApplicationServices.GetRequiredService<SqlQueriesExportImport>().DoExportAsync(outStream,
-            progressCallback, cancellationToken);
+        return _appBuilder.ApplicationServices.GetRequiredService<SqlQueriesExportImport>().DoExportAsync(outStream, progressCallback, cancellationToken);
     }
 
-    public Task ImportAsync(Stream inputStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback,
-        ICancellationToken cancellationToken)
+    public Task ImportAsync(Stream inputStream, ExportImportOptions options, Action<ExportImportProgressInfo> progressCallback, ICancellationToken cancellationToken)
     {
-        return _appBuilder.ApplicationServices.GetRequiredService<SqlQueriesExportImport>().DoImportAsync(inputStream,
-            progressCallback, cancellationToken);
+        return _appBuilder.ApplicationServices.GetRequiredService<SqlQueriesExportImport>().DoImportAsync(inputStream, progressCallback, cancellationToken);
     }
 }

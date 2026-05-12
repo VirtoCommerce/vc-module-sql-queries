@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using VirtoCommerce.Platform.Core.Common;
@@ -49,8 +48,7 @@ public sealed class SqlQueriesExportImport(
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                var exportSqlQuery = ConvertToExportSqlQuery(query);
-                jsonSerializer.Serialize(writer, exportSqlQuery);
+                jsonSerializer.Serialize(writer, query);
                 processedCount++;
             }
 
@@ -104,13 +102,13 @@ public sealed class SqlQueriesExportImport(
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var exportSqlQuery = jsonSerializer.Deserialize<SqlQueriesExportSqlQuery>(reader);
-            if (exportSqlQuery == null)
+            var query = jsonSerializer.Deserialize<SqlQuery>(reader);
+            if (query == null)
             {
                 continue;
             }
 
-            batch.Add(ConvertToSqlQuery(exportSqlQuery));
+            batch.Add(query);
 
             if (batch.Count >= BatchSize)
             {
@@ -133,45 +131,5 @@ public sealed class SqlQueriesExportImport(
             progressInfo.ProcessedCount = processedCount;
             progressCallback(progressInfo);
         }
-    }
-
-    private static SqlQueriesExportSqlQuery ConvertToExportSqlQuery(SqlQuery query)
-    {
-        return new SqlQueriesExportSqlQuery
-        {
-            Id = query.Id,
-            Name = query.Name,
-            Description = query.Description,
-            Query = query.Query,
-            ConnectionStringName = query.ConnectionStringName,
-            Parameters = query.Parameters?.Select(p => new SqlQueriesExportSqlQueryParameter
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Value = p.Value,
-                Type = p.Type,
-            }).ToList() ?? [],
-        };
-    }
-
-    private static SqlQuery ConvertToSqlQuery(SqlQueriesExportSqlQuery exportSqlQuery)
-    {
-        var query = AbstractTypeFactory<SqlQuery>.TryCreateInstance();
-        query.Id = exportSqlQuery.Id;
-        query.Name = exportSqlQuery.Name;
-        query.Description = exportSqlQuery.Description;
-        query.Query = exportSqlQuery.Query;
-        query.ConnectionStringName = exportSqlQuery.ConnectionStringName;
-        query.Parameters = exportSqlQuery.Parameters?.Select(p =>
-        {
-            var parameter = AbstractTypeFactory<SqlQueryParameter>.TryCreateInstance();
-            parameter.Id = p.Id;
-            parameter.Name = p.Name;
-            parameter.Value = p.Value;
-            parameter.Type = p.Type;
-            return parameter;
-        }).ToList() ?? [];
-
-        return query;
     }
 }
