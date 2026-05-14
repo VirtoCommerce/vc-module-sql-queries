@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "Backup/Ripristino di query SQL"
+    }
+  },
   "sql-queries": {
     "blades": {
       "sql-query-list": {

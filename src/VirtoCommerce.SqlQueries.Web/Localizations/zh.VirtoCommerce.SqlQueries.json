@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "SQL 查询的备份/恢复"
+    }
+  },
   "sql-queries": {
     "blades": {
       "sql-query-list": {

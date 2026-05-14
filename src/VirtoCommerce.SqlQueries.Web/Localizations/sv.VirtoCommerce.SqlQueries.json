@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "Säkerhetskopiering/Återställning av SQL-frågor"
+    }
+  },
   "sql-queries": {
     "title": "SQL-frågor",
     "blades": {

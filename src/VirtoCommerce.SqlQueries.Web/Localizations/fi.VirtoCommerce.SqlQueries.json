@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "SQL-kyselyiden varmuuskopiointi/palautus"
+    }
+  },
   "sql-queries": {
     "title": "SQL-kyselyt",
     "blades": {

@@ -1,4 +1,9 @@
 {
+  "module": {
+    "VirtoCommerce.SqlQueries": {
+      "description": "Kopia zapasowa/Przywracanie zapytań SQL"
+    }
+  },
   "sql-queries": {
     "blades": {
       "sql-query-list": {

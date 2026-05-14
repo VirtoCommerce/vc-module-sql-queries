@@ -7,7 +7,22 @@ This module is designed to empower administrators and developers by providing a 
 * Return results in user-friendly formats for reporting and analysis: HTML, PDF, CSV, XLSX.
 * Supports query parameters: Short Text, Dare Time, Boolean, Integer, Deceimal.
 * Supports multiple database providers: SQL Server (default), MySQL, and PostgreSQL.
-* Supports multiple connection strings. 
+* Supports multiple connection strings.
+* Platform Backup & Restore support.
+
+## Backup & Restore
+
+SQL queries are included in the platform-wide backup and restore process.
+
+When you run a platform export, all SQL queries (Name, Description, Query text, Connection string name and Parameters) are serialized into the backup archive.
+
+On import, the queries are recreated or updated, preserving their identifiers, metadata and parameter definitions.
+
+To run backup/restore:
+1. Open Virto Commerce Admin UI.
+1. Navigate to **Settings → Platform → Export** (or **Import**).
+1. Ensure **Sql Queries** module is selected in the module list.
+1. Run the export/import process.
 
 ## Screenshots
 ### No SQL queries yet
