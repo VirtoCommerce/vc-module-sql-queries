@@ -182,6 +182,32 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                     });
                 };
 
+                $scope.syncTestParamDefaults = function () {
+                    var currentParams = blade.currentEntity.parameters || [];
+                    currentParams.forEach(function (param) {
+                        if (!isEmptyValue(blade.testParamValues[param.name])) {
+                            return;
+                        }
+
+                        switch (param.type) {
+                            case 'DateTime': blade.testParamValues[param.name] = getToday(); break;
+                            case 'Integer':
+                            case 'Decimal': blade.testParamValues[param.name] = 0; break;
+                            case 'Boolean': blade.testParamValues[param.name] = false; break;
+                        }
+                    });
+                };
+
+                function isEmptyValue(value) {
+                    return angular.isUndefined(value) || value === null || value === '';
+                }
+
+                function getToday() {
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    return today;
+                }
+
                 $scope.runTestQuery = function () {
                     blade.testError = null;
                     blade.testResults = null;
@@ -237,6 +263,7 @@ angular.module('VirtoCommerce.SqlQueriesModule')
 
                 $scope.$watchCollection('blade.currentEntity.parameters', function () {
                     $scope.syncTestDatepickers();
+                    $scope.syncTestParamDefaults();
                 });
 
                 //local functions

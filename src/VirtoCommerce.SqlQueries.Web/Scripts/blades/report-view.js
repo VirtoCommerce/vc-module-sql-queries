@@ -148,10 +148,14 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                         var existing = _.find(blade.testParameters, function (tp) {
                             return tp.name === param.name;
                         });
+                        var value = existing ? existing.value : null;
+                        if (isEmptyValue(value)) {
+                            value = getDefaultParameterValue(param.type);
+                        }
                         newTestParams.push({
                             name: param.name,
                             type: param.type,
-                            value: existing ? existing.value : null
+                            value: value
                         });
                     });
 
@@ -163,6 +167,26 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                             blade.testDatepickers[param.name] = false;
                         }
                     });
+                }
+
+                function getDefaultParameterValue(type) {
+                    switch (type) {
+                        case 'DateTime': return getToday();
+                        case 'Integer':
+                        case 'Decimal': return 0;
+                        case 'Boolean': return false;
+                        default: return null;
+                    }
+                }
+
+                function getToday() {
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    return today;
+                }
+
+                function isEmptyValue(value) {
+                    return angular.isUndefined(value) || value === null || value === '';
                 }
 
                 function loadExportFormats() {

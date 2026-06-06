@@ -89,6 +89,32 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                 blade.datepickers[parameter.name] = false;
             });
 
+            //apply default values when not specified
+            blade.parameters.forEach(setDefaultParameterValue);
+
+            function setDefaultParameterValue(parameter) {
+                if (!isEmptyValue(parameter.value)) {
+                    return;
+                }
+
+                switch (parameter.type) {
+                    case 'DateTime': parameter.value = getToday(); break;
+                    case 'Integer':
+                    case 'Decimal': parameter.value = 0; break;
+                    case 'Boolean': parameter.value = false; break;
+                }
+            }
+
+            function getToday() {
+                var today = new Date();
+                today.setHours(0, 0, 0, 0);
+                return today;
+            }
+
+            function isEmptyValue(value) {
+                return angular.isUndefined(value) || value === null || value === '';
+            }
+
             //calls
             initializeToolbar();
             blade.refresh();
