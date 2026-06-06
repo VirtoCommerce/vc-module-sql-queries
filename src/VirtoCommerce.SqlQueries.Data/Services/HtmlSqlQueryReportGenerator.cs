@@ -12,6 +12,7 @@ public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
 {
     public string Format => "html";
     public string ContentType => "text/html";
+    public int Priority => 40;
 
     public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {

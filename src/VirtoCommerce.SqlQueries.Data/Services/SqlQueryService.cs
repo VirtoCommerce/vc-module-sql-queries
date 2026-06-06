@@ -168,7 +168,11 @@ public class SqlQueryService(
 
     public virtual IList<string> GetFormats()
     {
-        return generators.Select(x => x.Format).ToList();
+        return generators
+            .OrderByDescending(x => x.Priority)
+            .ThenBy(x => x.Format, StringComparer.OrdinalIgnoreCase)
+            .Select(x => x.Format)
+            .ToList();
     }
 
     public virtual DatabaseInformation GetDatabaseInformation()

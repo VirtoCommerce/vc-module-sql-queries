@@ -12,6 +12,7 @@ public class PdfSqlQueryReportGenerator(IHtmlSqlQueryReportGenerator htmlGenerat
 {
     public string Format => "pdf";
     public string ContentType => "application/pdf";
+    public int Priority => 30;
 
     public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {

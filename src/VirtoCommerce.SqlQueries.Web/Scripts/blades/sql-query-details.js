@@ -60,6 +60,11 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                         blade.connectionStringNames = information.connectionStringNames;
                         blade.databaseProvider = information.databaseProvider;
                         blade.editorOptions.mode = getSqlMimeType(information.databaseProvider);
+
+                        // preselect the only available connection string to save a click
+                        if (!blade.currentEntity.connectionStringName && blade.connectionStringNames.length === 1) {
+                            blade.currentEntity.connectionStringName = blade.connectionStringNames[0];
+                        }
                     });
                 };
 
