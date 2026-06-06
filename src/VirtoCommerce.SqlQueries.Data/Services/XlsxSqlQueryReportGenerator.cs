@@ -16,6 +16,7 @@ public class XlsxSqlQueryReportGenerator() : ISqlQueryReportGenerator
 
     public string Format => "xlsx";
     public string ContentType => "application/vnd.ms-excel";
+    public int Priority => 20;
 
     public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {

@@ -168,7 +168,11 @@ public class SqlQueryService(
 
     public virtual IList<string> GetFormats()
     {
-        return generators.Select(x => x.Format).ToList();
+        return generators
+            .OrderByDescending(x => x.Priority)
+            .ThenBy(x => x.Format, StringComparer.OrdinalIgnoreCase)
+            .Select(x => x.Format)
+            .ToList();
     }
 
     public virtual DatabaseInformation GetDatabaseInformation()
@@ -219,26 +223,17 @@ public class SqlQueryService(
 
     protected virtual object GetParameterValue(SqlQueryParameter parameter)
     {
-        var result = parameter.Value;
+        var isEmpty = parameter.Value is null ||
+            (parameter.Value is string stringValue && string.IsNullOrWhiteSpace(stringValue));
 
-        if (parameter.Type == "Integer")
+        return parameter.Type switch
         {
-            result = Convert.ToInt32(parameter.Value);
-        }
-        else if (parameter.Type == "Decimal")
-        {
-            result = Convert.ToDecimal(parameter.Value);
-        }
-        else if (parameter.Type == "DateTime")
-        {
-            result = Convert.ToDateTime(parameter.Value);
-        }
-        else if (parameter.Type == "Boolean")
-        {
-            result = Convert.ToBoolean(parameter.Value);
-        }
-
-        return result;
+            "Integer" => isEmpty ? 0 : Convert.ToInt32(parameter.Value),
+            "Decimal" => isEmpty ? 0m : Convert.ToDecimal(parameter.Value),
+            "DateTime" => isEmpty ? DateTime.Today : Convert.ToDateTime(parameter.Value),
+            "Boolean" => !isEmpty && Convert.ToBoolean(parameter.Value),
+            _ => parameter.Value,
+        };
     }
 
     private static void FillParameters(SqlQuery query, IList<SqlQueryParameter> parameters)

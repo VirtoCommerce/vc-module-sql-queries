@@ -11,6 +11,7 @@ public class CsvSqlQueryReportGenerator : ISqlQueryReportGenerator
 {
     public string Format => "csv";
     public string ContentType => "text/csv";
+    public int Priority => 10;
 
     public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {
