@@ -5,24 +5,12 @@ This module is designed to empower administrators and developers by providing a 
 * Execute custom SQL queries against the VirtoCommerce databases.
 * Integrate with the platform’s security and permissions system to control query access.
 * Return results in user-friendly formats for reporting and analysis: HTML, PDF, CSV, XLSX.
-* Supports query parameters: Short Text, Dare Time, Boolean, Integer, Deceimal.
+* Supports query parameters: Short Text, Date Time, Boolean, Integer, Decimal.
 * Supports multiple database providers: SQL Server (default), MySQL, and PostgreSQL.
 * Supports multiple connection strings.
 * Platform Backup & Restore support.
 
-## Backup & Restore
 
-SQL queries are included in the platform-wide backup and restore process.
-
-When you run a platform export, all SQL queries (Name, Description, Query text, Connection string name and Parameters) are serialized into the backup archive.
-
-On import, the queries are recreated or updated, preserving their identifiers, metadata and parameter definitions.
-
-To run backup/restore:
-1. Open Virto Commerce Admin UI.
-1. Navigate to **Settings → Platform → Export** (or **Import**).
-1. Ensure **Sql Queries** module is selected in the module list.
-1. Run the export/import process.
 
 ## Screenshots
 ### No SQL queries yet
@@ -129,6 +117,38 @@ The module registers the following permissions:
 * sql-queries:delete
   
 Assign these permissions to appropriate roles/users to manage access.
+
+## Claude Code skills
+
+This repo ships two project-scoped [Claude Code](https://claude.com/claude-code) skills under
+`.claude/skills/` that automate the module's reporting through its REST API. Pick by intent:
+
+* **vc-sql-queries-admin** — *authoring & lifecycle.* Create, edit, test/preview, search, or
+  delete saved reports and write/validate SQL. Requires `sql-queries:create` / `:update` /
+  `:delete` / `:read`.
+* **vc-sql-queries-business** — *run & export only.* Find an existing report, run it with
+  parameter values, read the rows, and export to CSV / XLSX / PDF / HTML. Requires
+  `sql-queries:access` + `sql-queries:read`. Never writes SQL.
+
+Both skills are grounded in the module source (controller routes, model field names, and the
+`sql-queries:*` permissions) and enforce the module's safety rules: read-only `SqlQueries.`-prefixed
+connections only, fully parameterized inputs, and a live preview before any report is saved.
+See each skill's `references/api.md` for the full endpoint table and request/response shapes,
+and the repo `CLAUDE.md` for shared rules and local environment setup.
+
+## Backup & Restore
+
+SQL queries are included in the platform-wide backup and restore process.
+
+When you run a platform export, all SQL queries (Name, Description, Query text, Connection string name and Parameters) are serialized into the backup archive.
+
+On import, the queries are recreated or updated, preserving their identifiers, metadata and parameter definitions.
+
+To run backup/restore:
+1. Open Virto Commerce Admin UI.
+1. Navigate to **Settings → Platform → Export** (or **Import**).
+1. Ensure **Sql Queries** module is selected in the module list.
+1. Run the export/import process.
 
 ## Documentation
 * [View on GitHub](https://github.com/VirtoCommerce/vc-module-sql-queries)
