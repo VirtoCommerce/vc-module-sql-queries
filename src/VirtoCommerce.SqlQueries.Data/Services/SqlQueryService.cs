@@ -227,7 +227,7 @@ public class SqlQueryService(
             "Integer" => isEmpty ? 0 : Convert.ToInt32(parameter.Value),
             "Decimal" => isEmpty ? 0m : Convert.ToDecimal(parameter.Value),
             "DateTime" => isEmpty ? DateTime.Today : Convert.ToDateTime(parameter.Value),
-            "Boolean" => isEmpty ? false : Convert.ToBoolean(parameter.Value),
+            "Boolean" => !isEmpty && Convert.ToBoolean(parameter.Value),
             _ => parameter.Value,
         };
     }
