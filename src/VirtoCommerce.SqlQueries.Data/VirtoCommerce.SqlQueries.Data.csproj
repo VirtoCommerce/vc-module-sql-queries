@@ -16,10 +16,10 @@
 
     <!-- Paid version after 2.8-->
     <PackageReference Include="NPOI" Version="[2.7.5,2.8.0)" />
-    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1023.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.1023.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.1023.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.1023.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1007.10" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.1007.10" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.1007.10" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.1007.10" />
 
     <!-- Added to resolve severity vulnerability in System.Security.Cryptography.Xml 8.0.2 for NPOI -->
     <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.7" />
