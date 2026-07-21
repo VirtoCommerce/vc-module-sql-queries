@@ -22,7 +22,7 @@
     <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.1007.10" />
 
     <!-- Added to resolve severity vulnerability in System.Security.Cryptography.Xml 8.0.2 for NPOI -->
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.7" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.10" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.SqlQueries.Core\VirtoCommerce.SqlQueries.Core.csproj" />
