@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using VirtoCommerce.Platform.Core.Caching;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Events;
+using VirtoCommerce.Platform.Core.Settings;
 using VirtoCommerce.Platform.Data.GenericCrud;
+using VirtoCommerce.SqlQueries.Core;
 using VirtoCommerce.SqlQueries.Core.Events;
 using VirtoCommerce.SqlQueries.Core.Models;
 using VirtoCommerce.SqlQueries.Core.Services;
@@ -24,10 +26,22 @@ public class SqlQueryService(
     IPlatformMemoryCache platformMemoryCache,
     IEventPublisher eventPublisher,
     IEnumerable<ISqlQueryReportGenerator> generators,
-    IConfiguration configuration)
+    IConfiguration configuration,
+    ISettingsManager settingsManager)
     : CrudService<SqlQuery, SqlQueryEntity, SqlQueryChangingEvent, SqlQueryChangedEvent>(repositoryFactory, platformMemoryCache, eventPublisher), ISqlQueryService
 {
     private const string SqlQueryConnectionStringPrefix = "SqlQueries.";
+
+    // Kept for backward compatibility of external subclasses created before the settings manager dependency was added.
+    public SqlQueryService(
+        Func<ISqlQueriesRepository> repositoryFactory,
+        IPlatformMemoryCache platformMemoryCache,
+        IEventPublisher eventPublisher,
+        IEnumerable<ISqlQueryReportGenerator> generators,
+        IConfiguration configuration)
+        : this(repositoryFactory, platformMemoryCache, eventPublisher, generators, configuration, settingsManager: null)
+    {
+    }
 
     protected override Task<IList<SqlQueryEntity>> LoadEntities(IRepository repository, IList<string> ids, string responseGroup)
     {
@@ -52,6 +66,7 @@ public class SqlQueryService(
 
         using var command = connection.CreateCommand();
         command.CommandText = query.Query;
+        command.CommandTimeout = await GetCommandTimeoutAsync();
 
         if (!query.Parameters.IsNullOrEmpty())
         {
@@ -86,6 +101,8 @@ public class SqlQueryService(
         const int maxRowCeiling = 1000;
         var maxRows = Math.Clamp(request.MaxRows, 1, maxRowCeiling);
 
+        var commandTimeout = await GetCommandTimeoutAsync();
+
         var result = new SqlQueryExecuteResult();
         var stopwatch = Stopwatch.StartNew();
 
@@ -99,7 +116,7 @@ public class SqlQueryService(
         {
             using var command = connection.CreateCommand();
             command.CommandText = request.Query;
-            command.CommandTimeout = 30;
+            command.CommandTimeout = commandTimeout;
             command.Transaction = transaction;
 
             if (!request.Parameters.IsNullOrEmpty())
@@ -246,6 +263,20 @@ public class SqlQueryService(
                 existingParameter.Value = parameter.Value;
             }
         }
+    }
+
+    /// <summary>
+    /// Returns the command timeout (in seconds) from the SqlQueries.General.CommandTimeout setting.
+    /// A missing or non-positive value falls back to the default: 0 would mean "wait indefinitely" in ADO.NET,
+    /// which must not happen for a request-bound query that holds an open connection and transaction.
+    /// </summary>
+    protected virtual async Task<int> GetCommandTimeoutAsync()
+    {
+        var commandTimeout = settingsManager is null
+            ? ModuleConstants.Settings.General.DefaultCommandTimeout
+            : await settingsManager.GetValueAsync<int>(ModuleConstants.Settings.General.CommandTimeout);
+
+        return commandTimeout > 0 ? commandTimeout : ModuleConstants.Settings.General.DefaultCommandTimeout;
     }
 
     private string GetDatabaseProvider()
