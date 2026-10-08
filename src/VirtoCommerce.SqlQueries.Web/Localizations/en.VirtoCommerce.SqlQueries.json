@@ -23,6 +23,7 @@
           "connection-string-name": "Connection string name",
           "database-provider": "Database provider",
           "description": "Description",
+          "edit-description": "Edit description",
           "parameters": "Parameters",
           "parameter-name": "Name",
           "parameter-type": "Type",

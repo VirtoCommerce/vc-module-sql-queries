@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "SQLクエリ",
     "blades": {
       "sql-query-list": {
         "title": "SQLクエリ",
         "labels": {
           "name": "名前",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "SQLクエリはまだありません",
+          "no-data-text": "上のツールバーの［追加］ボタンを使用して、最初のクエリを作成してください。"
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} クエリ",
+        "title": "クエリの詳細",
         "title-add": "新しいクエリ",
         "labels": {
           "name": "名前",
           "connection-string-name": "接続文字列名",
+          "database-provider": "データベースプロバイダー",
+          "description": "説明",
+          "edit-description": "説明を編集",
           "parameters": "パラメータ",
           "parameter-name": "名前",
           "parameter-type": "タイプ",
-          "parameter-value": "Test Value",
+          "parameter-value": "テスト値",
           "query": "クエリテキスト",
           "test-results": "テスト結果",
           "test-parameters": "パラメータ値",
@@ -35,6 +39,14 @@
           "execution-time": "実行時間",
           "no-results": "クエリは結果を返しませんでした。"
         },
+        "placeholders": {
+          "name": "クエリ名を入力",
+          "connection-string-name": "接続文字列を選択",
+          "description": "クエリの説明を入力",
+          "parameter-name": "パラメーター名を入力",
+          "parameter-type": "パラメーターの種類を選択",
+          "query": "クエリテキストを入力"
+        },
         "messages": {
           "saveSuccess": "SQLクエリが正常に保存されました。",
           "deleteSuccess": "SQLクエリが正常に削除されました。"
@@ -43,7 +55,9 @@
       "report-execution": {
         "title": "{{ name }} レポート",
         "labels": {
-          "format": "フォーマット"
+          "format": "フォーマット",
+          "name": "名前",
+          "description": "説明"
         },
         "placeholders": {
           "format": "フォーマットを選択"
@@ -63,7 +77,8 @@
           "rows-returned": "返された行数",
           "truncated": "結果が切り捨てられました",
           "execution-time": "実行時間",
-          "no-results": "クエリは結果を返しませんでした。"
+          "no-results": "クエリは結果を返しませんでした。",
+          "export": "エクスポート"
         },
         "placeholders": {
           "format": "フォーマットを選択"
@@ -96,5 +111,11 @@
     "sql-queries:update": "SQLクエリ関連データを更新",
     "sql-queries:delete": "SQLクエリ関連データを削除",
     "sql-queries:reports": "レポートを実行およびアクセス"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "クエリ実行タイムアウト（秒）",
+      "description": "SQLクエリのプレビュー、実行、またはレポートとしてのエクスポート時に、タイムアウトエラーでキャンセルされるまでに実行できる最大時間（秒）。既定値: 30。"
+    }
   }
 }

@@ -97,6 +97,63 @@
   margin-top: 10px;
 }
 
+/* collapsible description: one-line preview, expands to an editor on click */
+/* sized like the blade's single-line inputs so the collapsed field keeps the form rhythm */
+.sql-description-preview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+    height: 34px;
+    padding: 5px 10px;
+    border: 1px solid #eaedf3;
+    background: #fff;
+    color: #4c4c4c;
+    font-size: 13px;
+    cursor: text;
+    overflow: hidden;
+}
+
+.sql-description-preview:hover,
+.sql-description-preview:focus {
+    border-color: #1890ff;
+    outline: none;
+}
+
+.sql-description-text,
+.sql-description-placeholder {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sql-description-placeholder {
+    color: #a1a7b3;
+}
+
+.sql-description-edit-icon {
+    flex-shrink: 0;
+    color: #8094ae;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.sql-description-preview:hover .sql-description-edit-icon,
+.sql-description-preview:focus .sql-description-edit-icon {
+    opacity: 1;
+}
+
+.sql-description-editor {
+    /* grow with content where supported, rows="4" otherwise */
+    field-sizing: content;
+    min-height: 80px;
+    max-height: 240px;
+    resize: vertical;
+}
+
 /* SQL CodeMirror editor */
 .sql-editor-wrapper .CodeMirror {
     height: 200px;

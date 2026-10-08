@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "Consultas SQL",
     "blades": {
       "sql-query-list": {
         "title": "Consultas SQL",
         "labels": {
           "name": "Nombre",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Aún no hay consultas SQL",
+          "no-data-text": "Cree su primera consulta con el botón Añadir de la barra de herramientas superior."
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} consulta",
+        "title": "Detalles de la consulta",
         "title-add": "Nueva consulta",
         "labels": {
           "name": "Nombre",
           "connection-string-name": "Nombre de la cadena de conexión",
+          "database-provider": "Proveedor de base de datos",
+          "description": "Descripción",
+          "edit-description": "Editar descripción",
           "parameters": "Parámetros",
           "parameter-name": "Nombre",
           "parameter-type": "Tipo",
-          "parameter-value": "Test Value",
+          "parameter-value": "Valor de prueba",
           "query": "Texto de la consulta",
           "test-results": "Resultados de prueba",
           "test-parameters": "Valores de parámetros",
@@ -35,6 +39,14 @@
           "execution-time": "Tiempo de ejecución",
           "no-results": "La consulta no devolvió resultados."
         },
+        "placeholders": {
+          "name": "Introduzca el nombre de la consulta",
+          "connection-string-name": "Seleccione la cadena de conexión",
+          "description": "Introduzca la descripción de la consulta",
+          "parameter-name": "Introduzca el nombre del parámetro",
+          "parameter-type": "Seleccione el tipo de parámetro",
+          "query": "Introduzca el texto de la consulta"
+        },
         "messages": {
           "saveSuccess": "Consulta SQL guardada exitosamente.",
           "deleteSuccess": "Consulta SQL eliminada exitosamente."
@@ -43,7 +55,9 @@
       "report-execution": {
         "title": "{{ name }} informe",
         "labels": {
-          "format": "Formato"
+          "format": "Formato",
+          "name": "Nombre",
+          "description": "Descripción"
         },
         "placeholders": {
           "format": "Seleccionar formato"
@@ -63,7 +77,8 @@
           "rows-returned": "Filas devueltas",
           "truncated": "resultado truncado",
           "execution-time": "Tiempo de ejecución",
-          "no-results": "La consulta no devolvió resultados."
+          "no-results": "La consulta no devolvió resultados.",
+          "export": "Exportar"
         },
         "placeholders": {
           "format": "Seleccionar formato"
@@ -96,5 +111,11 @@
     "sql-queries:update": "Actualizar datos relacionados con consultas SQL",
     "sql-queries:delete": "Eliminar datos relacionados con consultas SQL",
     "sql-queries:reports": "Ejecutar y acceder a informes"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Tiempo de espera de ejecución de la consulta (segundos)",
+      "description": "Tiempo máximo, en segundos, que una consulta SQL puede ejecutarse al previsualizarla, ejecutarla o exportarla como informe antes de cancelarse con un error de tiempo de espera. Valor predeterminado: 30."
+    }
   }
 }

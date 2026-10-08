@@ -25,6 +25,8 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                 blade.testMaxRows = 100;
                 blade.testDatepickers = {};
                 blade.editingParams = {};
+                blade.descriptionExpanded = false;
+                blade.descriptionFocusPreview = false;
                 blade.editorOptions = {
                     lineNumbers: true,
                     lineWrapping: true,
@@ -110,6 +112,31 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                             bladeNavigationService.setError('Error ' + error.status, blade);
                             blade.isLoading = false;
                         });
+                    }
+                };
+
+                $scope.expandDescription = function () {
+                    blade.descriptionFocusPreview = false;
+                    blade.descriptionExpanded = true;
+                };
+
+                $scope.collapseDescription = function (returnFocus) {
+                    blade.descriptionFocusPreview = !!returnFocus;
+                    blade.descriptionExpanded = false;
+                };
+
+                $scope.onDescriptionPreviewKeydown = function ($event) {
+                    if ($event.key === 'Enter' || $event.key === ' ') {
+                        $event.preventDefault();
+                        $scope.expandDescription();
+                    }
+                };
+
+                $scope.onDescriptionEditorKeydown = function ($event) {
+                    if ($event.key === 'Escape') {
+                        $event.preventDefault();
+                        $event.stopPropagation();
+                        $scope.collapseDescription(true);
                     }
                 };
 

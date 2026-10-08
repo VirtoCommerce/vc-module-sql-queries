@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "Requêtes SQL",
     "blades": {
       "sql-query-list": {
         "title": "Requêtes SQL",
         "labels": {
           "name": "Nom",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Aucune requête SQL pour le moment",
+          "no-data-text": "Créez votre première requête à l'aide du bouton Ajouter de la barre d'outils ci-dessus."
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} requête",
+        "title": "Détails de la requête",
         "title-add": "Nouvelle requête",
         "labels": {
           "name": "Nom",
           "connection-string-name": "Nom de la chaîne de connexion",
+          "database-provider": "Fournisseur de base de données",
+          "description": "Description",
+          "edit-description": "Modifier la description",
           "parameters": "Paramètres",
           "parameter-name": "Nom",
           "parameter-type": "Type",
-          "parameter-value": "Test Value",
+          "parameter-value": "Valeur de test",
           "query": "Texte de la requête",
           "test-results": "Résultats du test",
           "test-parameters": "Valeurs des paramètres",
@@ -35,6 +39,14 @@
           "execution-time": "Temps d'exécution",
           "no-results": "La requête n'a retourné aucun résultat."
         },
+        "placeholders": {
+          "name": "Saisissez le nom de la requête",
+          "connection-string-name": "Sélectionnez la chaîne de connexion",
+          "description": "Saisissez la description de la requête",
+          "parameter-name": "Saisissez le nom du paramètre",
+          "parameter-type": "Sélectionnez le type de paramètre",
+          "query": "Saisissez le texte de la requête"
+        },
         "messages": {
           "saveSuccess": "Requête SQL enregistrée avec succès.",
           "deleteSuccess": "Requête SQL supprimée avec succès."
@@ -43,7 +55,9 @@
       "report-execution": {
         "title": "{{ name }} rapport",
         "labels": {
-          "format": "Format"
+          "format": "Format",
+          "name": "Nom",
+          "description": "Description"
         },
         "placeholders": {
           "format": "Sélectionner le format"
@@ -63,7 +77,8 @@
           "rows-returned": "Lignes retournées",
           "truncated": "résultat tronqué",
           "execution-time": "Temps d'exécution",
-          "no-results": "La requête n'a retourné aucun résultat."
+          "no-results": "La requête n'a retourné aucun résultat.",
+          "export": "Exporter"
         },
         "placeholders": {
           "format": "Sélectionner le format"
@@ -96,5 +111,11 @@
     "sql-queries:update": "Mettre à jour les données liées aux requêtes SQL",
     "sql-queries:delete": "Supprimer les données liées aux requêtes SQL",
     "sql-queries:reports": "Exécuter et accéder aux rapports"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Délai d'exécution des requêtes (secondes)",
+      "description": "Durée maximale, en secondes, pendant laquelle une requête SQL peut s'exécuter lors de l'aperçu, de l'exécution ou de l'export en rapport avant d'être annulée avec une erreur de délai d'attente. Par défaut : 30."
+    }
   }
 }
