@@ -61,6 +61,7 @@ public class XlsxSqlQueryReportGeneratorTests
 
         Assert.Equal(new DateTime(2026, 2, 3, 14, 15, 16).ToOADate().ToString(CultureInfo.InvariantCulture), workbook.GetNumber("A2"));
         Assert.Equal("dd.MM.yyyy HH:mm:ss", workbook.GetNumberFormat("A2"));
+        Assert.True(workbook.GetColumnWidth(1) >= "dd.MM.yyyy HH:mm:ss".Length, $"Column is too narrow for the date format: {workbook.GetColumnWidth(1)}");
     }
 
     [Fact]
@@ -74,6 +75,7 @@ public class XlsxSqlQueryReportGeneratorTests
 
         Assert.Equal(new DateTime(2026, 2, 3).ToOADate().ToString(CultureInfo.InvariantCulture), workbook.GetNumber("A2"));
         Assert.Equal("dd.MM.yyyy", workbook.GetNumberFormat("A2"));
+        Assert.True(workbook.GetColumnWidth(1) >= "dd.MM.yyyy".Length, $"Column is too narrow for the date format: {workbook.GetColumnWidth(1)}");
     }
 
     [Fact]
@@ -128,6 +130,7 @@ public class XlsxSqlQueryReportGeneratorTests
     private sealed class XlsxWorkbook
     {
         private readonly Dictionary<string, XElement> _cells;
+        private readonly List<XElement> _columns;
         private readonly List<string> _sharedStrings;
         private readonly List<XElement> _cellFormats;
         private readonly Dictionary<int, string> _numberFormats;
@@ -140,6 +143,7 @@ public class XlsxSqlQueryReportGeneratorTests
 
             var sheet = Load(archive, "xl/worksheets/sheet1.xml");
             _cells = sheet.Descendants(Ns + "c").ToDictionary(x => x.Attribute("r")!.Value);
+            _columns = sheet.Descendants(Ns + "col").ToList();
 
             var sharedStrings = Load(archive, "xl/sharedStrings.xml");
             _sharedStrings = sharedStrings?.Root!.Elements(Ns + "si").Select(x => string.Concat(x.Descendants(Ns + "t").Select(t => t.Value))).ToList() ?? [];
@@ -153,6 +157,14 @@ public class XlsxSqlQueryReportGeneratorTests
         public IList<string> EntryNames { get; }
 
         public int CellStyleCount => _cellFormats.Count;
+
+        // Width of a 1-based column, or 0 when the sheet does not set one (Excel then uses about 8.43)
+        public double GetColumnWidth(int column)
+        {
+            var col = _columns.FirstOrDefault(x => int.Parse(x.Attribute("min")!.Value) <= column && column <= int.Parse(x.Attribute("max")!.Value));
+
+            return col == null ? 0 : double.Parse(col.Attribute("width")!.Value, CultureInfo.InvariantCulture);
+        }
 
         public XElement GetCell(string reference)
         {

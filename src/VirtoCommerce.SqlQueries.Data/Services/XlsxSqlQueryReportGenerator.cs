@@ -58,7 +58,8 @@ public class XlsxSqlQueryReportGenerator : ISqlQueryReportGenerator
 
             if (format != null)
             {
-                yield return new DynamicExcelColumn(column.Caption) { Format = format };
+                // Excel shows ##### for a date that does not fit, so size the column to the formatted value
+                yield return new DynamicExcelColumn(column.Caption) { Format = format, Width = format.Length + 2 };
             }
         }
     }
