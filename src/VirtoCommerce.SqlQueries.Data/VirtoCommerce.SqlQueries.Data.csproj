@@ -13,9 +13,7 @@
       <IncludeAssets>runtime; build; native; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="DinkToPdfCopy" Version="1.0.0" />
-
-    <!-- Paid version after 2.8-->
-    <PackageReference Include="NPOI" Version="[2.7.5,2.8.0)" />
+    <PackageReference Include="MiniExcel" Version="1.46.0" />
     <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1007.27" />
     <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.1007.27" />
     <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.1007.27" />
