@@ -23,6 +23,7 @@
           "connection-string-name": "Connection string name",
           "database-provider": "Database provider",
           "description": "Description",
+          "edit-description": "Edit description",
           "parameters": "Parameters",
           "parameter-name": "Name",
           "parameter-type": "Type",
@@ -110,5 +111,11 @@
     "sql-queries:update": "Update SQL Queries related data",
     "sql-queries:delete": "Delete SQL Queries related data",
     "sql-queries:reports": "Execute and access reports"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Query execution timeout (seconds)",
+      "description": "Maximum time, in seconds, a SQL query may run when it is previewed, executed or exported as a report before it is cancelled with a timeout error. Default: 30."
+    }
   }
 }

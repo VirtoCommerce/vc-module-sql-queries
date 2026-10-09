@@ -11,8 +11,8 @@
         "title": "SQL-kyselyt",
         "labels": {
           "name": "Nimi",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Ei vielä SQL-kyselyitä",
+          "no-data-text": "Luo ensimmäinen kyselysi yllä olevan työkalurivin Lisää-painikkeella."
         }
       },
       "sql-query-details": {
@@ -23,10 +23,11 @@
           "connection-string-name": "Yhteysmerkkijonon nimi",
           "database-provider": "Tietokantapalvelin",
           "description": "Kuvaus",
+          "edit-description": "Muokkaa kuvausta",
           "parameters": "Parametrit",
           "parameter-name": "Nimi",
           "parameter-type": "Tyyppi",
-          "parameter-value": "Test Value",
+          "parameter-value": "Testiarvo",
           "query": "Kyselyteksti",
           "test-results": "Testitulokset",
           "test-parameters": "Parametriarvot",
@@ -76,7 +77,8 @@
           "rows-returned": "Palautetut rivit",
           "truncated": "tulos katkaistu",
           "execution-time": "Suoritusaika",
-          "no-results": "Kysely ei palauttanut tuloksia."
+          "no-results": "Kysely ei palauttanut tuloksia.",
+          "export": "Vie"
         },
         "placeholders": {
           "format": "Valitse muoto"
@@ -109,5 +111,11 @@
     "sql-queries:update": "Päivitä SQL-kyselyihin liittyviä tietoja",
     "sql-queries:delete": "Poista SQL-kyselyihin liittyviä tietoja",
     "sql-queries:reports": "Suorita ja käytä raportteja"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Kyselyn suorituksen aikakatkaisu (sekuntia)",
+      "description": "Enimmäisaika sekunteina, jonka SQL-kysely voi olla käynnissä esikatselussa, suorituksessa tai raporttina viennissä, ennen kuin se peruutetaan aikakatkaisuvirheellä. Oletus: 30."
+    }
   }
 }

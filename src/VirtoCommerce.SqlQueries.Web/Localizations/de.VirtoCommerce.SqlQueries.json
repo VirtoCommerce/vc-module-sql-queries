@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "SQL-Abfragen",
     "blades": {
       "sql-query-list": {
         "title": "SQL-Abfragen",
         "labels": {
           "name": "Name",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Noch keine SQL-Abfragen",
+          "no-data-text": "Erstellen Sie Ihre erste Abfrage über die Schaltfläche „Hinzufügen“ in der Symbolleiste oben."
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} Abfrage",
+        "title": "Abfragedetails",
         "title-add": "Neue Abfrage",
         "labels": {
           "name": "Name",
           "connection-string-name": "Verbindungszeichenfolge-Name",
+          "database-provider": "Datenbankanbieter",
+          "description": "Beschreibung",
+          "edit-description": "Beschreibung bearbeiten",
           "parameters": "Parameter",
           "parameter-name": "Name",
           "parameter-type": "Typ",
-          "parameter-value": "Test Value",
+          "parameter-value": "Testwert",
           "query": "Abfrage-Text",
           "test-results": "Testergebnisse",
           "test-parameters": "Parameterwerte",
@@ -35,6 +39,14 @@
           "execution-time": "Ausführungszeit",
           "no-results": "Abfrage hat keine Ergebnisse zurückgegeben."
         },
+        "placeholders": {
+          "name": "Abfragenamen eingeben",
+          "connection-string-name": "Verbindungszeichenfolge auswählen",
+          "description": "Abfragebeschreibung eingeben",
+          "parameter-name": "Parameternamen eingeben",
+          "parameter-type": "Parametertyp auswählen",
+          "query": "Abfragetext eingeben"
+        },
         "messages": {
           "saveSuccess": "SQL-Abfrage erfolgreich gespeichert.",
           "deleteSuccess": "SQL-Abfrage erfolgreich gelöscht."
@@ -43,7 +55,9 @@
       "report-execution": {
         "title": "{{ name }} Bericht",
         "labels": {
-          "format": "Format"
+          "format": "Format",
+          "name": "Name",
+          "description": "Beschreibung"
         },
         "placeholders": {
           "format": "Format auswählen"
@@ -63,7 +77,8 @@
           "rows-returned": "Zurückgegebene Zeilen",
           "truncated": "Ergebnis abgeschnitten",
           "execution-time": "Ausführungszeit",
-          "no-results": "Abfrage hat keine Ergebnisse zurückgegeben."
+          "no-results": "Abfrage hat keine Ergebnisse zurückgegeben.",
+          "export": "Exportieren"
         },
         "placeholders": {
           "format": "Format auswählen"
@@ -96,5 +111,11 @@
     "sql-queries:update": "SQL-Abfrage-bezogene Daten aktualisieren",
     "sql-queries:delete": "SQL-Abfrage-bezogene Daten löschen",
     "sql-queries:reports": "Berichte ausführen und anzeigen"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Zeitlimit für Abfrageausführung (Sekunden)",
+      "description": "Maximale Zeit in Sekunden, die eine SQL-Abfrage bei Vorschau, Ausführung oder Export als Bericht laufen darf, bevor sie mit einem Zeitüberschreitungsfehler abgebrochen wird. Standard: 30."
+    }
   }
 }

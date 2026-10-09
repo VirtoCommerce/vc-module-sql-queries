@@ -11,8 +11,8 @@
         "title": "SQL-spørringer",
         "labels": {
           "name": "Navn",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Ingen SQL-spørringer ennå",
+          "no-data-text": "Opprett din første spørring med Legg til-knappen i verktøylinjen ovenfor."
         }
       },
       "sql-query-details": {
@@ -23,10 +23,11 @@
           "connection-string-name": "Tilkoblingsstrengnavn",
           "database-provider": "Databaseleverandør",
           "description": "Beskrivelse",
+          "edit-description": "Rediger beskrivelse",
           "parameters": "Parametere",
           "parameter-name": "Navn",
           "parameter-type": "Type",
-          "parameter-value": "Test Value",
+          "parameter-value": "Testverdi",
           "query": "Spørringstekst",
           "test-results": "Testresultater",
           "test-parameters": "Parameterverdier",
@@ -76,7 +77,8 @@
           "rows-returned": "Returnerte rader",
           "truncated": "resultat avkortet",
           "execution-time": "Kjøretid",
-          "no-results": "Spørringen returnerte ingen resultater."
+          "no-results": "Spørringen returnerte ingen resultater.",
+          "export": "Eksporter"
         },
         "placeholders": {
           "format": "Velg format"
@@ -109,5 +111,11 @@
     "sql-queries:update": "Oppdatere SQL-spørringer-relaterte data",
     "sql-queries:delete": "Slette SQL-spørringer-relaterte data",
     "sql-queries:reports": "Kjøre og få tilgang til rapporter"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Tidsavbrudd for spørringskjøring (sekunder)",
+      "description": "Maksimal tid i sekunder en SQL-spørring kan kjøre ved forhåndsvisning, kjøring eller eksport som rapport før den avbrytes med en tidsavbruddsfeil. Standard: 30."
+    }
   }
 }

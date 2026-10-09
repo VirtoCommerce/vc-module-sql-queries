@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "SQL-запросы",
     "blades": {
       "sql-query-list": {
         "title": "SQL-запросы",
         "labels": {
           "name": "Имя",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "SQL-запросов пока нет",
+          "no-data-text": "Создайте первый запрос с помощью кнопки «Добавить» на панели инструментов выше."
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} запрос",
+        "title": "Сведения о запросе",
         "title-add": "Новый запрос",
         "labels": {
           "name": "Имя",
           "connection-string-name": "Имя строки подключения",
+          "database-provider": "Поставщик базы данных",
+          "description": "Описание",
+          "edit-description": "Редактировать описание",
           "parameters": "Параметры",
           "parameter-name": "Имя",
           "parameter-type": "Тип",
-          "parameter-value": "Test Value",
+          "parameter-value": "Тестовое значение",
           "query": "Текст запроса",
           "test-results": "Результаты теста",
           "test-parameters": "Значения параметров",
@@ -35,6 +39,14 @@
           "execution-time": "Время выполнения",
           "no-results": "Запрос не вернул результатов."
         },
+        "placeholders": {
+          "name": "Введите название запроса",
+          "connection-string-name": "Выберите строку подключения",
+          "description": "Введите описание запроса",
+          "parameter-name": "Введите имя параметра",
+          "parameter-type": "Выберите тип параметра",
+          "query": "Введите текст запроса"
+        },
         "messages": {
           "saveSuccess": "SQL-запрос успешно сохранен.",
           "deleteSuccess": "SQL-запрос успешно удален."
@@ -43,7 +55,9 @@
       "report-execution": {
         "title": "{{ name }} отчет",
         "labels": {
-          "format": "Формат"
+          "format": "Формат",
+          "name": "Имя",
+          "description": "Описание"
         },
         "placeholders": {
           "format": "Выберите формат"
@@ -63,7 +77,8 @@
           "rows-returned": "Возвращено строк",
           "truncated": "результат усечён",
           "execution-time": "Время выполнения",
-          "no-results": "Запрос не вернул результатов."
+          "no-results": "Запрос не вернул результатов.",
+          "export": "Экспорт"
         },
         "placeholders": {
           "format": "Выберите формат"
@@ -96,5 +111,11 @@
     "sql-queries:update": "Обновить данные, связанные с SQL-запросами",
     "sql-queries:delete": "Удалить данные, связанные с SQL-запросами",
     "sql-queries:reports": "Выполнить и получить доступ к отчетам"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Тайм-аут выполнения запроса (секунды)",
+      "description": "Максимальное время в секундах, в течение которого SQL-запрос может выполняться при предпросмотре, выполнении или экспорте в отчёт, прежде чем он будет отменён с ошибкой тайм-аута. По умолчанию: 30."
+    }
   }
 }

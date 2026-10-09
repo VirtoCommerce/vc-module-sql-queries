@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "Query SQL",
     "blades": {
       "sql-query-list": {
         "title": "Query SQL",
         "labels": {
           "name": "Nome",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Nessuna query SQL",
+          "no-data-text": "Crea la tua prima query con il pulsante Aggiungi nella barra degli strumenti in alto."
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} query",
+        "title": "Dettagli della query",
         "title-add": "Nuova query",
         "labels": {
           "name": "Nome",
           "connection-string-name": "Nome stringa di connessione",
+          "database-provider": "Provider del database",
+          "description": "Descrizione",
+          "edit-description": "Modifica descrizione",
           "parameters": "Parametri",
           "parameter-name": "Nome",
           "parameter-type": "Tipo",
-          "parameter-value": "Test Value",
+          "parameter-value": "Valore di test",
           "query": "Testo della query",
           "test-results": "Risultati del test",
           "test-parameters": "Valori dei parametri",
@@ -35,22 +39,32 @@
           "execution-time": "Tempo di esecuzione",
           "no-results": "La query non ha restituito risultati."
         },
+        "placeholders": {
+          "name": "Inserisci il nome della query",
+          "connection-string-name": "Seleziona la stringa di connessione",
+          "description": "Inserisci la descrizione della query",
+          "parameter-name": "Inserisci il nome del parametro",
+          "parameter-type": "Seleziona il tipo di parametro",
+          "query": "Inserisci il testo della query"
+        },
         "messages": {
           "saveSuccess": "Query SQL salvata con successo.",
           "deleteSuccess": "Query SQL eliminata con successo."
         }
       },
       "report-execution": {
-        "title": "{{ name }} report",
+        "title": "Report {{ name }}",
         "labels": {
-          "format": "Formato"
+          "format": "Formato",
+          "name": "Nome",
+          "description": "Descrizione"
         },
         "placeholders": {
           "format": "Seleziona formato"
         }
       },
       "report-view": {
-        "title": "{{ name }} Report",
+        "title": "Report {{ name }}",
         "labels": {
           "name": "Nome",
           "description": "Descrizione",
@@ -63,7 +77,8 @@
           "rows-returned": "Righe restituite",
           "truncated": "risultato troncato",
           "execution-time": "Tempo di esecuzione",
-          "no-results": "La query non ha restituito risultati."
+          "no-results": "La query non ha restituito risultati.",
+          "export": "Esporta"
         },
         "placeholders": {
           "format": "Seleziona formato"
@@ -96,5 +111,11 @@
     "sql-queries:update": "Aggiorna dati relativi alle Query SQL",
     "sql-queries:delete": "Elimina dati relativi alle Query SQL",
     "sql-queries:reports": "Esegui e accedi ai report"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Timeout di esecuzione della query (secondi)",
+      "description": "Tempo massimo, in secondi, per cui una query SQL può essere eseguita durante l'anteprima, l'esecuzione o l'esportazione come report prima di essere annullata con un errore di timeout. Predefinito: 30."
+    }
   }
 }
