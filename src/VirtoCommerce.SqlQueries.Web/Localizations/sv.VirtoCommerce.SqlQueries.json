@@ -11,8 +11,8 @@
         "title": "SQL-frågor",
         "labels": {
           "name": "Namn",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Inga SQL-frågor ännu",
+          "no-data-text": "Skapa din första fråga med knappen Lägg till i verktygsfältet ovan."
         }
       },
       "sql-query-details": {
@@ -23,10 +23,11 @@
           "connection-string-name": "Anslutningssträngsnamn",
           "database-provider": "Databasleverantör",
           "description": "Beskrivning",
+          "edit-description": "Redigera beskrivning",
           "parameters": "Parametrar",
           "parameter-name": "Namn",
           "parameter-type": "Typ",
-          "parameter-value": "Test Value",
+          "parameter-value": "Testvärde",
           "query": "Frågetext",
           "test-results": "Testresultat",
           "test-parameters": "Parametervärden",
@@ -76,7 +77,8 @@
           "rows-returned": "Returnerade rader",
           "truncated": "resultat avkortat",
           "execution-time": "Exekveringstid",
-          "no-results": "Frågan returnerade inga resultat."
+          "no-results": "Frågan returnerade inga resultat.",
+          "export": "Exportera"
         },
         "placeholders": {
           "format": "Välj format"
@@ -109,5 +111,11 @@
     "sql-queries:update": "Uppdatera SQL-frågerelaterad data",
     "sql-queries:delete": "Ta bort SQL-frågerelaterad data",
     "sql-queries:reports": "Kör och få tillgång till rapporter"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Tidsgräns för frågekörning (sekunder)",
+      "description": "Maximal tid i sekunder som en SQL-fråga får köras vid förhandsgranskning, körning eller export som rapport innan den avbryts med ett tidsgränsfel. Standard: 30."
+    }
   }
 }

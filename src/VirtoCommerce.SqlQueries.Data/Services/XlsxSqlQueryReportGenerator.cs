@@ -1,50 +1,31 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
+using System.Linq;
+using MiniExcelLibs;
+using MiniExcelLibs.Attributes;
+using MiniExcelLibs.OpenXml;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.SqlQueries.Core.Models;
 using VirtoCommerce.SqlQueries.Core.Services;
 
 namespace VirtoCommerce.SqlQueries.Data.Services;
 
-public class XlsxSqlQueryReportGenerator() : ISqlQueryReportGenerator
+public class XlsxSqlQueryReportGenerator : ISqlQueryReportGenerator
 {
     protected const string DateFormat = "dd.MM.yyyy";
-    protected const string DateTimeFormat = "dd.MM.yyyy HH:mm.ss";
+    protected const string DateTimeFormat = "dd.MM.yyyy HH:mm:ss";
 
     public string Format => "xlsx";
-    public string ContentType => "application/vnd.ms-excel";
+    public string ContentType => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     public int Priority => 20;
 
     public virtual SqlQueryReport GenerateReport(DataTable table, SqlQueryReportContext context)
     {
-        var workbook = new XSSFWorkbook();
-
-        var sheet = workbook.CreateSheet();
-
-        var headerRow = sheet.CreateRow(0);
-        for (var colIndex = 0; colIndex < table.Columns.Count; colIndex++)
-        {
-            var headerCell = headerRow.CreateCell(colIndex);
-            SetCellValue(headerCell, table.Columns[colIndex].ColumnName);
-        }
-
-        for (var rowIndex = 0; rowIndex < table.Rows.Count; rowIndex++)
-        {
-            var row = sheet.CreateRow(rowIndex + 1);
-
-            for (var colIndex = 0; colIndex < table.Columns.Count; colIndex++)
-            {
-                var cell = row.CreateCell(colIndex);
-                SetCellValue(cell, table.Rows[rowIndex].ItemArray.GetValue(colIndex));
-            }
-        }
-
         using var memoryStream = new MemoryStream();
 
-        workbook.Write(memoryStream);
+        MiniExcel.SaveAs(memoryStream, table, excelType: ExcelType.XLSX, configuration: CreateConfiguration(table));
 
         var result = AbstractTypeFactory<SqlQueryReport>.TryCreateInstance();
         result.Content = memoryStream.ToArray();
@@ -53,57 +34,50 @@ public class XlsxSqlQueryReportGenerator() : ISqlQueryReportGenerator
         return result;
     }
 
-    protected virtual void SetCellValue(ICell cell, object dataValue)
+    protected virtual OpenXmlConfiguration CreateConfiguration(DataTable table)
     {
-        if (dataValue == null)
+        return new OpenXmlConfiguration
         {
-            return;
-        }
+            // Write binary columns as text instead of embedding them into the workbook as files or images
+            EnableConvertByteArray = false,
+            TrimColumnNames = false,
+            DynamicColumns = GetDynamicColumns(table).ToArray(),
+        };
+    }
 
-        if (dataValue is string stringValue)
+    protected virtual IEnumerable<DynamicExcelColumn> GetDynamicColumns(DataTable table)
+    {
+        // MiniExcel matches dynamic columns by name case-insensitively and fails on duplicates
+        var columns = table.Columns
+            .Cast<DataColumn>()
+            .DistinctBy(x => x.Caption, StringComparer.OrdinalIgnoreCase);
+
+        foreach (var column in columns)
         {
-            cell.SetCellValue(stringValue);
-        }
-        else if (IsNumber(dataValue))
-        {
-            cell.SetCellValue(Convert.ToDouble(dataValue));
-        }
-        else if (dataValue is bool booleanValue)
-        {
-            cell.SetCellValue(booleanValue);
-        }
-        else if (dataValue is DateTime dateTimeValue)
-        {
-            SetCellDateFormat(cell, DateFormat);
-            cell.SetCellValue(dateTimeValue);
-        }
-        else if (dataValue is DateOnly dateOnlyValue)
-        {
-            SetCellDateFormat(cell, DateTimeFormat);
-            cell.SetCellValue(dateOnlyValue);
-        }
-        else
-        {
-            cell.SetCellValue(dataValue.ToString());
+            var format = GetColumnFormat(column);
+
+            if (format != null)
+            {
+                // Excel shows ##### for a date that does not fit, so size the column to the formatted value
+                yield return new DynamicExcelColumn(column.Caption) { Format = format, Width = format.Length + 2 };
+            }
         }
     }
 
-    protected void SetCellDateFormat(ICell cell, string format)
+    protected virtual string GetColumnFormat(DataColumn column)
     {
-        var dateStyle = cell.Sheet.Workbook.CreateCellStyle();
-        var dateFormat = cell.Sheet.Workbook.CreateDataFormat();
-        dateStyle.DataFormat = dateFormat.GetFormat(format);
-        cell.CellStyle = dateStyle;
-    }
+        var type = column.DataType;
 
-    protected bool IsNumber(object value)
-    {
-        return value is double
-            || value is decimal
-            || value is int
-            || value is short
-            || value is long
-            || value is float
-            || value is byte;
+        if (type == typeof(DateTime) || type == typeof(DateTimeOffset))
+        {
+            return DateTimeFormat;
+        }
+
+        if (type == typeof(DateOnly))
+        {
+            return DateFormat;
+        }
+
+        return null;
     }
 }

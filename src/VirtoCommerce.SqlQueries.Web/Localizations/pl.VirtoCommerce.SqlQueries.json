@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "Zapytania SQL",
     "blades": {
       "sql-query-list": {
         "title": "Zapytania SQL",
         "labels": {
           "name": "Nazwa",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "Brak zapytań SQL",
+          "no-data-text": "Utwórz pierwsze zapytanie za pomocą przycisku Dodaj na pasku narzędzi powyżej."
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} zapytanie",
+        "title": "Szczegóły zapytania",
         "title-add": "Nowe zapytanie",
         "labels": {
           "name": "Nazwa",
           "connection-string-name": "Nazwa łańcucha połączenia",
+          "database-provider": "Dostawca bazy danych",
+          "description": "Opis",
+          "edit-description": "Edytuj opis",
           "parameters": "Parametry",
           "parameter-name": "Nazwa",
           "parameter-type": "Typ",
-          "parameter-value": "Test Value",
+          "parameter-value": "Wartość testowa",
           "query": "Tekst zapytania",
           "test-results": "Wyniki testu",
           "test-parameters": "Wartości parametrów",
@@ -35,6 +39,14 @@
           "execution-time": "Czas wykonania",
           "no-results": "Zapytanie nie zwróciło wyników."
         },
+        "placeholders": {
+          "name": "Wprowadź nazwę zapytania",
+          "connection-string-name": "Wybierz parametry połączenia",
+          "description": "Wprowadź opis zapytania",
+          "parameter-name": "Wprowadź nazwę parametru",
+          "parameter-type": "Wybierz typ parametru",
+          "query": "Wprowadź treść zapytania"
+        },
         "messages": {
           "saveSuccess": "Zapytanie SQL zostało pomyślnie zapisane.",
           "deleteSuccess": "Zapytanie SQL zostało pomyślnie usunięte."
@@ -43,7 +55,9 @@
       "report-execution": {
         "title": "{{ name }} raport",
         "labels": {
-          "format": "Format"
+          "format": "Format",
+          "name": "Nazwa",
+          "description": "Opis"
         },
         "placeholders": {
           "format": "Wybierz format"
@@ -63,7 +77,8 @@
           "rows-returned": "Zwrócone wiersze",
           "truncated": "wynik obcięty",
           "execution-time": "Czas wykonania",
-          "no-results": "Zapytanie nie zwróciło wyników."
+          "no-results": "Zapytanie nie zwróciło wyników.",
+          "export": "Eksportuj"
         },
         "placeholders": {
           "format": "Wybierz format"
@@ -96,5 +111,11 @@
     "sql-queries:update": "Aktualizuj dane związane z zapytaniami SQL",
     "sql-queries:delete": "Usuń dane związane z zapytaniami SQL",
     "sql-queries:reports": "Wykonuj i uzyskuj dostęp do raportów"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "Limit czasu wykonania zapytania (sekundy)",
+      "description": "Maksymalny czas w sekundach, przez jaki zapytanie SQL może działać podczas podglądu, wykonania lub eksportu jako raport, zanim zostanie anulowane z błędem przekroczenia limitu czasu. Domyślnie: 30."
+    }
   }
 }

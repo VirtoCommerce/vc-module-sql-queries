@@ -5,25 +5,29 @@
     }
   },
   "sql-queries": {
+    "title": "SQL 查询",
     "blades": {
       "sql-query-list": {
         "title": "SQL 查询",
         "labels": {
           "name": "名称",
-          "no-data-title": "No SQL queries yet",
-          "no-data-text": "Create your first query using the Add button in the toolbar above."
+          "no-data-title": "暂无 SQL 查询",
+          "no-data-text": "使用上方工具栏中的“添加”按钮创建第一个查询。"
         }
       },
       "sql-query-details": {
-        "title": "{{ name }} 查询",
+        "title": "查询详细信息",
         "title-add": "新建查询",
         "labels": {
           "name": "名称",
           "connection-string-name": "连接字符串名称",
+          "database-provider": "数据库提供程序",
+          "description": "描述",
+          "edit-description": "编辑描述",
           "parameters": "参数",
           "parameter-name": "名称",
           "parameter-type": "类型",
-          "parameter-value": "Test Value",
+          "parameter-value": "测试值",
           "query": "查询文本",
           "test-results": "测试结果",
           "test-parameters": "参数值",
@@ -35,6 +39,14 @@
           "execution-time": "执行时间",
           "no-results": "查询未返回任何结果。"
         },
+        "placeholders": {
+          "name": "输入查询名称",
+          "connection-string-name": "选择连接字符串",
+          "description": "输入查询描述",
+          "parameter-name": "输入参数名称",
+          "parameter-type": "选择参数类型",
+          "query": "输入查询文本"
+        },
         "messages": {
           "saveSuccess": "SQL 查询保存成功。",
           "deleteSuccess": "SQL 查询删除成功。"
@@ -43,7 +55,9 @@
       "report-execution": {
         "title": "{{ name }} 报告",
         "labels": {
-          "format": "格式"
+          "format": "格式",
+          "name": "名称",
+          "description": "描述"
         },
         "placeholders": {
           "format": "选择格式"
@@ -63,7 +77,8 @@
           "rows-returned": "返回行数",
           "truncated": "结果已截断",
           "execution-time": "执行时间",
-          "no-results": "查询未返回任何结果。"
+          "no-results": "查询未返回任何结果。",
+          "export": "导出"
         },
         "placeholders": {
           "format": "选择格式"
@@ -96,5 +111,11 @@
     "sql-queries:update": "更新 SQL 查询相关数据",
     "sql-queries:delete": "删除 SQL 查询相关数据",
     "sql-queries:reports": "执行并访问报告"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "查询执行超时（秒）",
+      "description": "预览、执行 SQL 查询或将其导出为报表时，查询在因超时错误被取消前可运行的最长时间（秒）。默认值：30。"
+    }
   }
 }

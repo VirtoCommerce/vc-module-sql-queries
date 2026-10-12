@@ -80,6 +80,10 @@ public class Module : IModule, IExportSupport, IImportSupport, IHasConfiguration
         var permissionsRegistrar = serviceProvider.GetRequiredService<IPermissionsRegistrar>();
         permissionsRegistrar.RegisterPermissions(ModuleInfo.Id, "SqlQueries", ModuleConstants.Security.Permissions.AllPermissions);
 
+        // Register settings
+        var settingsRegistrar = serviceProvider.GetRequiredService<ISettingsRegistrar>();
+        settingsRegistrar.RegisterSettings(ModuleConstants.Settings.AllSettings, ModuleInfo.Id);
+
         // Apply migrations
         using var serviceScope = serviceProvider.CreateScope();
         using var dbContext = serviceScope.ServiceProvider.GetRequiredService<SqlQueriesDbContext>();
