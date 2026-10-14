@@ -14,7 +14,6 @@
       "EDIT_REPORT": "Edit report"
     },
     "LIST": {
-      "TITLE": "SQL Queries",
       "NAME": "Name",
       "DESCRIPTION": "Description",
       "EMPTY_TITLE": "No SQL queries yet",

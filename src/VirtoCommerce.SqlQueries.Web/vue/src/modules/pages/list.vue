@@ -1,6 +1,6 @@
 <template>
   <VcBlade
-    :title="$t('SQL_QUERIES.LIST.TITLE')"
+    :title="$t('SQL_QUERIES.MENU.TITLE')"
     :toolbar-items="bladeToolbar"
     :loading="loading"
     width="50%"
