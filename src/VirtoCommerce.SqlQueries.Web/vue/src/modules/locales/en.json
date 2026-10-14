@@ -1,6 +1,6 @@
 {
   "SQL_QUERIES": {
-    "MENU": { "TITLE": "SQL queries" },
+    "MENU": { "TITLE": "SQL Queries" },
     "TOOLBAR": {
       "REFRESH": "Refresh",
       "ADD": "Add",
@@ -14,7 +14,7 @@
       "EDIT_REPORT": "Edit report"
     },
     "LIST": {
-      "TITLE": "SQL queries",
+      "TITLE": "SQL Queries",
       "NAME": "Name",
       "DESCRIPTION": "Description",
       "EMPTY_TITLE": "No SQL queries yet",

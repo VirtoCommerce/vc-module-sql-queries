@@ -5,7 +5,7 @@
       {
         "id": "sql-queries",
         "sectionId": "configuration",
-        "title": "SQL queries",
+        "title": "SQL Queries",
         "icon": "lucide-database-zap",
         "route": "/sql-queries",
         "permission": "sql-queries:access",
