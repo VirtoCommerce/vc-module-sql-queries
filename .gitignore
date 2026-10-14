@@ -338,3 +338,5 @@ ASALocalRun/
 dist/
 **/Properties/launchSettings.json
 /.serena
+# Admin Shell plugin build output (built from src/VirtoCommerce.SqlQueries.Web/vue)
+src/VirtoCommerce.SqlQueries.Web/plugins/

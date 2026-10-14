@@ -1,0 +1,62 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQL queries" },
+    "TOOLBAR": {
+      "REFRESH": "Refresh",
+      "ADD": "Add",
+      "DELETE": "Delete",
+      "SAVE": "Save",
+      "CREATE": "Create",
+      "RESET": "Reset",
+      "RUN": "Run",
+      "EXPORT": "Export",
+      "VIEW_REPORT": "View report",
+      "EDIT_REPORT": "Edit report"
+    },
+    "LIST": {
+      "TITLE": "SQL queries",
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "EMPTY_TITLE": "No SQL queries yet",
+      "EMPTY_TEXT": "Create your first query using the Add button in the toolbar above."
+    },
+    "DETAILS": {
+      "TITLE": "Query details",
+      "NEW": "New query",
+      "CONNECTION": "Connection string name",
+      "CONNECTION_PLACEHOLDER": "Select connection string name",
+      "NO_CONNECTIONS": "No connection strings with the \"SqlQueries.\" prefix are configured on this platform, so queries can't run. Add one (e.g. ConnectionStrings:SqlQueries.Reports) to the platform configuration.",
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Enter query name",
+      "DESCRIPTION": "Description",
+      "DESCRIPTION_PLACEHOLDER": "Enter query description",
+      "QUERY": "Query text ({provider})",
+      "QUERY_PLACEHOLDER": "Enter query text",
+      "PARAMETERS": "Parameters ({count})",
+      "ADD_PARAMETER": "Add parameter",
+      "PARAMETER_NAME": "Name",
+      "PARAMETER_TYPE": "Type",
+      "PARAMETER_VALUE": "Test value",
+      "REMOVE_PARAMETER": "Remove parameter",
+      "NO_PARAMETERS": "No parameters. Reference a parameter in the query as {'@'}name.",
+      "TEST": "Test query",
+      "CLOSE_CONFIRMATION": "The query has been modified. Close without saving?"
+    },
+    "REPORT": {
+      "TITLE": "{name} report",
+      "PARAMETERS": "Parameter values ({count})",
+      "FORMAT": "Export format"
+    },
+    "RUN": {
+      "MAX_ROWS": "Max rows",
+      "ROWS_RETURNED": "Rows returned: {count}",
+      "TRUNCATED": "result truncated",
+      "EXECUTION_TIME": "Execution time: {ms} ms",
+      "NO_RESULTS": "Query returned no results.",
+      "FAILED": "An error occurred while executing the query."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Are you sure you want to delete the selected queries?"
+    }
+  }
+}
