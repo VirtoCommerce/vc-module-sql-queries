@@ -1,6 +1,4 @@
 {
-  // SQL queries admin UI for the Admin Shell host (Module Federation remote).
-  // The legacy item (browse/sql-queries) isn't in the host's seed menu, so nothing is replaced.
   "remote": { "name": "sqlqueries_admin", "exposed": "./Module" },
   "contributions": {
     "menu": [

@@ -217,7 +217,8 @@ function addParameter() {
   const names = (item.value.parameters ?? []).map((p) => p.name);
   let index = 1;
   while (names.includes(`param${index}`)) index++;
-  (item.value.parameters ??= []).push({ name: `param${index}`, type: "ShortText" });
+  item.value.parameters ??= [];
+  item.value.parameters.push({ name: `param${index}`, type: "ShortText" });
 }
 
 // test values aren't part of the query: keyed by parameter name + type (a type change starts from that type's
@@ -234,7 +235,7 @@ watch(
   { immediate: true },
 );
 
-const { maxRows, result, error, running, run } = useQueryRun(async (maxRows) =>
+const { maxRows, result, error, running, run } = useQueryRun(async (rows) =>
   (await getApiClient()).executeQuery({
     query: item.value.query,
     connectionStringName: item.value.connectionStringName,
@@ -243,7 +244,7 @@ const { maxRows, result, error, running, run } = useQueryRun(async (maxRows) =>
       type: p.type,
       value: testValues.value[valueKey(p)],
     })),
-    maxRows,
+    maxRows: rows,
   }),
 );
 

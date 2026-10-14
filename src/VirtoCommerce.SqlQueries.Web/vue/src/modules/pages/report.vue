@@ -93,8 +93,8 @@ const formats = ref<{ id: string; title: string }[]>([]);
 const format = ref<string>();
 const title = computed(() => t("SQL_QUERIES.REPORT.TITLE", { name: item.value.name ?? "" }));
 
-const { maxRows, result, error, running, run } = useQueryRun(async (maxRows) =>
-  (await getApiClient()).executeQueryById(param.value!, { parameters: parameters.value, maxRows }),
+const { maxRows, result, error, running, run } = useQueryRun(async (rows) =>
+  (await getApiClient()).executeQueryById(param.value!, { parameters: parameters.value, maxRows: rows }),
 );
 
 const { loading, action: load } = useAsync(async () => {
