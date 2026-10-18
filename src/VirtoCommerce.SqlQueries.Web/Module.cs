@@ -1,8 +1,6 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using DinkToPdf;
-using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -60,15 +58,12 @@ public class Module : IModule, IExportSupport, IImportSupport, IHasConfiguration
         serviceCollection.AddTransient<ISqlQueryService, SqlQueryService>();
         serviceCollection.AddTransient<ISqlQuerySearchService, SqlQuerySearchService>();
 
-        serviceCollection.AddTransient<ISqlQueryReportGenerator, PdfSqlQueryReportGenerator>();
         serviceCollection.AddTransient<ISqlQueryReportGenerator, CsvSqlQueryReportGenerator>();
         serviceCollection.AddTransient<IHtmlSqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
         serviceCollection.AddTransient<ISqlQueryReportGenerator, HtmlSqlQueryReportGenerator>();
         serviceCollection.AddTransient<ISqlQueryReportGenerator, XlsxSqlQueryReportGenerator>();
 
         serviceCollection.AddTransient<SqlQueriesExportImport>();
-
-        serviceCollection.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
     }
 
     public void PostInitialize(IApplicationBuilder appBuilder)

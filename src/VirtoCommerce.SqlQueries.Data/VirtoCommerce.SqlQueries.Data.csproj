@@ -8,16 +8,15 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.10">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.13">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="DinkToPdfCopy" Version="1.0.0" />
     <PackageReference Include="MiniExcel" Version="1.46.0" />
-    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1007.27" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.1007.27" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.1007.27" />
-    <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.1007.27" />
+    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.1007.28" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.MySql" Version="3.1007.28" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.PostgreSql" Version="3.1007.28" />
+    <PackageReference Include="VirtoCommerce.Platform.Data.SqlServer" Version="3.1007.28" />
 
   </ItemGroup>
   <ItemGroup>
