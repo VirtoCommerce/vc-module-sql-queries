@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQL-spørringer" },
+    "TOOLBAR": {
+      "REFRESH": "Oppdater",
+      "ADD": "Legg til",
+      "DELETE": "Slett",
+      "SAVE": "Lagre",
+      "CREATE": "Opprett",
+      "RESET": "Tilbakestill",
+      "RUN": "Kjør",
+      "EXPORT": "Eksporter",
+      "VIEW_REPORT": "Vis rapport",
+      "EDIT_REPORT": "Rediger rapport"
+    },
+    "LIST": {
+      "NAME": "Navn",
+      "DESCRIPTION": "Beskrivelse",
+      "EMPTY_TITLE": "Ingen SQL-spørringer ennå",
+      "EMPTY_TEXT": "Opprett den første spørringen med Legg til-knappen i verktøylinjen ovenfor."
+    },
+    "DETAILS": {
+      "TITLE": "Spørringsdetaljer",
+      "NEW": "Ny spørring",
+      "CONNECTION": "Tilkoblingsstrengnavn",
+      "CONNECTION_PLACEHOLDER": "Velg tilkoblingsstrengnavn",
+      "NO_CONNECTIONS": "Ingen tilkoblingsstrenger med prefikset \"SqlQueries.\" er konfigurert på denne plattformen, så spørringer kan ikke kjøres. Legg til en (f.eks. ConnectionStrings:SqlQueries.Reports) i plattformkonfigurasjonen.",
+      "NAME": "Navn",
+      "NAME_PLACEHOLDER": "Skriv inn spørringsnavn",
+      "DESCRIPTION": "Beskrivelse",
+      "DESCRIPTION_PLACEHOLDER": "Skriv inn spørringsbeskrivelse",
+      "QUERY": "Spørringstekst ({provider})",
+      "QUERY_PLACEHOLDER": "Skriv inn spørringstekst",
+      "PARAMETERS": "Parametere ({count})",
+      "ADD_PARAMETER": "Legg til parameter",
+      "PARAMETER_NAME": "Navn",
+      "PARAMETER_TYPE": "Type",
+      "PARAMETER_VALUE": "Testverdi",
+      "REMOVE_PARAMETER": "Fjern parameter",
+      "NO_PARAMETERS": "Ingen parametere. Referer til en parameter i spørringen som {'@'}name.",
+      "TEST": "Test spørring",
+      "CLOSE_CONFIRMATION": "Spørringen er endret. Lukke uten å lagre?"
+    },
+    "REPORT": {
+      "TITLE": "Rapport: {name}",
+      "PARAMETERS": "Parameterverdier ({count})",
+      "FORMAT": "Eksportformat"
+    },
+    "RUN": {
+      "MAX_ROWS": "Maks rader",
+      "ROWS_RETURNED": "Returnerte rader: {count}",
+      "TRUNCATED": "resultat avkortet",
+      "EXECUTION_TIME": "Kjøretid: {ms} ms",
+      "NO_RESULTS": "Spørringen returnerte ingen resultater.",
+      "FAILED": "Det oppstod en feil under kjøring av spørringen."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Er du sikker på at du vil slette de valgte spørringene?"
+    }
+  }
+}

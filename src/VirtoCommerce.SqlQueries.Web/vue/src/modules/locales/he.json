@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "שאילתות SQL" },
+    "TOOLBAR": {
+      "REFRESH": "רענון",
+      "ADD": "הוספה",
+      "DELETE": "מחיקה",
+      "SAVE": "שמירה",
+      "CREATE": "יצירה",
+      "RESET": "איפוס",
+      "RUN": "הרצה",
+      "EXPORT": "ייצוא",
+      "VIEW_REPORT": "הצגת דוח",
+      "EDIT_REPORT": "עריכת דוח"
+    },
+    "LIST": {
+      "NAME": "שם",
+      "DESCRIPTION": "תיאור",
+      "EMPTY_TITLE": "אין עדיין שאילתות SQL",
+      "EMPTY_TEXT": "יש ליצור את השאילתה הראשונה באמצעות הלחצן 'הוספה' בסרגל הכלים שלמעלה."
+    },
+    "DETAILS": {
+      "TITLE": "פרטי השאילתה",
+      "NEW": "שאילתה חדשה",
+      "CONNECTION": "שם מחרוזת החיבור",
+      "CONNECTION_PLACEHOLDER": "יש לבחור שם של מחרוזת חיבור",
+      "NO_CONNECTIONS": "לא הוגדרו בפלטפורמה זו מחרוזות חיבור עם הקידומת \"SqlQueries.\", ולכן לא ניתן להריץ שאילתות. יש להוסיף מחרוזת כזו (לדוגמה ConnectionStrings:SqlQueries.Reports) לתצורת הפלטפורמה.",
+      "NAME": "שם",
+      "NAME_PLACEHOLDER": "יש להזין שם לשאילתה",
+      "DESCRIPTION": "תיאור",
+      "DESCRIPTION_PLACEHOLDER": "יש להזין תיאור לשאילתה",
+      "QUERY": "טקסט השאילתה ({provider})",
+      "QUERY_PLACEHOLDER": "יש להזין את טקסט השאילתה",
+      "PARAMETERS": "פרמטרים ({count})",
+      "ADD_PARAMETER": "הוספת פרמטר",
+      "PARAMETER_NAME": "שם",
+      "PARAMETER_TYPE": "סוג",
+      "PARAMETER_VALUE": "ערך לבדיקה",
+      "REMOVE_PARAMETER": "הסרת פרמטר",
+      "NO_PARAMETERS": "אין פרמטרים. ניתן להפנות לפרמטר בשאילתה בצורה {'@'}name.",
+      "TEST": "בדיקת השאילתה",
+      "CLOSE_CONFIRMATION": "השאילתה שונתה. האם לסגור בלי לשמור?"
+    },
+    "REPORT": {
+      "TITLE": "דוח {name}",
+      "PARAMETERS": "ערכי פרמטרים ({count})",
+      "FORMAT": "פורמט ייצוא"
+    },
+    "RUN": {
+      "MAX_ROWS": "מספר שורות מרבי",
+      "ROWS_RETURNED": "שורות שהוחזרו: {count}",
+      "TRUNCATED": "התוצאה קוצרה",
+      "EXECUTION_TIME": "זמן ביצוע: {ms} ms",
+      "NO_RESULTS": "השאילתה לא החזירה תוצאות.",
+      "FAILED": "אירעה שגיאה בעת הרצת השאילתה."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "האם למחוק את השאילתות שנבחרו?"
+    }
+  }
+}

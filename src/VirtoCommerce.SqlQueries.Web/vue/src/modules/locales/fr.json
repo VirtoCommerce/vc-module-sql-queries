@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "Requêtes SQL" },
+    "TOOLBAR": {
+      "REFRESH": "Actualiser",
+      "ADD": "Ajouter",
+      "DELETE": "Supprimer",
+      "SAVE": "Enregistrer",
+      "CREATE": "Créer",
+      "RESET": "Réinitialiser",
+      "RUN": "Exécuter",
+      "EXPORT": "Exporter",
+      "VIEW_REPORT": "Voir le rapport",
+      "EDIT_REPORT": "Modifier le rapport"
+    },
+    "LIST": {
+      "NAME": "Nom",
+      "DESCRIPTION": "Description",
+      "EMPTY_TITLE": "Aucune requête SQL pour le moment",
+      "EMPTY_TEXT": "Créez votre première requête avec le bouton Ajouter de la barre d'outils ci-dessus."
+    },
+    "DETAILS": {
+      "TITLE": "Détails de la requête",
+      "NEW": "Nouvelle requête",
+      "CONNECTION": "Nom de la chaîne de connexion",
+      "CONNECTION_PLACEHOLDER": "Sélectionnez le nom de la chaîne de connexion",
+      "NO_CONNECTIONS": "Aucune chaîne de connexion avec le préfixe \"SqlQueries.\" n'est configurée sur cette plateforme : les requêtes ne peuvent donc pas s'exécuter. Ajoutez-en une (par ex. ConnectionStrings:SqlQueries.Reports) à la configuration de la plateforme.",
+      "NAME": "Nom",
+      "NAME_PLACEHOLDER": "Saisissez le nom de la requête",
+      "DESCRIPTION": "Description",
+      "DESCRIPTION_PLACEHOLDER": "Saisissez la description de la requête",
+      "QUERY": "Texte de la requête ({provider})",
+      "QUERY_PLACEHOLDER": "Saisissez le texte de la requête",
+      "PARAMETERS": "Paramètres ({count})",
+      "ADD_PARAMETER": "Ajouter un paramètre",
+      "PARAMETER_NAME": "Nom",
+      "PARAMETER_TYPE": "Type",
+      "PARAMETER_VALUE": "Valeur de test",
+      "REMOVE_PARAMETER": "Retirer le paramètre",
+      "NO_PARAMETERS": "Aucun paramètre. Faites référence à un paramètre dans la requête sous la forme {'@'}name.",
+      "TEST": "Tester la requête",
+      "CLOSE_CONFIRMATION": "La requête a été modifiée. Fermer sans enregistrer ?"
+    },
+    "REPORT": {
+      "TITLE": "Rapport {name}",
+      "PARAMETERS": "Valeurs des paramètres ({count})",
+      "FORMAT": "Format d'exportation"
+    },
+    "RUN": {
+      "MAX_ROWS": "Lignes max.",
+      "ROWS_RETURNED": "Lignes retournées : {count}",
+      "TRUNCATED": "résultat tronqué",
+      "EXECUTION_TIME": "Temps d'exécution : {ms} ms",
+      "NO_RESULTS": "La requête n'a retourné aucun résultat.",
+      "FAILED": "Une erreur s'est produite lors de l'exécution de la requête."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Voulez-vous vraiment supprimer les requêtes sélectionnées ?"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+// SQL queries blades (plain CSS with the host tokens: Tailwind classes only exist when the host uses them)
+.sqlq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sqlq-code textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre;
+  tab-size: 4;
+  min-height: 260px;
+}
+
+.sqlq-card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.sqlq-hint {
+  color: var(--color-neutral-500);
+  font-size: 13px;
+}
+
+.sqlq-param {
+  display: grid;
+  grid-template-columns: minmax(140px, 1fr) minmax(140px, 1fr) minmax(160px, 1.4fr) auto;
+  gap: 12px;
+  align-items: end;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-neutral-200);
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.sqlq-run {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+
+  &__rows {
+    width: 140px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sqlq-param {
+    grid-template-columns: 1fr auto;
+
+    &__name,
+    &__type,
+    &__value {
+      grid-column: 1 / -1;
+    }
+
+    &__remove {
+      grid-column: 2;
+    }
+  }
+}
+
+.sqlq-description {
+  white-space: pre-wrap;
+}
+
+.sqlq-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  align-items: start;
+}
+
+.sqlq-run__format {
+  width: 180px;
+}

@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQLクエリ" },
+    "TOOLBAR": {
+      "REFRESH": "更新",
+      "ADD": "追加",
+      "DELETE": "削除",
+      "SAVE": "保存",
+      "CREATE": "作成",
+      "RESET": "リセット",
+      "RUN": "実行",
+      "EXPORT": "エクスポート",
+      "VIEW_REPORT": "レポートを表示",
+      "EDIT_REPORT": "レポートを編集"
+    },
+    "LIST": {
+      "NAME": "名前",
+      "DESCRIPTION": "説明",
+      "EMPTY_TITLE": "SQLクエリはまだありません",
+      "EMPTY_TEXT": "上部のツールバーの [追加] ボタンを使用して、最初のクエリを作成してください。"
+    },
+    "DETAILS": {
+      "TITLE": "クエリの詳細",
+      "NEW": "新しいクエリ",
+      "CONNECTION": "接続文字列名",
+      "CONNECTION_PLACEHOLDER": "接続文字列名を選択",
+      "NO_CONNECTIONS": "このプラットフォームには \"SqlQueries.\" プレフィックスの接続文字列が構成されていないため、クエリを実行できません。プラットフォームの構成に接続文字列 (例: ConnectionStrings:SqlQueries.Reports) を追加してください。",
+      "NAME": "名前",
+      "NAME_PLACEHOLDER": "クエリ名を入力",
+      "DESCRIPTION": "説明",
+      "DESCRIPTION_PLACEHOLDER": "クエリの説明を入力",
+      "QUERY": "クエリテキスト ({provider})",
+      "QUERY_PLACEHOLDER": "クエリテキストを入力",
+      "PARAMETERS": "パラメータ ({count})",
+      "ADD_PARAMETER": "パラメータを追加",
+      "PARAMETER_NAME": "名前",
+      "PARAMETER_TYPE": "タイプ",
+      "PARAMETER_VALUE": "テスト値",
+      "REMOVE_PARAMETER": "パラメータを削除",
+      "NO_PARAMETERS": "パラメータがありません。クエリ内ではパラメータを {'@'}name の形式で参照します。",
+      "TEST": "クエリをテスト",
+      "CLOSE_CONFIRMATION": "クエリが変更されています。保存せずに閉じますか？"
+    },
+    "REPORT": {
+      "TITLE": "{name} レポート",
+      "PARAMETERS": "パラメータ値 ({count})",
+      "FORMAT": "エクスポートフォーマット"
+    },
+    "RUN": {
+      "MAX_ROWS": "最大行数",
+      "ROWS_RETURNED": "返された行数: {count}",
+      "TRUNCATED": "結果が切り捨てられました",
+      "EXECUTION_TIME": "実行時間: {ms} ms",
+      "NO_RESULTS": "クエリは結果を返しませんでした。",
+      "FAILED": "クエリの実行中にエラーが発生しました。"
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "選択したクエリを削除してもよろしいですか？"
+    }
+  }
+}
