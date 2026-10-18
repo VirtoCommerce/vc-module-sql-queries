@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -97,7 +98,18 @@ public class SqlQueriesController(
     [Authorize(Permissions.Read)]
     public async Task<ActionResult<SqlQuerySearchResult>> ExecuteReport([FromRoute] string id, [FromRoute] string format, [FromBody] IList<SqlQueryParameter> sqlQueryParameters)
     {
+        if (!sqlQueryService.GetFormats().Contains(format, StringComparer.OrdinalIgnoreCase))
+        {
+            return BadRequest($"Report format '{format}' is not supported.");
+        }
+
         var query = await sqlQueryService.GetByIdAsync(id);
+
+        if (query == null)
+        {
+            return NotFound();
+        }
+
         var context = new SqlQueryReportContext
         {
             Name = query.Name,

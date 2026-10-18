@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.SqlQueries.Core.Models;
@@ -8,7 +9,7 @@ using VirtoCommerce.SqlQueries.Core.Services;
 
 namespace VirtoCommerce.SqlQueries.Data.Services;
 
-public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
+public partial class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
 {
     public string Format => "html";
     public string ContentType => "text/html";
@@ -50,12 +51,15 @@ public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
         sb.AppendLine("</div>");
 
         // Table
+        var isNumeric = new bool[table.Columns.Count];
+
         sb.AppendLine("<table>");
         sb.AppendLine("<thead><tr>");
 
-        foreach (DataColumn column in table.Columns)
+        for (var i = 0; i < table.Columns.Count; i++)
         {
-            sb.AppendLine($"<th>{HttpUtility.HtmlEncode(column.ColumnName)}</th>");
+            isNumeric[i] = IsNumericColumn(table.Columns[i]);
+            sb.AppendLine($"<th{GetClassAttribute(isNumeric[i], longWord: false)}>{FormatColumnName(table.Columns[i].ColumnName)}</th>");
         }
 
         sb.AppendLine("</tr></thead>");
@@ -65,10 +69,11 @@ public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
         {
             sb.AppendLine("<tr>");
 
-            foreach (var item in row.ItemArray)
+            for (var i = 0; i < table.Columns.Count; i++)
             {
+                var item = row[i];
                 var value = item is DBNull ? "" : item?.ToString() ?? "";
-                sb.AppendLine($"<td>{HttpUtility.HtmlEncode(value)}</td>");
+                sb.AppendLine($"<td{GetClassAttribute(isNumeric[i], HasLongWord(value))}>{HttpUtility.HtmlEncode(value)}</td>");
             }
 
             sb.AppendLine("</tr>");
@@ -90,6 +95,54 @@ public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
         report.ContentType = ContentType;
 
         return report;
+    }
+
+    protected virtual bool IsNumericColumn(DataColumn column)
+    {
+        return Type.GetTypeCode(Nullable.GetUnderlyingType(column.DataType) ?? column.DataType) is >= TypeCode.SByte and <= TypeCode.Decimal;
+    }
+
+    private static string GetClassAttribute(bool numeric, bool longWord)
+    {
+        return (numeric, longWord) switch
+        {
+            (true, true) => " class=\"num long-word\"",
+            (true, false) => " class=\"num\"",
+            (false, true) => " class=\"long-word\"",
+            _ => "",
+        };
+    }
+
+    /// <summary>
+    /// Lets a column name such as LastPasswordChangedDate wrap between its words in print;
+    /// on screen the header stays on one line.
+    /// </summary>
+    protected virtual string FormatColumnName(string columnName)
+    {
+        return WordBoundaryRegex().Replace(HttpUtility.HtmlEncode(columnName), "<wbr>");
+    }
+
+    /// <summary>
+    /// A value with a word longer than this (a hash, token, or URL) may break anywhere in print,
+    /// otherwise its column alone would set the minimum width of the whole table.
+    /// </summary>
+    protected virtual int LongWordLength => 30;
+
+    protected virtual bool HasLongWord(string value)
+    {
+        var wordLength = 0;
+
+        foreach (var c in value)
+        {
+            wordLength = char.IsWhiteSpace(c) || c == '-' ? 0 : wordLength + 1;
+
+            if (wordLength > LongWordLength)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected virtual string GetReportStyles()
@@ -144,6 +197,10 @@ public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
                 max-width: 450px;
                 word-break: break-word;
             }
+            th.num, td.num {
+                text-align: right;
+                font-variant-numeric: tabular-nums;
+            }
             tbody tr:nth-child(even) {
                 background: #f8fafc;
             }
@@ -158,10 +215,77 @@ public class HtmlSqlQueryReportGenerator : IHtmlSqlQueryReportGenerator
                 color: #8094ae;
                 text-align: right;
             }
+            @page {
+                size: landscape;
+                margin: 12mm 10mm;
+                @bottom-right {
+                    content: "Page " counter(page) " of " counter(pages);
+                    font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                    font-size: 7pt;
+                    color: #5a6b85;
+                }
+            }
             @media print {
-                body { padding: 0; }
+                body {
+                    padding: 0;
+                    font-size: 9pt;
+                    color: #1f2937;
+                    -webkit-print-color-adjust: exact;
+                    print-color-adjust: exact;
+                }
+                .report-header {
+                    margin-bottom: 8px;
+                    padding-bottom: 6px;
+                    border-bottom-width: 1.5px;
+                    break-after: avoid;
+                }
+                .report-header h1 { font-size: 14pt; }
+                .report-description { font-size: 9pt; margin-bottom: 2px; }
+                .report-meta { font-size: 8pt; color: #5a6b85; }
+                table {
+                    width: 100%;
+                    font-size: 7.5pt;
+                    line-height: 1.3;
+                }
+                /* Repeat the column headers on every page */
+                thead { display: table-header-group; }
+                /* Dark text on a rule, not white on a fill: browsers drop backgrounds unless "Background graphics" is on */
+                thead th {
+                    background: none;
+                    color: #374767;
+                    padding: 4px 5px;
+                    border-bottom: 1.5px solid #374767;
+                    vertical-align: bottom;
+                    white-space: normal;
+                    max-width: none;
+                }
+                /* Break long values only when they overflow, so a narrow column never collapses to one character per line */
+                tbody td {
+                    padding: 3px 5px;
+                    border-bottom: 0.5pt solid #d5dde6;
+                    max-width: none;
+                    word-break: normal;
+                    overflow-wrap: break-word;
+                }
+                tbody td.long-word {
+                    overflow-wrap: anywhere;
+                    min-width: 12em;
+                }
+                tbody tr:nth-child(even) { background: #f6f8fa; }
                 tbody tr:hover { background: inherit; }
+                tbody tr:nth-child(even):hover { background: #f6f8fa; }
+                /* Keep a row on one page */
+                tr { break-inside: avoid; }
+                .report-footer {
+                    margin-top: 8px;
+                    padding-top: 4px;
+                    font-size: 7pt;
+                    break-before: avoid;
+                }
             }
             """;
     }
+
+    [GeneratedRegex("(?<=[a-z0-9])(?=[A-Z])|(?<=_)(?=.)")]
+    private static partial Regex WordBoundaryRegex();
 }

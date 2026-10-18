@@ -111,7 +111,11 @@ in an object:
 ```json
 [ { "name": "FromDate", "type": "DateTime", "value": "2026-01-01" } ]
 ```
-`{format}` is one of the values from `GET /formats` (typically `html`, `pdf`, `csv`, `xlsx`).
+`{format}` is one of the values from `GET /formats` (typically `html`, `csv`, `xlsx`).
+PDF is not served by the API: for a PDF, export `html` and tell the user to open it in a browser
+and print to PDF (the admin UI does this for them with its `pdf` option). A format not listed by
+`GET /api/sql-queries/formats` (including `pdf`) returns `400 Bad Request` without running the query;
+an unknown report id returns `404`.
 The response is the file bytes; the platform names it `{ReportName}_{yyyy-MM-dd}.{format}`.
 
 ### Search criteria — body for `POST /search` and `POST /reports`

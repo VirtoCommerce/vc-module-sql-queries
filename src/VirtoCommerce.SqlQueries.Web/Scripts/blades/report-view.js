@@ -3,9 +3,11 @@ angular.module('VirtoCommerce.SqlQueriesModule')
         [
             '$scope',
             'VirtoCommerce.SqlQueriesModule.sqlQueriesApi',
+            'VirtoCommerce.SqlQueriesModule.reportExportService',
             function (
                 $scope,
-                sqlQueriesApi)
+                sqlQueriesApi,
+                reportExportService)
             {
                 const blade = $scope.blade;
 
@@ -103,40 +105,10 @@ angular.module('VirtoCommerce.SqlQueriesModule')
 
                     blade.exportLoading = true;
 
-                    sqlQueriesApi.executeReport(
-                        { id: blade.currentEntity.id, format: blade.exportFormat },
-                        blade.testParameters,
-                        function (response) {
-                            var contentType = response.headers['content-type'];
-                            var blob = new Blob([response.data], { type: contentType });
-
-                            var fileName = 'report.' + blade.exportFormat;
-                            var contentDisposition = response.headers['content-disposition'];
-
-                            if (contentDisposition && contentDisposition.indexOf('attachment') !== -1) {
-                                var fileNameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-                                var matches = fileNameRegex.exec(contentDisposition);
-                                if (matches != null && matches[1]) {
-                                    fileName = matches[1].replace(/['"]/g, '');
-                                }
-                            }
-
-                            var downloadUrl = URL.createObjectURL(blob);
-                            var link = document.createElement('a');
-                            link.href = downloadUrl;
-                            link.download = fileName;
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                            URL.revokeObjectURL(downloadUrl);
-
+                    reportExportService.exportReport(blade.currentEntity.id, blade.exportFormat, blade.testParameters)
+                        .finally(function () {
                             blade.exportLoading = false;
-                        },
-                        function (error) {
-                            blade.exportLoading = false;
-                            console.error('File download failed:', error);
-                        }
-                    );
+                        });
                 };
 
                 // local functions
@@ -185,9 +157,9 @@ angular.module('VirtoCommerce.SqlQueriesModule')
                 }
 
                 function loadExportFormats() {
-                    sqlQueriesApi.getFormats(function (formats) {
+                    reportExportService.getFormats().then(function (formats) {
                         blade.exportFormats = formats;
-                        if (formats && formats.length) {
+                        if (formats.length) {
                             blade.exportFormat = formats[0];
                         }
                     });
