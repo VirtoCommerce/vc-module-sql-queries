@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "Consultas SQL" },
+    "TOOLBAR": {
+      "REFRESH": "Actualizar",
+      "ADD": "Agregar",
+      "DELETE": "Eliminar",
+      "SAVE": "Guardar",
+      "CREATE": "Crear",
+      "RESET": "Restablecer",
+      "RUN": "Ejecutar",
+      "EXPORT": "Exportar",
+      "VIEW_REPORT": "Ver informe",
+      "EDIT_REPORT": "Editar informe"
+    },
+    "LIST": {
+      "NAME": "Nombre",
+      "DESCRIPTION": "Descripción",
+      "EMPTY_TITLE": "Aún no hay consultas SQL",
+      "EMPTY_TEXT": "Cree su primera consulta con el botón Agregar de la barra de herramientas superior."
+    },
+    "DETAILS": {
+      "TITLE": "Detalles de la consulta",
+      "NEW": "Nueva consulta",
+      "CONNECTION": "Nombre de la cadena de conexión",
+      "CONNECTION_PLACEHOLDER": "Seleccione el nombre de la cadena de conexión",
+      "NO_CONNECTIONS": "No hay cadenas de conexión con el prefijo \"SqlQueries.\" configuradas en esta plataforma, por lo que no se pueden ejecutar consultas. Agregue una (p. ej., ConnectionStrings:SqlQueries.Reports) a la configuración de la plataforma.",
+      "NAME": "Nombre",
+      "NAME_PLACEHOLDER": "Introduzca el nombre de la consulta",
+      "DESCRIPTION": "Descripción",
+      "DESCRIPTION_PLACEHOLDER": "Introduzca la descripción de la consulta",
+      "QUERY": "Texto de la consulta ({provider})",
+      "QUERY_PLACEHOLDER": "Introduzca el texto de la consulta",
+      "PARAMETERS": "Parámetros ({count})",
+      "ADD_PARAMETER": "Agregar parámetro",
+      "PARAMETER_NAME": "Nombre",
+      "PARAMETER_TYPE": "Tipo",
+      "PARAMETER_VALUE": "Valor de prueba",
+      "REMOVE_PARAMETER": "Quitar parámetro",
+      "NO_PARAMETERS": "No hay parámetros. Haga referencia a un parámetro en la consulta como {'@'}name.",
+      "TEST": "Probar consulta",
+      "CLOSE_CONFIRMATION": "La consulta se ha modificado. ¿Cerrar sin guardar?"
+    },
+    "REPORT": {
+      "TITLE": "Informe {name}",
+      "PARAMETERS": "Valores de parámetros ({count})",
+      "FORMAT": "Formato de exportación"
+    },
+    "RUN": {
+      "MAX_ROWS": "Máx. filas",
+      "ROWS_RETURNED": "Filas devueltas: {count}",
+      "TRUNCATED": "resultado truncado",
+      "EXECUTION_TIME": "Tiempo de ejecución: {ms} ms",
+      "NO_RESULTS": "La consulta no devolvió resultados.",
+      "FAILED": "Se produjo un error al ejecutar la consulta."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "¿Seguro que desea eliminar las consultas seleccionadas?"
+    }
+  }
+}

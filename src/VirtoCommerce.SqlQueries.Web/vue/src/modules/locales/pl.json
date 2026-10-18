@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "Zapytania SQL" },
+    "TOOLBAR": {
+      "REFRESH": "Odśwież",
+      "ADD": "Dodaj",
+      "DELETE": "Usuń",
+      "SAVE": "Zapisz",
+      "CREATE": "Utwórz",
+      "RESET": "Resetuj",
+      "RUN": "Uruchom",
+      "EXPORT": "Eksportuj",
+      "VIEW_REPORT": "Wyświetl raport",
+      "EDIT_REPORT": "Edytuj raport"
+    },
+    "LIST": {
+      "NAME": "Nazwa",
+      "DESCRIPTION": "Opis",
+      "EMPTY_TITLE": "Brak zapytań SQL",
+      "EMPTY_TEXT": "Utwórz pierwsze zapytanie za pomocą przycisku Dodaj na pasku narzędzi powyżej."
+    },
+    "DETAILS": {
+      "TITLE": "Szczegóły zapytania",
+      "NEW": "Nowe zapytanie",
+      "CONNECTION": "Nazwa łańcucha połączenia",
+      "CONNECTION_PLACEHOLDER": "Wybierz nazwę łańcucha połączenia",
+      "NO_CONNECTIONS": "Na tej platformie nie skonfigurowano łańcuchów połączenia z prefiksem \"SqlQueries.\", więc nie można uruchamiać zapytań. Dodaj taki łańcuch (np. ConnectionStrings:SqlQueries.Reports) do konfiguracji platformy.",
+      "NAME": "Nazwa",
+      "NAME_PLACEHOLDER": "Wprowadź nazwę zapytania",
+      "DESCRIPTION": "Opis",
+      "DESCRIPTION_PLACEHOLDER": "Wprowadź opis zapytania",
+      "QUERY": "Tekst zapytania ({provider})",
+      "QUERY_PLACEHOLDER": "Wprowadź tekst zapytania",
+      "PARAMETERS": "Parametry ({count})",
+      "ADD_PARAMETER": "Dodaj parametr",
+      "PARAMETER_NAME": "Nazwa",
+      "PARAMETER_TYPE": "Typ",
+      "PARAMETER_VALUE": "Wartość testowa",
+      "REMOVE_PARAMETER": "Usuń parametr",
+      "NO_PARAMETERS": "Brak parametrów. Odwołuj się do parametru w zapytaniu jako {'@'}name.",
+      "TEST": "Testuj zapytanie",
+      "CLOSE_CONFIRMATION": "Zapytanie zostało zmodyfikowane. Zamknąć bez zapisywania?"
+    },
+    "REPORT": {
+      "TITLE": "Raport {name}",
+      "PARAMETERS": "Wartości parametrów ({count})",
+      "FORMAT": "Format eksportu"
+    },
+    "RUN": {
+      "MAX_ROWS": "Maks. wierszy",
+      "ROWS_RETURNED": "Zwrócone wiersze: {count}",
+      "TRUNCATED": "wynik obcięty",
+      "EXECUTION_TIME": "Czas wykonania: {ms} ms",
+      "NO_RESULTS": "Zapytanie nie zwróciło wyników.",
+      "FAILED": "Podczas wykonywania zapytania wystąpił błąd."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Czy na pewno chcesz usunąć wybrane zapytania?"
+    }
+  }
+}

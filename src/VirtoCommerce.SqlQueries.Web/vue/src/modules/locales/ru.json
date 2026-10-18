@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQL-запросы" },
+    "TOOLBAR": {
+      "REFRESH": "Обновить",
+      "ADD": "Добавить",
+      "DELETE": "Удалить",
+      "SAVE": "Сохранить",
+      "CREATE": "Создать",
+      "RESET": "Сбросить",
+      "RUN": "Выполнить",
+      "EXPORT": "Экспорт",
+      "VIEW_REPORT": "Просмотр отчёта",
+      "EDIT_REPORT": "Редактировать отчёт"
+    },
+    "LIST": {
+      "NAME": "Имя",
+      "DESCRIPTION": "Описание",
+      "EMPTY_TITLE": "SQL-запросов пока нет",
+      "EMPTY_TEXT": "Создайте первый запрос с помощью кнопки «Добавить» на панели инструментов выше."
+    },
+    "DETAILS": {
+      "TITLE": "Сведения о запросе",
+      "NEW": "Новый запрос",
+      "CONNECTION": "Имя строки подключения",
+      "CONNECTION_PLACEHOLDER": "Выберите имя строки подключения",
+      "NO_CONNECTIONS": "На этой платформе не настроены строки подключения с префиксом \"SqlQueries.\", поэтому запросы нельзя выполнить. Добавьте такую строку (например, ConnectionStrings:SqlQueries.Reports) в конфигурацию платформы.",
+      "NAME": "Имя",
+      "NAME_PLACEHOLDER": "Введите название запроса",
+      "DESCRIPTION": "Описание",
+      "DESCRIPTION_PLACEHOLDER": "Введите описание запроса",
+      "QUERY": "Текст запроса ({provider})",
+      "QUERY_PLACEHOLDER": "Введите текст запроса",
+      "PARAMETERS": "Параметры ({count})",
+      "ADD_PARAMETER": "Добавить параметр",
+      "PARAMETER_NAME": "Имя",
+      "PARAMETER_TYPE": "Тип",
+      "PARAMETER_VALUE": "Тестовое значение",
+      "REMOVE_PARAMETER": "Удалить параметр",
+      "NO_PARAMETERS": "Нет параметров. Ссылайтесь на параметр в запросе как {'@'}name.",
+      "TEST": "Проверить запрос",
+      "CLOSE_CONFIRMATION": "Запрос изменён. Закрыть без сохранения?"
+    },
+    "REPORT": {
+      "TITLE": "Отчёт {name}",
+      "PARAMETERS": "Значения параметров ({count})",
+      "FORMAT": "Формат экспорта"
+    },
+    "RUN": {
+      "MAX_ROWS": "Макс. строк",
+      "ROWS_RETURNED": "Возвращено строк: {count}",
+      "TRUNCATED": "результат усечён",
+      "EXECUTION_TIME": "Время выполнения: {ms} мс",
+      "NO_RESULTS": "Запрос не вернул результатов.",
+      "FAILED": "При выполнении запроса произошла ошибка."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Вы уверены, что хотите удалить выбранные запросы?"
+    }
+  }
+}

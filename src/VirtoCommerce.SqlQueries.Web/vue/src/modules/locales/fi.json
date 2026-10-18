@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQL-kyselyt" },
+    "TOOLBAR": {
+      "REFRESH": "Päivitä",
+      "ADD": "Lisää",
+      "DELETE": "Poista",
+      "SAVE": "Tallenna",
+      "CREATE": "Luo",
+      "RESET": "Palauta",
+      "RUN": "Suorita",
+      "EXPORT": "Vie",
+      "VIEW_REPORT": "Näytä raportti",
+      "EDIT_REPORT": "Muokkaa raporttia"
+    },
+    "LIST": {
+      "NAME": "Nimi",
+      "DESCRIPTION": "Kuvaus",
+      "EMPTY_TITLE": "Ei vielä SQL-kyselyitä",
+      "EMPTY_TEXT": "Luo ensimmäinen kysely yllä olevan työkalurivin Lisää-painikkeella."
+    },
+    "DETAILS": {
+      "TITLE": "Kyselyn tiedot",
+      "NEW": "Uusi kysely",
+      "CONNECTION": "Yhteysmerkkijonon nimi",
+      "CONNECTION_PLACEHOLDER": "Valitse yhteysmerkkijonon nimi",
+      "NO_CONNECTIONS": "Tälle alustalle ei ole määritetty yhteysmerkkijonoja, joilla on etuliite \"SqlQueries.\", joten kyselyitä ei voi suorittaa. Lisää sellainen (esim. ConnectionStrings:SqlQueries.Reports) alustan määritykseen.",
+      "NAME": "Nimi",
+      "NAME_PLACEHOLDER": "Anna kyselyn nimi",
+      "DESCRIPTION": "Kuvaus",
+      "DESCRIPTION_PLACEHOLDER": "Anna kyselyn kuvaus",
+      "QUERY": "Kyselyteksti ({provider})",
+      "QUERY_PLACEHOLDER": "Anna kyselyteksti",
+      "PARAMETERS": "Parametrit ({count})",
+      "ADD_PARAMETER": "Lisää parametri",
+      "PARAMETER_NAME": "Nimi",
+      "PARAMETER_TYPE": "Tyyppi",
+      "PARAMETER_VALUE": "Testiarvo",
+      "REMOVE_PARAMETER": "Poista parametri",
+      "NO_PARAMETERS": "Ei parametreja. Viittaa parametriin kyselyssä muodossa {'@'}name.",
+      "TEST": "Testaa kysely",
+      "CLOSE_CONFIRMATION": "Kyselyä on muutettu. Suljetaanko tallentamatta?"
+    },
+    "REPORT": {
+      "TITLE": "Raportti: {name}",
+      "PARAMETERS": "Parametriarvot ({count})",
+      "FORMAT": "Vientimuoto"
+    },
+    "RUN": {
+      "MAX_ROWS": "Enintään rivejä",
+      "ROWS_RETURNED": "Palautetut rivit: {count}",
+      "TRUNCATED": "tulos katkaistu",
+      "EXECUTION_TIME": "Suoritusaika: {ms} ms",
+      "NO_RESULTS": "Kysely ei palauttanut tuloksia.",
+      "FAILED": "Kyselyn suorittamisessa tapahtui virhe."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Haluatko varmasti poistaa valitut kyselyt?"
+    }
+  }
+}

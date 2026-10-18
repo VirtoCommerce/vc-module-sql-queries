@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "Query SQL" },
+    "TOOLBAR": {
+      "REFRESH": "Aggiorna",
+      "ADD": "Aggiungi",
+      "DELETE": "Elimina",
+      "SAVE": "Salva",
+      "CREATE": "Crea",
+      "RESET": "Reimposta",
+      "RUN": "Esegui",
+      "EXPORT": "Esporta",
+      "VIEW_REPORT": "Visualizza report",
+      "EDIT_REPORT": "Modifica report"
+    },
+    "LIST": {
+      "NAME": "Nome",
+      "DESCRIPTION": "Descrizione",
+      "EMPTY_TITLE": "Nessuna query SQL",
+      "EMPTY_TEXT": "Creare la prima query con il pulsante Aggiungi nella barra degli strumenti in alto."
+    },
+    "DETAILS": {
+      "TITLE": "Dettagli della query",
+      "NEW": "Nuova query",
+      "CONNECTION": "Nome stringa di connessione",
+      "CONNECTION_PLACEHOLDER": "Seleziona il nome della stringa di connessione",
+      "NO_CONNECTIONS": "Su questa piattaforma non sono configurate stringhe di connessione con il prefisso \"SqlQueries.\", quindi le query non possono essere eseguite. Aggiungerne una (ad es. ConnectionStrings:SqlQueries.Reports) alla configurazione della piattaforma.",
+      "NAME": "Nome",
+      "NAME_PLACEHOLDER": "Inserisci il nome della query",
+      "DESCRIPTION": "Descrizione",
+      "DESCRIPTION_PLACEHOLDER": "Inserisci la descrizione della query",
+      "QUERY": "Testo della query ({provider})",
+      "QUERY_PLACEHOLDER": "Inserisci il testo della query",
+      "PARAMETERS": "Parametri ({count})",
+      "ADD_PARAMETER": "Aggiungi parametro",
+      "PARAMETER_NAME": "Nome",
+      "PARAMETER_TYPE": "Tipo",
+      "PARAMETER_VALUE": "Valore di test",
+      "REMOVE_PARAMETER": "Rimuovi parametro",
+      "NO_PARAMETERS": "Nessun parametro. Fare riferimento a un parametro nella query come {'@'}name.",
+      "TEST": "Testa query",
+      "CLOSE_CONFIRMATION": "La query è stata modificata. Chiudere senza salvare?"
+    },
+    "REPORT": {
+      "TITLE": "Report {name}",
+      "PARAMETERS": "Valori dei parametri ({count})",
+      "FORMAT": "Formato di esportazione"
+    },
+    "RUN": {
+      "MAX_ROWS": "Righe max",
+      "ROWS_RETURNED": "Righe restituite: {count}",
+      "TRUNCATED": "risultato troncato",
+      "EXECUTION_TIME": "Tempo di esecuzione: {ms} ms",
+      "NO_RESULTS": "La query non ha restituito risultati.",
+      "FAILED": "Si è verificato un errore durante l'esecuzione della query."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Eliminare le query selezionate?"
+    }
+  }
+}

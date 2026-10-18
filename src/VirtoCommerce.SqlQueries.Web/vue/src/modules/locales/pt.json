@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "Consultas SQL" },
+    "TOOLBAR": {
+      "REFRESH": "Atualizar",
+      "ADD": "Adicionar",
+      "DELETE": "Excluir",
+      "SAVE": "Salvar",
+      "CREATE": "Criar",
+      "RESET": "Redefinir",
+      "RUN": "Executar",
+      "EXPORT": "Exportar",
+      "VIEW_REPORT": "Ver relatório",
+      "EDIT_REPORT": "Editar relatório"
+    },
+    "LIST": {
+      "NAME": "Nome",
+      "DESCRIPTION": "Descrição",
+      "EMPTY_TITLE": "Ainda não há consultas SQL",
+      "EMPTY_TEXT": "Crie a primeira consulta com o botão Adicionar na barra de ferramentas acima."
+    },
+    "DETAILS": {
+      "TITLE": "Detalhes da consulta",
+      "NEW": "Nova consulta",
+      "CONNECTION": "Nome da string de conexão",
+      "CONNECTION_PLACEHOLDER": "Selecione o nome da string de conexão",
+      "NO_CONNECTIONS": "Nenhuma string de conexão com o prefixo \"SqlQueries.\" está configurada nesta plataforma, portanto as consultas não podem ser executadas. Adicione uma (p. ex. ConnectionStrings:SqlQueries.Reports) à configuração da plataforma.",
+      "NAME": "Nome",
+      "NAME_PLACEHOLDER": "Insira o nome da consulta",
+      "DESCRIPTION": "Descrição",
+      "DESCRIPTION_PLACEHOLDER": "Insira a descrição da consulta",
+      "QUERY": "Texto da consulta ({provider})",
+      "QUERY_PLACEHOLDER": "Insira o texto da consulta",
+      "PARAMETERS": "Parâmetros ({count})",
+      "ADD_PARAMETER": "Adicionar parâmetro",
+      "PARAMETER_NAME": "Nome",
+      "PARAMETER_TYPE": "Tipo",
+      "PARAMETER_VALUE": "Valor de teste",
+      "REMOVE_PARAMETER": "Remover parâmetro",
+      "NO_PARAMETERS": "Nenhum parâmetro. Faça referência a um parâmetro na consulta como {'@'}name.",
+      "TEST": "Testar consulta",
+      "CLOSE_CONFIRMATION": "A consulta foi modificada. Fechar sem salvar?"
+    },
+    "REPORT": {
+      "TITLE": "Relatório {name}",
+      "PARAMETERS": "Valores dos parâmetros ({count})",
+      "FORMAT": "Formato de exportação"
+    },
+    "RUN": {
+      "MAX_ROWS": "Máx. linhas",
+      "ROWS_RETURNED": "Linhas retornadas: {count}",
+      "TRUNCATED": "resultado truncado",
+      "EXECUTION_TIME": "Tempo de execução: {ms} ms",
+      "NO_RESULTS": "A consulta não retornou resultados.",
+      "FAILED": "Ocorreu um erro ao executar a consulta."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Tem certeza de que deseja excluir as consultas selecionadas?"
+    }
+  }
+}
