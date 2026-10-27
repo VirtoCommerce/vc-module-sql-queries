@@ -1,0 +1,16 @@
+{
+  "remote": { "name": "sqlqueries_admin", "exposed": "./Module" },
+  "contributions": {
+    "menu": [
+      {
+        "id": "sql-queries",
+        "sectionId": "configuration",
+        "title": "SQL Queries",
+        "icon": "lucide-database-zap",
+        "route": "/sql-queries",
+        "permission": "sql-queries:access",
+        "priority": 105
+      }
+    ]
+  }
+}

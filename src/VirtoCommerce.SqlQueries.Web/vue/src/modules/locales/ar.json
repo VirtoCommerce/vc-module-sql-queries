@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "استعلامات SQL" },
+    "TOOLBAR": {
+      "REFRESH": "تحديث",
+      "ADD": "إضافة",
+      "DELETE": "حذف",
+      "SAVE": "حفظ",
+      "CREATE": "إنشاء",
+      "RESET": "إعادة تعيين",
+      "RUN": "تشغيل",
+      "EXPORT": "تصدير",
+      "VIEW_REPORT": "عرض التقرير",
+      "EDIT_REPORT": "تعديل التقرير"
+    },
+    "LIST": {
+      "NAME": "الاسم",
+      "DESCRIPTION": "الوصف",
+      "EMPTY_TITLE": "لا توجد استعلامات SQL بعد",
+      "EMPTY_TEXT": "أنشئ أول استعلام باستخدام زر «إضافة» في شريط الأدوات أعلاه."
+    },
+    "DETAILS": {
+      "TITLE": "تفاصيل الاستعلام",
+      "NEW": "استعلام جديد",
+      "CONNECTION": "اسم سلسلة الاتصال",
+      "CONNECTION_PLACEHOLDER": "اختر اسم سلسلة الاتصال",
+      "NO_CONNECTIONS": "لم يتم تكوين أي سلاسل اتصال بالبادئة \"SqlQueries.\" على هذه المنصة، لذا لا يمكن تشغيل الاستعلامات. أضف سلسلة اتصال (مثل ConnectionStrings:SqlQueries.Reports) إلى تكوين المنصة.",
+      "NAME": "الاسم",
+      "NAME_PLACEHOLDER": "أدخل اسم الاستعلام",
+      "DESCRIPTION": "الوصف",
+      "DESCRIPTION_PLACEHOLDER": "أدخل وصف الاستعلام",
+      "QUERY": "نص الاستعلام ({provider})",
+      "QUERY_PLACEHOLDER": "أدخل نص الاستعلام",
+      "PARAMETERS": "المعلمات ({count})",
+      "ADD_PARAMETER": "إضافة معلمة",
+      "PARAMETER_NAME": "الاسم",
+      "PARAMETER_TYPE": "النوع",
+      "PARAMETER_VALUE": "قيمة الاختبار",
+      "REMOVE_PARAMETER": "إزالة المعلمة",
+      "NO_PARAMETERS": "لا توجد معلمات. أشِر إلى معلمة في الاستعلام بالصيغة {'@'}name.",
+      "TEST": "اختبار الاستعلام",
+      "CLOSE_CONFIRMATION": "تم تعديل الاستعلام. هل تريد الإغلاق دون حفظ؟"
+    },
+    "REPORT": {
+      "TITLE": "تقرير {name}",
+      "PARAMETERS": "قيم المعلمات ({count})",
+      "FORMAT": "تنسيق التصدير"
+    },
+    "RUN": {
+      "MAX_ROWS": "الحد الأقصى للصفوف",
+      "ROWS_RETURNED": "الصفوف المُرجَعة: {count}",
+      "TRUNCATED": "تم اقتطاع النتيجة",
+      "EXECUTION_TIME": "وقت التنفيذ: {ms} مللي ثانية",
+      "NO_RESULTS": "لم يُرجع الاستعلام أي نتائج.",
+      "FAILED": "حدث خطأ أثناء تنفيذ الاستعلام."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "هل تريد بالتأكيد حذف الاستعلامات المحددة؟"
+    }
+  }
+}

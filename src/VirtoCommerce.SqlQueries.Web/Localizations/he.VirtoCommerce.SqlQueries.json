@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "sql-queries:access": "פתיחת תפריט שאילתות SQL",
+    "sql-queries:create": "יצירת נתונים הקשורים לשאילתות SQL",
+    "sql-queries:read": "צפייה בנתונים הקשורים לשאילתות SQL",
+    "sql-queries:update": "עדכון נתונים הקשורים לשאילתות SQL",
+    "sql-queries:delete": "מחיקת נתונים הקשורים לשאילתות SQL",
+    "sql-queries:reports": "הרצת דוחות וגישה אליהם"
+  },
+  "settings": {
+    "SqlQueries.General.CommandTimeout": {
+      "title": "זמן קצוב להרצת שאילתה (שניות)",
+      "description": "הזמן המרבי, בשניות, שבו שאילתת SQL יכולה לרוץ בעת תצוגה מקדימה, הרצה או ייצוא כדוח, לפני שהיא מבוטלת עם שגיאת זמן קצוב. ברירת מחדל: 30."
+    }
+  }
+}

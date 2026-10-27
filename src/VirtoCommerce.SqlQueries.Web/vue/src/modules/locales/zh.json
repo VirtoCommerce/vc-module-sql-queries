@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQL 查询" },
+    "TOOLBAR": {
+      "REFRESH": "刷新",
+      "ADD": "添加",
+      "DELETE": "删除",
+      "SAVE": "保存",
+      "CREATE": "创建",
+      "RESET": "重置",
+      "RUN": "运行",
+      "EXPORT": "导出",
+      "VIEW_REPORT": "查看报告",
+      "EDIT_REPORT": "编辑报告"
+    },
+    "LIST": {
+      "NAME": "名称",
+      "DESCRIPTION": "描述",
+      "EMPTY_TITLE": "暂无 SQL 查询",
+      "EMPTY_TEXT": "使用上方工具栏中的“添加”按钮创建第一个查询。"
+    },
+    "DETAILS": {
+      "TITLE": "查询详细信息",
+      "NEW": "新建查询",
+      "CONNECTION": "连接字符串名称",
+      "CONNECTION_PLACEHOLDER": "选择连接字符串名称",
+      "NO_CONNECTIONS": "此平台未配置带有 \"SqlQueries.\" 前缀的连接字符串，因此无法运行查询。请在平台配置中添加一个（例如 ConnectionStrings:SqlQueries.Reports）。",
+      "NAME": "名称",
+      "NAME_PLACEHOLDER": "输入查询名称",
+      "DESCRIPTION": "描述",
+      "DESCRIPTION_PLACEHOLDER": "输入查询描述",
+      "QUERY": "查询文本 ({provider})",
+      "QUERY_PLACEHOLDER": "输入查询文本",
+      "PARAMETERS": "参数 ({count})",
+      "ADD_PARAMETER": "添加参数",
+      "PARAMETER_NAME": "名称",
+      "PARAMETER_TYPE": "类型",
+      "PARAMETER_VALUE": "测试值",
+      "REMOVE_PARAMETER": "移除参数",
+      "NO_PARAMETERS": "无参数。在查询中以 {'@'}name 的形式引用参数。",
+      "TEST": "测试查询",
+      "CLOSE_CONFIRMATION": "查询已修改。是否不保存就关闭？"
+    },
+    "REPORT": {
+      "TITLE": "{name} 报告",
+      "PARAMETERS": "参数值 ({count})",
+      "FORMAT": "导出格式"
+    },
+    "RUN": {
+      "MAX_ROWS": "最大行数",
+      "ROWS_RETURNED": "返回行数：{count}",
+      "TRUNCATED": "结果已截断",
+      "EXECUTION_TIME": "执行时间：{ms} 毫秒",
+      "NO_RESULTS": "查询未返回任何结果。",
+      "FAILED": "执行查询时出错。"
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "确定要删除所选查询吗？"
+    }
+  }
+}

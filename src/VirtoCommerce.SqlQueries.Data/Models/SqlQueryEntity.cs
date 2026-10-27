@@ -37,7 +37,7 @@ public class SqlQueryEntity : AuditableEntity, IDataEntity<SqlQueryEntity, SqlQu
         model.Query = Query;
         model.ConnectionStringName = ConnectionStringName;
 
-        model.Parameters = Parameters.Select(x => x.ToModel(AbstractTypeFactory<SqlQueryParameter>.TryCreateInstance())).ToList();
+        model.Parameters = Parameters.OrderBy(x => x.SortOrder).Select(x => x.ToModel(AbstractTypeFactory<SqlQueryParameter>.TryCreateInstance())).ToList();
 
         return model;
     }
@@ -59,7 +59,12 @@ public class SqlQueryEntity : AuditableEntity, IDataEntity<SqlQueryEntity, SqlQu
 
         if (model.Parameters != null)
         {
-            Parameters = new ObservableCollection<SqlQueryParameterEntity>(model.Parameters.Select(x => AbstractTypeFactory<SqlQueryParameterEntity>.TryCreateInstance().FromModel(x, pkMap)));
+            Parameters = new ObservableCollection<SqlQueryParameterEntity>(model.Parameters.Select((x, i) =>
+            {
+                var parameter = AbstractTypeFactory<SqlQueryParameterEntity>.TryCreateInstance().FromModel(x, pkMap);
+                parameter.SortOrder = i;
+                return parameter;
+            }));
         }
 
         return this;

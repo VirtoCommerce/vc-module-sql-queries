@@ -16,6 +16,11 @@ public class SqlQueryParameterEntity : Entity, IDataEntity<SqlQueryParameterEnti
     [StringLength(Length64)]
     public string Type { get; set; }
 
+    /// <summary>
+    /// Position of the parameter in the query's parameter list, as the user saved it
+    /// </summary>
+    public int SortOrder { get; set; }
+
     [Required]
     [StringLength(Length128)]
     public string SqlQueryId { get; set; }
@@ -45,5 +50,6 @@ public class SqlQueryParameterEntity : Entity, IDataEntity<SqlQueryParameterEnti
     {
         target.Name = Name;
         target.Type = Type;
+        target.SortOrder = SortOrder;
     }
 }

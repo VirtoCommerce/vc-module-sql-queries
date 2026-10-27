@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQL-frågor" },
+    "TOOLBAR": {
+      "REFRESH": "Uppdatera",
+      "ADD": "Lägg till",
+      "DELETE": "Ta bort",
+      "SAVE": "Spara",
+      "CREATE": "Skapa",
+      "RESET": "Återställ",
+      "RUN": "Kör",
+      "EXPORT": "Exportera",
+      "VIEW_REPORT": "Visa rapport",
+      "EDIT_REPORT": "Redigera rapport"
+    },
+    "LIST": {
+      "NAME": "Namn",
+      "DESCRIPTION": "Beskrivning",
+      "EMPTY_TITLE": "Inga SQL-frågor ännu",
+      "EMPTY_TEXT": "Skapa din första fråga med knappen Lägg till i verktygsfältet ovan."
+    },
+    "DETAILS": {
+      "TITLE": "Frågedetaljer",
+      "NEW": "Ny fråga",
+      "CONNECTION": "Anslutningssträngsnamn",
+      "CONNECTION_PLACEHOLDER": "Välj anslutningssträngsnamn",
+      "NO_CONNECTIONS": "Inga anslutningssträngar med prefixet \"SqlQueries.\" har konfigurerats på den här plattformen, så frågor kan inte köras. Lägg till en (t.ex. ConnectionStrings:SqlQueries.Reports) i plattformskonfigurationen.",
+      "NAME": "Namn",
+      "NAME_PLACEHOLDER": "Ange frågenamn",
+      "DESCRIPTION": "Beskrivning",
+      "DESCRIPTION_PLACEHOLDER": "Ange frågebeskrivning",
+      "QUERY": "Frågetext ({provider})",
+      "QUERY_PLACEHOLDER": "Ange frågetext",
+      "PARAMETERS": "Parametrar ({count})",
+      "ADD_PARAMETER": "Lägg till parameter",
+      "PARAMETER_NAME": "Namn",
+      "PARAMETER_TYPE": "Typ",
+      "PARAMETER_VALUE": "Testvärde",
+      "REMOVE_PARAMETER": "Ta bort parameter",
+      "NO_PARAMETERS": "Inga parametrar. Referera till en parameter i frågan som {'@'}name.",
+      "TEST": "Testa fråga",
+      "CLOSE_CONFIRMATION": "Frågan har ändrats. Stäng utan att spara?"
+    },
+    "REPORT": {
+      "TITLE": "Rapport: {name}",
+      "PARAMETERS": "Parametervärden ({count})",
+      "FORMAT": "Exportformat"
+    },
+    "RUN": {
+      "MAX_ROWS": "Max rader",
+      "ROWS_RETURNED": "Returnerade rader: {count}",
+      "TRUNCATED": "resultat avkortat",
+      "EXECUTION_TIME": "Körningstid: {ms} ms",
+      "NO_RESULTS": "Frågan returnerade inga resultat.",
+      "FAILED": "Ett fel uppstod när frågan kördes."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Vill du verkligen ta bort de valda frågorna?"
+    }
+  }
+}

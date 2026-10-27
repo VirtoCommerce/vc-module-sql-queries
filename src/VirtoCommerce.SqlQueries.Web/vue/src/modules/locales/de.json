@@ -1,0 +1,61 @@
+{
+  "SQL_QUERIES": {
+    "MENU": { "TITLE": "SQL-Abfragen" },
+    "TOOLBAR": {
+      "REFRESH": "Aktualisieren",
+      "ADD": "Hinzufügen",
+      "DELETE": "Löschen",
+      "SAVE": "Speichern",
+      "CREATE": "Erstellen",
+      "RESET": "Zurücksetzen",
+      "RUN": "Ausführen",
+      "EXPORT": "Exportieren",
+      "VIEW_REPORT": "Bericht anzeigen",
+      "EDIT_REPORT": "Bericht bearbeiten"
+    },
+    "LIST": {
+      "NAME": "Name",
+      "DESCRIPTION": "Beschreibung",
+      "EMPTY_TITLE": "Noch keine SQL-Abfragen",
+      "EMPTY_TEXT": "Erstellen Sie Ihre erste Abfrage mit der Schaltfläche Hinzufügen in der Symbolleiste oben."
+    },
+    "DETAILS": {
+      "TITLE": "Abfragedetails",
+      "NEW": "Neue Abfrage",
+      "CONNECTION": "Name der Verbindungszeichenfolge",
+      "CONNECTION_PLACEHOLDER": "Verbindungszeichenfolge auswählen",
+      "NO_CONNECTIONS": "Auf dieser Plattform sind keine Verbindungszeichenfolgen mit dem Präfix \"SqlQueries.\" konfiguriert, daher können keine Abfragen ausgeführt werden. Fügen Sie der Plattformkonfiguration eine hinzu (z. B. ConnectionStrings:SqlQueries.Reports).",
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Abfragenamen eingeben",
+      "DESCRIPTION": "Beschreibung",
+      "DESCRIPTION_PLACEHOLDER": "Abfragebeschreibung eingeben",
+      "QUERY": "Abfragetext ({provider})",
+      "QUERY_PLACEHOLDER": "Abfragetext eingeben",
+      "PARAMETERS": "Parameter ({count})",
+      "ADD_PARAMETER": "Parameter hinzufügen",
+      "PARAMETER_NAME": "Name",
+      "PARAMETER_TYPE": "Typ",
+      "PARAMETER_VALUE": "Testwert",
+      "REMOVE_PARAMETER": "Parameter entfernen",
+      "NO_PARAMETERS": "Keine Parameter. Verweisen Sie in der Abfrage mit {'@'}name auf einen Parameter.",
+      "TEST": "Abfrage testen",
+      "CLOSE_CONFIRMATION": "Die Abfrage wurde geändert. Ohne Speichern schließen?"
+    },
+    "REPORT": {
+      "TITLE": "Bericht {name}",
+      "PARAMETERS": "Parameterwerte ({count})",
+      "FORMAT": "Exportformat"
+    },
+    "RUN": {
+      "MAX_ROWS": "Max. Zeilen",
+      "ROWS_RETURNED": "Zurückgegebene Zeilen: {count}",
+      "TRUNCATED": "Ergebnis abgeschnitten",
+      "EXECUTION_TIME": "Ausführungszeit: {ms} ms",
+      "NO_RESULTS": "Die Abfrage hat keine Ergebnisse zurückgegeben.",
+      "FAILED": "Beim Ausführen der Abfrage ist ein Fehler aufgetreten."
+    },
+    "ALERTS": {
+      "DELETE_CONFIRMATION": "Möchten Sie die ausgewählten Abfragen wirklich löschen?"
+    }
+  }
+}
