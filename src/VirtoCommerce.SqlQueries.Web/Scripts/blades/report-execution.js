@@ -1,11 +1,14 @@
 angular.module('VirtoCommerce.SqlQueriesModule')
     .controller('VirtoCommerce.SqlQueriesModule.reportExecutionController', [
-        '$scope', 'platformWebApp.metaFormsService', 'VirtoCommerce.SqlQueriesModule.sqlQueriesApi',
-        function ($scope, metaFormsService, sqlQueriesApi) {
+        '$scope', 'platformWebApp.metaFormsService', 'VirtoCommerce.SqlQueriesModule.reportExportService',
+        function ($scope, metaFormsService, reportExportService) {
             const blade = $scope.blade;
 
             //blade properties
-            blade.formats = sqlQueriesApi.getFormats();
+            blade.formats = [];
+            reportExportService.getFormats().then(function (formats) {
+                blade.formats = formats;
+            });
             blade.title = 'sql-queries.blades.report-execution.title';
             blade.titleValues = { name: blade.currentEntity.name };
             blade.metaFields = metaFormsService.getMetaFields('reportExecution');
@@ -33,38 +36,10 @@ angular.module('VirtoCommerce.SqlQueriesModule')
             $scope.executeReport = function () {
                 blade.isLoading = true;
 
-                sqlQueriesApi.executeReport({ id: blade.currentEntity.id, format: blade.format }, blade.parameters, function (response) {
-                    var contentType = response.headers['content-type'];
-                    var blob = new Blob([response.data], { type: contentType });
-
-                    var fileName = 'report.' + blade.format;
-                    var contentDisposition = response.headers['content-disposition'];
-
-                    if (contentDisposition && contentDisposition.indexOf('attachment') !== -1) {
-                        var fileNameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-                        var matches = fileNameRegex.exec(contentDisposition);
-                        if (matches != null && matches[1]) {
-                            fileName = matches[1].replace(/['"]/g, '');
-                        }
-                    }
-
-                    var downloadUrl = URL.createObjectURL(blob);
-
-                    // Create a temporary link to trigger download
-                    var link = document.createElement('a');
-                    link.href = downloadUrl;
-                    link.download = fileName; // Desired file name
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-
-                    // Clean up
-                    URL.revokeObjectURL(downloadUrl);
-                    blade.isLoading = false;
-                }, function (error) {
-                    blade.isLoading = false;
-                    console.error('File download failed:', error);
-                });
+                reportExportService.exportReport(blade.currentEntity.id, blade.format, blade.parameters)
+                    .finally(function () {
+                        blade.isLoading = false;
+                    });
             };
 
             //local functions

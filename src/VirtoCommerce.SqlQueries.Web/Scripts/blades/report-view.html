@@ -58,7 +58,7 @@
           <span class="export-inline" ng-if="blade.exportFormats.length">
             <select class="form-control export-format-select" ng-model="blade.exportFormat" ng-options="f for f in blade.exportFormats"></select>
             <button class="btn btn-primary" ng-click="exportReport()" ng-disabled="blade.exportLoading || !blade.exportFormat">
-              <i class="fa" ng-class="blade.exportLoading ? 'fa-spinner fa-spin' : 'fa-download'"></i>&nbsp;
+              <i class="fa" ng-class="blade.exportLoading ? 'fa-spinner fa-spin' : (blade.exportFormat === 'pdf' ? 'fa-print' : 'fa-download')"></i>&nbsp;
               {{ 'sql-queries.blades.report-view.labels.export' | translate }}
             </button>
           </span>

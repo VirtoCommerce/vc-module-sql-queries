@@ -4,7 +4,7 @@ description: >
   Run existing reports in the Virto Commerce SQL Queries module via its REST API and return
   or export the results. Use this skill when the user wants to GET DATA from a report that
   already exists — i.e. find a report, run it with parameter values, read the rows, and
-  optionally export to CSV/XLSX/PDF/HTML. Triggers include: "run the X report", "what does
+  optionally export to CSV/XLSX/HTML. Triggers include: "run the X report", "what does
   the orders report show for last month", "export the report to Excel", "give me the numbers
   from <report>", "which reports can I run". Requires sql-queries:access and sql-queries:read.
   Do NOT use this skill to create, edit, or delete reports or to author SQL — that is

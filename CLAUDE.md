@@ -16,7 +16,8 @@ Pick by **intent**, not by who the user is:
 
 - **vc-sql-queries-business** — *run & export only.* Use when the request is to **get data
   from a report that already exists**: find it, run it with values, read the rows, export to
-  CSV/XLSX/PDF/HTML. Needs `sql-queries:access` + `sql-queries:read`. Never writes SQL.
+  CSV/XLSX/HTML. Needs `sql-queries:access` + `sql-queries:read`. Never writes SQL.
+  PDF is not an API format: it is produced in the admin UI via the browser's print dialog.
   Cues: "run the X report", "what does the orders report show", "export that to Excel".
 
 If a "run" request can't be satisfied because no matching report exists, the business skill

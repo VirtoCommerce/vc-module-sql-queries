@@ -4,7 +4,8 @@ This module is designed to empower administrators and developers by providing a 
 ##  Key features
 * Execute custom SQL queries against the VirtoCommerce databases.
 * Integrate with the platform’s security and permissions system to control query access.
-* Return results in user-friendly formats for reporting and analysis: HTML, PDF, CSV, XLSX.
+* Return results in user-friendly formats for reporting and analysis: HTML, CSV, XLSX.
+* Save reports as PDF from the admin UI: the HTML report opens in the browser's print dialog, where you choose **Save as PDF**.
 * Supports query parameters: Short Text, Date Time, Boolean, Integer, Decimal.
 * Supports multiple database providers: SQL Server (default), MySQL, and PostgreSQL.
 * Supports multiple connection strings.
@@ -127,7 +128,7 @@ This repo ships two project-scoped [Claude Code](https://claude.com/claude-code)
   delete saved reports and write/validate SQL. Requires `sql-queries:create` / `:update` /
   `:delete` / `:read`.
 * **vc-sql-queries-business** — *run & export only.* Find an existing report, run it with
-  parameter values, read the rows, and export to CSV / XLSX / PDF / HTML. Requires
+  parameter values, read the rows, and export to CSV / XLSX / HTML. Requires
   `sql-queries:access` + `sql-queries:read`. Never writes SQL.
 
 Both skills are grounded in the module source (controller routes, model field names, and the

@@ -154,7 +154,7 @@ It refuses and points to the admin skill. *"The boundary holds."*
   object) — asymmetric with `execute-query/{id}`, which takes `{ "parameters": [...], "maxRows": N }`.
 - **Blank date = today**, not "all rows". If a beat needs "return everything", set no filter in
   the SQL or use a dedicated flag parameter — don't imply a blank date means unfiltered.
-- **Formats:** `html, pdf, xlsx, csv` — HTML first / default.
+- **Formats:** `html, xlsx, csv` — HTML first / default. PDF is UI-only (browser print of the HTML report).
 - **Connection string** present: `SqlQueries.VirtoCommerce` (provider SqlServer).
 - **Avoid duplicate names.** The instance currently has two reports named *Coupon Usage*; a
   keyword find returns both and the skill will ask you to pick. For a clean take, author a
