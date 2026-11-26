@@ -54,7 +54,7 @@
               variant="secondary"
               icon="lucide-plus"
               :aria-label="$t('SQL_QUERIES.DETAILS.ADD_PARAMETER')"
-              @click.stop="addParameter"
+              @click="addParameter"
             >
               {{ $t("SQL_QUERIES.DETAILS.ADD_PARAMETER") }}
             </VcButton>

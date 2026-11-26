@@ -106,12 +106,14 @@ function open(name: string, item?: SqlQuery) {
 const openReport = (item: SqlQuery) => open("SqlQueryReport", item);
 const openDetails = (item?: SqlQuery) => open("SqlQueryDetails", item);
 
+// an open query with unsaved changes is asked about first; kept open, nothing is deleted
 async function remove(list: SqlQuery[]) {
-  if (!(await showConfirmation(t("SQL_QUERIES.ALERTS.DELETE_CONFIRMATION")))) return;
-  await closeChildren();
-  await (await getApiClient()).delete(list.map((x) => x.id!));
-  selection.value = [];
-  await load();
+  await closeChildren(async () => {
+    if (!(await showConfirmation(t("SQL_QUERIES.ALERTS.DELETE_CONFIRMATION")))) return;
+    await (await getApiClient()).delete(list.map((x) => x.id!));
+    selection.value = [];
+    await load();
+  });
 }
 
 // legacy row context menu: View report / Edit report / Delete
